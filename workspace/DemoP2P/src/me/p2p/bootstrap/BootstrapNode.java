@@ -8,7 +8,7 @@ import me.p2p.EMsgType;
 import me.p2p.Log;
 import me.p2p.MessageHandler;
 import me.p2p.MessageParser;
-import me.p2p.PeerInfo;
+import me.p2p.PeerInfoParser;
 import me.p2p.Request;
 import me.p2p.constant.PeerPort;
 import me.p2p.resource.DataManager;
@@ -104,12 +104,21 @@ public class BootstrapNode extends Thread implements MessageCallback, IBootstrap
 	}
 
 	@Override
-	public synchronized void handleJoinMsg(JSONObject data, Socket peerSocket) {
+	public synchronized void handleJoinMsg(JSONObject data /*peer info data*/, Socket peerSocket) {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "handleJoinMsg()");
-		PeerInfo peerInfo = new PeerInfo();
-		peerInfo.address = "0.0.0.0";
-		dataManager.add(peerInfo);
+		
+		/* Lưu thông tin của peer vừa giao tiếp vào file list peer */
+		PeerInfoParser piParser = new PeerInfoParser(data);
+		dataManager.add(piParser.getPeerInfo());
+		
+		/* Gửi danh sách peer đến nút đang giao tiếp */
+		Request request = new Request(peerSocket);
+		request.startSession();
+		request.startMsg();
+		request.send(dataManager.getJsonListPeer().toString());
+		request.endMsg();
+		request.endSession();
 	}
 
 	@Override

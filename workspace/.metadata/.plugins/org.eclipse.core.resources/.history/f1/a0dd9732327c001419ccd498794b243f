@@ -1,0 +1,152 @@
+package me.p2p;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+
+import me.p2p.MessageHandler.IMessage;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class CommandHandler {
+	BufferedReader bufferedReader;
+	String command = null;
+	
+	Runnable startSession;
+	Runnable endSession;
+	Runnable startMsg;
+	Runnable endMsg;
+	Runnable inMsg;
+	
+	public public CommandHandler() {
+		// TODO Auto-generated constructor stub
+	}(BufferedReader br) {
+		this.bufferedReader = br;
+		this.command = null;
+	}
+
+	public void setStartSession(Runnable runnable) {
+		this.startSession = runnable;
+	}
+
+	public void setEndSession(Runnable runnable) {
+		this.endSession = runnable;
+	}
+
+	public void setStartMsg(Runnable runnable) {
+		this.startMsg = runnable;
+	}
+
+	public void setEndMsg(Runnable runnable) {
+		this.endMsg = runnable;
+	}
+
+	public void setInMsg(Runnable runnable) {
+		this.inMsg = runnable;
+	}
+
+	public void processCommand() {
+		while (true) {
+			// handle request, read data;
+			try {
+				command = bufferedReader.readLine();
+				System.out.println("Client Command: " + clientCommand);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			if (clientCommand != null) {
+				if (clientCommand.equals(MsgProtocol.START_SESSION_MSG)) {
+					System.out.println(TAG + ": Start Session");
+					if (msgListener != null) {
+						msgListener.onSessionStart();
+					}
+				} else {
+					if (clientCommand.equals(MsgProtocol.END_SESSION_MSG)) {
+						System.out.println(TAG + ": Exit Session");
+						if (msgListener != null) {
+							msgListener.onSessionEnd();
+						}
+
+						break;
+					} else {
+						if (clientCommand.equals(MsgProtocol.START_MSG)) {
+							// bat dau doc data, chuan bi doi de chua;
+							System.out.println(TAG + ": Start Command");
+
+							inMessage = true;
+							msgData = new StringBuilder();
+						} else {
+							if (clientCommand.equals(MsgProtocol.END_MSG)) {
+								// ket thuc doc data;
+								System.out.println(TAG + ": End Command");
+								// change state of message handler;
+								inMessage = false;
+								// log to console;
+								System.out.println(msgData.toString());
+								// notify msg listener;
+								if (msgListener != null) {
+									try {
+										JSONObject data = new JSONObject(
+												msgData.toString());
+										msgListener.onMessage(socket, data);
+									} catch (JSONException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+								}
+							} else {
+								if (inMessage) {
+									// nếu không phải hai trường hợp kia thì
+									// append
+									// nó
+									// vào
+									// data;
+									System.out.println(TAG
+											+ ": In Message: Append Data");
+									msgData.append(clientCommand);
+								} else {
+									System.out.println(TAG
+											+ ": Not In Message: Skip");
+								}
+							}
+						}
+					}
+				}
+			} else {
+				System.out.println(TAG + ": client command is null");
+			}
+		}
+	}
+
+	@Override
+	public void onStartSession(Runnable runnable) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onEndSession(Runnable runnable) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onStartMessage(Runnable runnable) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onEndMessage(Runnable runnable) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onInMessage(Runnable runnable) {
+		// TODO Auto-generated method stub
+
+	}
+}

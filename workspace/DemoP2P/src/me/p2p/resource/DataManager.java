@@ -119,6 +119,15 @@ public class DataManager implements IData {
 		// TODO Auto-generated method stub
 		return listPeerInfo;
 	}
+	
+	public JSONArray getJsonListPeer() {
+		JSONArray jsListPeer = new JSONArray();
+		for (PeerInfo peerInfo : listPeerInfo) {
+			jsListPeer.put(peerInfo.toJSONObject());
+		}
+		
+		return jsListPeer;
+	}
 
 	@Override
 	public void add(PeerInfo peerInfo) {

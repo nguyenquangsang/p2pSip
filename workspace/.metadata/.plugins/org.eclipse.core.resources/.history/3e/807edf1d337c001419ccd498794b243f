@@ -1,0 +1,19 @@
+public class RunDemo {
+	Runnable runnable = new Runnable() {
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			System.out.println("Print from Runnable");
+		}
+	};
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
