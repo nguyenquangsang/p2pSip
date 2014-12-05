@@ -1,8 +1,0 @@
-package me.p2p;
-
-import java.net.InetAddress;
-
-public class Peer implements MessageCallback {
-	MessageHandler msgHandler;
-	InetAddress inetAddress;
-}
