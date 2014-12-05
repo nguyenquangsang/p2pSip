@@ -1,30 +1,17 @@
-public class RunDemo {
-	static RunExt runnable = new RunExt() {
-		
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void runExt(String string) {
-			// TODO Auto-generated method stub
-			
-		}
-	};
-	
-	public interface RunExt extends Runnable {
-		public abstract void runExt(String string);
-	}
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
+public class RunDemo {
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Print from main thread");
-		runnable.run();
+		try {
+			System.out.println("Address: " + InetAddress.getLocalHost().getHostAddress());
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 }

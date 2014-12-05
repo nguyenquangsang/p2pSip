@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class DataManager implements IData {
 	static final String ERROR = "Must call prepare() first";
 	static final String FILE_NAME = "list_peer.json";
-	static final String INIT_DATA = "[]"; // dữ liệu khởi đầu là mảng rỗng;
+	static final String INIT_DATA = "{\"" + IData.JS_LIST_PEER + "\":[]}"; // dữ liệu khởi đầu là mảng rỗng;
 
 	static DataManager INSTANCE = null;
 	String filePath;
@@ -80,7 +80,8 @@ public class DataManager implements IData {
 
 		JSONArray jsPeerList = null;
 		try {
-			jsPeerList = new JSONArray(data);
+			JSONObject jsObjectListPeer = new JSONObject(data);
+			jsPeerList = jsObjectListPeer.getJSONArray(IData.JS_LIST_PEER);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -104,9 +105,18 @@ public class DataManager implements IData {
 			jaPeerInfo.put(peerInfo.toJSONObject());
 		}
 
+		// convert to list json;
+		JSONObject jsonObjectListPeer = new JSONObject();
+		try {
+			jsonObjectListPeer.put(IData.JS_LIST_PEER, jaPeerInfo);
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		// write to file;
 		try {
-			String data = jaPeerInfo.toString();
+			String data = jsonObjectListPeer.toString();
 			FileUtils.writeStringToFile(fileListPeer, data);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -120,13 +130,21 @@ public class DataManager implements IData {
 		return listPeerInfo;
 	}
 	
-	public JSONArray getJsonListPeer() {
+	public JSONObject getJsonListPeer() {
+		JSONObject jsObjectListPeer = new JSONObject();
 		JSONArray jsListPeer = new JSONArray();
 		for (PeerInfo peerInfo : listPeerInfo) {
 			jsListPeer.put(peerInfo.toJSONObject());
 		}
 		
-		return jsListPeer;
+		try {
+			jsObjectListPeer.put(IData.JS_LIST_PEER, jsListPeer);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return jsObjectListPeer;
 	}
 
 	@Override
@@ -176,7 +194,7 @@ public class DataManager implements IData {
 	public boolean isExist(PeerInfo peerInfo) {
 		// TODO Auto-generated method stub
 		for (PeerInfo pInfo : listPeerInfo) {
-			if (pInfo.equals(peerInfo)) {
+			if (pInfo.isEqual(peerInfo)) {
 				return true;
 			}
 		}

@@ -1,0 +1,12 @@
+import java.net.InetAddress;
+
+public class RunDemo {
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		InetAddress inetAddress = InetAddress.getLocalHost().getHostAddress();
+		System.out.println("Print from main thread");
+	}
+}

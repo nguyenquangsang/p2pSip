@@ -24,3 +24,5 @@
 1417716147954	Rename method 'parseDirect'
 1417716339852	Rename method 'parseDirectResult'
 1417751892532	Delete element
+1417755699492	Rename local variable 'jsonObject'
+1417764572139	Copy file

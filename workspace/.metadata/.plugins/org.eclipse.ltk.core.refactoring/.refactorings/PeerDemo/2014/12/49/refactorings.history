@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 packages to &apos;DemoP2P/src&apos;&#x0D;&#x0A;- Original project: &apos;PeerDemo&apos;&#x0D;&#x0A;- Destination element: &apos;DemoP2P/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     PeerDemo/src/me.p2p.constant&#x0D;&#x0A;     PeerDemo/src/me.p2p.spec&#x0D;&#x0A;     PeerDemo/src/me.p2p&#x0D;&#x0A;     PeerDemo/src/me.p2p.resource" description="Copy packages" destination="=DemoP2P/src" element1="/src&lt;me.p2p.constant" element2="/src&lt;me.p2p.spec" element3="/src&lt;me.p2p" element4="/src&lt;me.p2p.resource" flags="589830" fragments="4" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1417764560886" version="1.0"/>
+</session>

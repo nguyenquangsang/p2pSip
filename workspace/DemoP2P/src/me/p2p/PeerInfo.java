@@ -36,4 +36,13 @@ public class PeerInfo {
 
 		return jsObject;
 	}
+	
+	public boolean isEqual(PeerInfo peerInfo) {
+		if (peerInfo.address.equals(address) && 
+				peerInfo.userName.equals(userName)) {
+			return true;
+		}
+		
+		return false;
+	}
 }

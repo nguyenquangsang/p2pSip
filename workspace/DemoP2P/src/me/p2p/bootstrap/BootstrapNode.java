@@ -1,8 +1,10 @@
 package me.p2p.bootstrap;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 import me.p2p.EMsgType;
 import me.p2p.Log;
@@ -18,10 +20,12 @@ import me.p2p.spec.MessageCallback;
 import org.json.JSONObject;
 
 public class BootstrapNode extends Thread implements MessageCallback, IBootstrap {
+	final int MAX_CON = 5;
 	final String TAG = "BootstrapNode";
 	final String filePath = "E:/";
 	
 	ServerSocket serverSocket;
+	InetAddress inetAddress;
 	MessageParser msgParser;
 	/**
 	 * Request dùng để gửi dữ liệu trở lại cho peer node;
@@ -36,7 +40,15 @@ public class BootstrapNode extends Thread implements MessageCallback, IBootstrap
 	// create bootstrap node with default port
 	public BootstrapNode() {
 		try {
-			serverSocket = new ServerSocket(PeerPort.PORT_BOOTSTRAP);
+			inetAddress = InetAddress.getLocalHost();
+		} catch (UnknownHostException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			serverSocket = new ServerSocket(PeerPort.PORT_BOOTSTRAP, MAX_CON, 
+					inetAddress);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,7 +74,8 @@ public class BootstrapNode extends Thread implements MessageCallback, IBootstrap
 	}
 
 	public void listen() {
-		System.out.println("Bootstrap Listening...");
+		Log.logToConsole(TAG, "IP Adress: " + inetAddress.getHostAddress());
+		Log.logToConsole(TAG, "Bootstrap Listening...");
 		start();
 	}
 
