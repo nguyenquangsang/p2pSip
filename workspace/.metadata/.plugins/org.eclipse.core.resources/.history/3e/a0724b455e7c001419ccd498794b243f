@@ -1,0 +1,103 @@
+package me.p2p;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+import org.json.JSONObject;
+
+import me.p2p.constant.PeerPort;
+import me.p2p.spec.IPeer;
+import me.p2p.spec.MessageCallback;
+
+public class Peer extends Thread implements IPeer, MessageCallback {
+	// msg handler to handle message;
+	ServerSocket serverSocket;
+	// socket to request to server;
+	Socket socket;
+	Request request;
+	InetAddress inetAddress;
+	
+	boolean shutdown = false;
+	
+	public Peer(InetAddress bootstrapAddress) {
+		// TODO Auto-generated constructor stub
+		try {
+			serverSocket = new ServerSocket(PeerPort.PORT_PEER);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			socket = new Socket(bootstrapAddress, PeerPort.PORT_BOOTSTRAP);
+			request = new Request(socket);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public InetAddress getAddress() {
+		return inetAddress;
+	}
+
+	@Override
+	public void joinRequest() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void leaveRequest() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void updateRequest() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
+	 * Implement as Server, always listen change from other node;
+	 */
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		while (!shutdown) {
+			// listen;
+			try {
+				Socket localSocket = serverSocket.accept();
+				MessageHandler msgHandler = new MessageHandler(localSocket, this);
+				msgHandler.handleMessage();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void shutdown() {
+		shutdown = true;
+	}
+
+	@Override
+	public void onSessionStart() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onMessage(Socket peerSocket, JSONObject data) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onSessionEnd() {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -1,0 +1,75 @@
+package me.p2p;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+import me.p2p.constant.PeerPort;
+import me.p2p.spec.IPeer;
+
+public class Peer extends Thread implements IPeer {
+	// msg handler to handle message;
+	ServerSocket serverSocket;
+	// socket to request to server;
+	Socket socket;
+	MessageHandler msgHandler;
+	Request request;
+	InetAddress inetAddress;
+	
+	boolean shutdown = false;
+	
+	public Peer(InetAddress bootstrapAddress) {
+		// TODO Auto-generated constructor stub
+		try {
+			serverSocket = new ServerSocket(PeerPort.PORT_PEER);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			socket = new Socket(bootstrapAddress, PeerPort.PORT_BOOTSTRAP);
+			request = new Request(socket);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public InetAddress getAddress() {
+		return inetAddress;
+	}
+
+	@Override
+	public void joinRequest() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void leaveRequest() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void updateRequest() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/**
+	 * Implement as Server, always listen change from other node;
+	 */
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		while (!shutdown) {
+			// listen;
+		}
+	}
+	
+	public void shutdown() {
+		shutdown = true;
+	}
+}

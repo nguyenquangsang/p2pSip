@@ -13,6 +13,7 @@ import me.p2p.spec.MessageCallback;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
@@ -86,6 +87,8 @@ public class MainActivity extends ActionBarActivity implements MessageCallback {
 
 			// end session;
 			request.send(MsgProtocol.END_SESSION_MSG);
+			
+			AlertDialog
 
 			MessageHandler msgHandler = new MessageHandler(socket, this);
 			msgHandler.handleMessage();
