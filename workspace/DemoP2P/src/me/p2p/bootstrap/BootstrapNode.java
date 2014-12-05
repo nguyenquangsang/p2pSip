@@ -6,24 +6,26 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import me.p2p.EMsgType;
 import me.p2p.Log;
-import me.p2p.MessageHandler;
-import me.p2p.MessageParser;
 import me.p2p.PeerInfoParser;
-import me.p2p.Request;
 import me.p2p.constant.PeerPort;
+import me.p2p.message.EMsgType;
+import me.p2p.message.Message;
+import me.p2p.message.MessageParser;
+import me.p2p.request.Request;
+import me.p2p.request.RequestHandler;
 import me.p2p.resource.DataManager;
 import me.p2p.spec.IBootstrap;
 import me.p2p.spec.MessageCallback;
 
 import org.json.JSONObject;
 
-public class BootstrapNode extends Thread implements MessageCallback, IBootstrap {
+public class BootstrapNode extends Thread implements MessageCallback,
+		IBootstrap {
 	final int MAX_CON = 5;
 	final String TAG = "BootstrapNode";
 	final String filePath = "E:/";
-	
+
 	ServerSocket serverSocket;
 	InetAddress inetAddress;
 	MessageParser msgParser;
@@ -31,7 +33,7 @@ public class BootstrapNode extends Thread implements MessageCallback, IBootstrap
 	 * Request dùng để gửi dữ liệu trở lại cho peer node;
 	 */
 	Request request;
-	
+
 	/**
 	 * Đối tượng quản lý danh sách peer;
 	 */
@@ -45,15 +47,15 @@ public class BootstrapNode extends Thread implements MessageCallback, IBootstrap
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+
 		try {
-			serverSocket = new ServerSocket(PeerPort.PORT_BOOTSTRAP, MAX_CON, 
+			serverSocket = new ServerSocket(PeerPort.PORT_BOOTSTRAP, MAX_CON,
 					inetAddress);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		DataManager.prepare(filePath);
 		dataManager = DataManager.getInstance();
 	}
@@ -64,8 +66,8 @@ public class BootstrapNode extends Thread implements MessageCallback, IBootstrap
 		while (!Thread.interrupted()) {
 			try {
 				Socket socket = serverSocket.accept();
-				MessageHandler msgHandler = new MessageHandler(socket, this);
-				msgHandler.handleMessage();
+				RequestHandler requestHandler = new RequestHandler(socket, this);
+				requestHandler.handleRequest();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -82,11 +84,11 @@ public class BootstrapNode extends Thread implements MessageCallback, IBootstrap
 	public synchronized void onMessage(Socket peerSocket, JSONObject data) {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "onMessage(): " + data.toString());
-		
+
 		msgParser = new MessageParser(data);
 		EMsgType msgType = msgParser.getMessageType();
 		JSONObject msgData = msgParser.getMessageData();
-		
+
 		switch (msgType) {
 		case JOIN: {
 			handleJoinMsg(msgData, peerSocket);
@@ -99,6 +101,11 @@ public class BootstrapNode extends Thread implements MessageCallback, IBootstrap
 			break;
 		case UPDATE: {
 			handleUpdateMsg(msgData);
+		}
+			break;
+			
+		case TRANSFER_LIST: {
+			// bootstrap do nothing with this request;
 		}
 			break;
 		}
@@ -117,19 +124,26 @@ public class BootstrapNode extends Thread implements MessageCallback, IBootstrap
 	}
 
 	@Override
-	public synchronized void handleJoinMsg(JSONObject data /*peer info data*/, Socket peerSocket) {
+	public synchronized void handleJoinMsg(
+			JSONObject data /* peer info data */, Socket peerSocket) {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "handleJoinMsg()");
-		
+
 		/* Lưu thông tin của peer vừa giao tiếp vào file list peer */
 		PeerInfoParser piParser = new PeerInfoParser(data);
 		dataManager.add(piParser.getPeerInfo());
-		
+
 		/* Gửi danh sách peer đến nút đang giao tiếp */
 		Request request = new Request(peerSocket);
 		request.startSession();
 		request.startMsg();
-		request.send(dataManager.getJsonListPeer().toString());
+
+		// build message;
+		Message message = new Message(EMsgType.TRANSFER_LIST,
+				dataManager.getJsonListPeer());
+
+		// send message;
+		request.sendMessage(message);
 		request.endMsg();
 		request.endSession();
 	}
@@ -149,6 +163,6 @@ public class BootstrapNode extends Thread implements MessageCallback, IBootstrap
 	@Override
 	public synchronized void sendBroadCast(Socket peerSocket, JSONObject data) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

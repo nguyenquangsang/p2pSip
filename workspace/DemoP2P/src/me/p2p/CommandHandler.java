@@ -3,6 +3,8 @@ package me.p2p;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import me.p2p.request.RequestType;
+
 public class CommandHandler {
 	static final String TAG = "CommandHandler";
 	BufferedReader bufferedReader;
@@ -56,24 +58,24 @@ public class CommandHandler {
 			}
 
 			if (command != null) {
-				if (command.equals(MsgProtocol.START_SESSION_MSG)) {
+				if (command.equals(RequestType.START_SESSION_MSG)) {
 					System.out.println(TAG + ": Start Session");
 					startMsg.onCommand(command);
 				} else {
-					if (command.equals(MsgProtocol.END_SESSION_MSG)) {
+					if (command.equals(RequestType.END_SESSION_MSG)) {
 						System.out.println(TAG + ": Exit Session");
 						endSession.onCommand(command);
 
 						break;
 					} else {
-						if (command.equals(MsgProtocol.START_MSG)) {
+						if (command.equals(RequestType.START_MSG)) {
 							// bat dau doc data, chuan bi doi de chua;
 							System.out.println(TAG + ": Start Message");
 
 							inMessage = true;
 							inMsg.onCommand(command);
 						} else {
-							if (command.equals(MsgProtocol.END_MSG)) {
+							if (command.equals(RequestType.END_MSG)) {
 								// ket thuc doc data;
 								System.out.println(TAG + ": End Message");
 								// change state of message handler;

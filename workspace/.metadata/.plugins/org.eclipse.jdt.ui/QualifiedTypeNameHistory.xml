@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
-<fullyQualifiedTypeName name="BootstrapNode"/>
-<fullyQualifiedTypeName name="BootstrapNode.WorkerThread"/>
-<fullyQualifiedTypeName name="p2p.bootstrap.MessageCallback"/>
 <fullyQualifiedTypeName name="me.p2p.MessageCallback"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.wsdl.writer.document.Port"/>
 <fullyQualifiedTypeName name="me.p2p.constant.Port"/>
@@ -45,7 +41,6 @@
 <fullyQualifiedTypeName name="org.json.JSONArray"/>
 <fullyQualifiedTypeName name="me.p2p.spec.IPeer"/>
 <fullyQualifiedTypeName name="me.p2p.PeerMain"/>
-<fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="me.p2p.spec.IData"/>
 <fullyQualifiedTypeName name="me.p2p.Log"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -59,4 +54,10 @@
 <fullyQualifiedTypeName name="me.p2p.spec.MessageCallback"/>
 <fullyQualifiedTypeName name="java.net.InetAddress"/>
 <fullyQualifiedTypeName name="me.p2p.PeerInfo"/>
+<fullyQualifiedTypeName name="me.p2p.message.MsgProtocol"/>
+<fullyQualifiedTypeName name="me.p2p.message.MessageParser"/>
+<fullyQualifiedTypeName name="me.p2p.message.MsgAttribute"/>
+<fullyQualifiedTypeName name="me.p2p.message.Message"/>
+<fullyQualifiedTypeName name="me.p2p.message.EMsgType"/>
+<fullyQualifiedTypeName name="org.json.JSONObject"/>
 </qualifiedTypeNameHistroy>

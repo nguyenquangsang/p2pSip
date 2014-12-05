@@ -88,8 +88,6 @@ public class MainActivity extends ActionBarActivity implements MessageCallback {
 			// end session;
 			request.send(MsgProtocol.END_SESSION_MSG);
 			
-			AlertDialog
-
 			MessageHandler msgHandler = new MessageHandler(socket, this);
 			msgHandler.handleMessage();
 		} catch (UnknownHostException e) {

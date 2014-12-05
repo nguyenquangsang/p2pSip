@@ -9,6 +9,10 @@ import java.net.UnknownHostException;
 import org.json.JSONObject;
 
 import me.p2p.constant.PeerPort;
+import me.p2p.message.EMsgType;
+import me.p2p.message.Message;
+import me.p2p.request.Request;
+import me.p2p.request.RequestHandler;
 import me.p2p.spec.IPeer;
 import me.p2p.spec.MessageCallback;
 
@@ -20,7 +24,7 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 	 * Chỉ có một kết nối để update dữ liệu tại một thời điểm nên chỉ cần một
 	 * MessageHandler;
 	 */
-	MessageHandler msgHandler;
+	RequestHandler requestHandler;
 
 	// socket to request to server;
 	Socket socket;
@@ -96,7 +100,22 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 	@Override
 	public void joinRequest() {
 		// TODO Auto-generated method stub
-
+		// start session;
+		request.startSession();
+		// start msg;
+		request.startMsg();
+		
+		// send message join with peer info;
+		Message message = new Message(EMsgType.JOIN, peerInfo.toJSONObject());
+		request.sendMessage(message);
+		
+		// send end msg;
+		request.endMsg();
+		
+		/**
+		 * Sau khi send msg join thì peer chờ boostrap node xử lý join msg
+		 * sau đó đợi nhận list peer;
+		 */
 	}
 
 	@Override
@@ -120,9 +139,9 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 			// listen;
 			try {
 				Socket localSocket = serverSocket.accept();
-				synchronized (msgHandler) {
-					msgHandler = new MessageHandler(localSocket, this);
-					msgHandler.handleMessage();
+				synchronized (requestHandler) {
+					requestHandler = new RequestHandler(localSocket, this);
+					requestHandler.handleRequest();
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -130,7 +149,7 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 			}
 		}
 
-		msgHandler.stopHandle();
+		requestHandler.stopHandle();
 	}
 
 	public void shutdown() {
@@ -146,7 +165,7 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 	@Override
 	public void onMessage(Socket peerSocket, JSONObject data) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override

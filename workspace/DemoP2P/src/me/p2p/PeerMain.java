@@ -5,21 +5,27 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import me.p2p.constant.PeerPort;
+import me.p2p.message.EMsgType;
+import me.p2p.message.Message;
+import me.p2p.request.RequestHandler;
+import me.p2p.request.RequestType;
+import me.p2p.request.Request;
 import me.p2p.spec.MessageCallback;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PeerMain {
 	final static String TAG = "PeerMain";
-	static String data = "{\"msg_type\":\"join\", \"msg_data\":{\"address\":\"0.0.0.0\", \"username\":\"QuangSang\"}}";
+	static String data = "{\"address\":\"0.0.0.0\", \"username\":\"QuangSang\"}";
 	
 	public static void main(String[] args) {
 		try {
-			Socket socket = new Socket("192.168.3.120", PeerPort.PORT_BOOTSTRAP);
+			Socket socket = new Socket("192.168.1.51", PeerPort.PORT_BOOTSTRAP);
 
 			// send request;
 			Request request = new Request(socket);
-			request.send(MsgProtocol.START_SESSION_MSG);
+			request.startSession();
 
 			for (int i = 0; i < 3; i++) {
 				System.out.println("Send Message...");
@@ -30,9 +36,9 @@ public class PeerMain {
 					e.printStackTrace();
 				}
 
-				System.out.println("Send: " + MsgProtocol.START_MSG + "\n");
+				System.out.println("Send: " + RequestType.START_MSG + "\n");
 				// send start_msg;
-				request.send(MsgProtocol.START_MSG);
+				request.startMsg();
 
 				try {
 					Thread.sleep(200);
@@ -40,13 +46,23 @@ public class PeerMain {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 				// send data;
 				System.out.println("Send: " + data + "\n");
-				request.send(data);
+				JSONObject jsData = null;
+				try {
+					jsData = new JSONObject(data);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				Message message = new Message(EMsgType.JOIN, jsData);
+				request.sendMessage(message);
 
 				// send end_msg;
-				System.out.println("Send " + MsgProtocol.END_MSG + "\n");
-				request.send(MsgProtocol.END_MSG);
+				System.out.println("Send " + RequestType.END_MSG + "\n");
+				request.endMsg();
 
 				// sleep 500;
 				try {
@@ -58,7 +74,7 @@ public class PeerMain {
 			}
 
 			// end session;
-			request.send(MsgProtocol.END_SESSION_MSG);
+			request.endSession();
 
 //			/* Chờ đọc lại dữ liệu từ Server */
 //			BufferedReader sReader = new BufferedReader(new InputStreamReader(
@@ -108,7 +124,7 @@ public class PeerMain {
 //			
 //			commandHandler.processCommand();
 			
-			MessageHandler msgHandler = new MessageHandler(socket, new MessageCallback() {
+			RequestHandler requestHandler = new RequestHandler(socket, new MessageCallback() {
 				
 				@Override
 				public void onSessionStart() {
@@ -129,7 +145,7 @@ public class PeerMain {
 				}
 			});
 			
-			msgHandler.handleMessage();
+			requestHandler.handleRequest();
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -34,3 +34,22 @@
 1417770612727	Rename field 'stopHandling'
 1417771001052	Rename field 'inetAddress'
 1417771008186	Rename field 'bootstrapAddress'
+1417792892058	Move compilation units
+1417793981018	Rename type 'MsgAttribute'
+1417794000320	Rename type 'MsgProtocol'
+1417794013633	Rename type 'MsgCommunicationProtocol'
+1417794024219	Rename type 'MsgJSONAttribute'
+1417794045399	Rename type 'MessageProtocol'
+1417794501689	Rename type 'MessageBuilder'
+1417794514927	Move compilation unit
+1417794517547	Move compilation unit
+1417794544268	Move compilation unit
+1417794556176	Rename type 'ProtocolMessage'
+1417794598261	Rename field 'clientCommand'
+1417794752447	Rename method 'send'
+1417795350377	Rename type 'MessageHandler'
+1417795396456	Move compilation unit
+1417795487052	Rename method 'handleMessage'
+1417795701380	Rename local variable 'msgHandler'
+1417795787433	Rename local variable 'msgHandler'
+1417795801110	Rename field 'msgHandler'
