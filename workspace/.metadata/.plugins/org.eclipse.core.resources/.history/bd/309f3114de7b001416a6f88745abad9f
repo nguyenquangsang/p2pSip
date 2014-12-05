@@ -1,0 +1,16 @@
+package me.p2p;
+
+import org.json.JSONObject;
+
+public class PeerInfoParser {
+	PeerInfo peerInfo;
+	JSONObject jsPeerInfo;
+	
+	public PeerInfoParser(JSONObject data) {
+		jsPeerInfo = data;
+	}
+	
+	public PeerInfo getPeerInfo() {
+		return this.peerInfo;
+	}
+}

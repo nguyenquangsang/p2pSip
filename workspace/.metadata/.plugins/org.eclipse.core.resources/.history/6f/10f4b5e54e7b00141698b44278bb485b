@@ -1,0 +1,8 @@
+package me.p2p;
+
+import java.net.InetAddress;
+
+public class Peer {
+	MessageHandler msgHandler;
+	InetAddress inetAddress;
+}

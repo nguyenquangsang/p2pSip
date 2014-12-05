@@ -1,0 +1,11 @@
+package me.p2p;
+
+import java.net.Socket;
+
+public class Message {
+	Socket socket;
+	
+	public Message(Socket socket) {
+		this.socket = socket;
+	}
+}

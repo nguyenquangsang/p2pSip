@@ -1,0 +1,74 @@
+package me.p2p.bootstrap;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class MessageHandler extends Thread {
+		Socket socket;
+		boolean inMessage = false;
+		StringBuilder msgData = new StringBuilder();
+		MessageCallback msgListener;
+
+		public MessageHandler(Socket socket, MessageCallback msgListener) throws IOException {
+			// TODO Auto-generated constructor stub
+			// client;
+			this.socket = socket;
+			this.msgListener = msgListener;
+		}
+
+		public void run() {
+			// TODO Auto-generated method stub
+			while (!socket.isClosed()) {
+				// handle request, read data;
+				String clientCommand = null;
+				try {
+					BufferedReader bufferedReader = new BufferedReader(
+							new InputStreamReader(socket.getInputStream()));
+					clientCommand = bufferedReader.readLine();
+					System.out.println("Client Command: " + clientCommand);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				if (clientCommand.equals(SendTextProtocol.START_MSG)) {
+					// bat dau doc data, chuan bi doi de chua;
+					System.out.println("Start Command");
+
+					inMessage = true;
+					msgData = new StringBuilder();
+				} else {
+					if (clientCommand.equals(SendTextProtocol.END_MSG)) {
+						// ket thuc doc data;
+						System.out.println("End Command");
+						// change state of message handler;
+						inMessage = false;
+						// notify msg listener;
+						if (msgListener != null) {
+							try {
+								JSONObject data = new JSONObject(msgData.toString());
+								msgListener.onMessage(data);
+							} catch (JSONException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					} else {
+						if (inMessage) {
+							// nếu không phải hai trường hợp kia thì append nó vào
+							// data;
+							System.out.println("In Message: Append Data");
+							msgData.append(clientCommand);
+						} else {
+							System.out.println("Not In Message: Skip");
+						}
+					}
+				}
+			}
+		}
+	}

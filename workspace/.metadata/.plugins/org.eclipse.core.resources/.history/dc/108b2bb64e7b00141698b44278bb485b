@@ -1,0 +1,13 @@
+package me.p2p;
+
+
+import org.json.JSONObject;
+
+/**
+ * 
+ * @author Sang
+ *
+ */
+public interface MessageCallback {
+	public void onMessage(JSONObject data);
+}

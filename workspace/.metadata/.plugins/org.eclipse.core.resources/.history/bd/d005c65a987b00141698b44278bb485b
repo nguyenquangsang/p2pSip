@@ -1,0 +1,10 @@
+package me.p2p.spec;
+
+import java.util.ArrayList;
+
+import me.p2p.Peer;
+
+public interface IData {
+	public ArrayList<Peer> getListPeer();
+	public void add(Peer peer);
+}

@@ -1,0 +1,25 @@
+1417652906093	Move compilation unit
+1417652907904	Move compilation unit
+1417652915886	Move compilation unit
+1417653251009	Rename resource 'lib'
+1417653513793	Rename type 'WorkerThread'
+1417653563235	Rename field 'listener'
+1417653726731	Rename package 'p2p.bootstrap'
+1417653755675	Copy compilation units
+1417653764474	Delete element
+1417653777473	Move compilation units
+1417653782855	Move compilation unit
+1417653815448	Move compilation units
+1417654091790	Rename type 'Port'
+1417654108307	Rename type 'ConstantPort'
+1417654742356	Rename type 'SendTextProtocol'
+1417654751374	Rename type 'MeProtocol'
+1417654774976	Rename type 'MeP2PProtocol'
+1417658073471	Rename local variable 'msgType'
+1417658287611	Rename field 'data'
+1417658795959	Move compilation unit
+1417658801240	Move compilation unit
+1417666793578	Delete element
+1417715767322	Delete element
+1417716147954	Rename method 'parseDirect'
+1417716339852	Rename method 'parseDirectResult'

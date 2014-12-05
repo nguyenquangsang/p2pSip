@@ -1,0 +1,7 @@
+package me.p2p;
+
+import java.net.InetAddress;
+
+public class PeerInfo {
+	public String address;
+}

@@ -1,0 +1,7 @@
+package me.p2p;
+
+public class MsgAttribute {
+	public static final String MSG_TYPE = "msg_type";
+	public static final String MSG_DATA = "msg_data";
+	public static final String MSG_TYPE_JOIN = "join";
+}

@@ -1,0 +1,15 @@
+package me.p2p;
+
+
+public class PeerInfo {
+	public String userName;
+	public String address;
+	
+	public PeerInfo() {
+		
+	}
+	
+	public PeerInfo(String address, String userName) {
+		this.address = address;
+	}
+}

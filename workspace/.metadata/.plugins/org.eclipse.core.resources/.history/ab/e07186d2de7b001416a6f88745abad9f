@@ -1,0 +1,5 @@
+package me.p2p;
+
+public class PeerAttribute {
+	public static final String PEER_ADDRESS = "address";
+}

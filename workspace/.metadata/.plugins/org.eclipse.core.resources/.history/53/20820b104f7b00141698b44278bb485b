@@ -1,0 +1,6 @@
+package me.p2p.constant;
+
+public class Port {
+
+	public static final int PORT_BOOTSTRAP = 6868;
+}

@@ -1,0 +1,5 @@
+package me.p2p;
+
+public class MsgAttribute {
+	public static final String MSG_TYPE = "msg_type";
+}

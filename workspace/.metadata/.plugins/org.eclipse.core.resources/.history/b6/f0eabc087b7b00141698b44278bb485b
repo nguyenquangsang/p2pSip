@@ -1,0 +1,10 @@
+package me.p2p.spec;
+
+public interface IBootstrap {
+	/**
+	 * Khi nhận msg join thì việc boostrap cần làm là 
+	 */
+	public void handleJoinMsg();
+	public void handleLeaveMsg();
+	public void handleUpdateMsg();
+}

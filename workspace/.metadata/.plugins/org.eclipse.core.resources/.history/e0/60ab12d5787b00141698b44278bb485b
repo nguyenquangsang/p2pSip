@@ -1,0 +1,9 @@
+package me.p2p;
+
+public class MessageBuilder {
+	public static final String build(String message) {
+		return message + "\n";
+	}
+	
+	public static final String buildJoin() {
+}

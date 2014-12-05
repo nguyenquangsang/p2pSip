@@ -1,0 +1,7 @@
+package me.p2p;
+
+
+public class MeProtocol {
+	public static final String START_MSG = "start_msg";
+	public static final String END_MSG = "end_msg";
+}

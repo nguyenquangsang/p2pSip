@@ -1,0 +1,6 @@
+package me.p2p;
+
+
+public class PeerInfo {
+	public String address;
+}

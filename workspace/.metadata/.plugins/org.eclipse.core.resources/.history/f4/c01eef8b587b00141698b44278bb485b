@@ -1,0 +1,29 @@
+package me.p2p;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class MessageParser {
+	JSONObject rawData;
+	EMsgType msgType;
+	JSONObject data;
+	
+	public MessageParser(JSONObject data) {
+		this.rawData = data;
+	}
+	
+	public void parse() {
+		try {
+			String sMsgType = rawData.getString(MsgAttribute.MSG_TYPE);
+			// translate to msgType;
+			if (sMsgType.equals(MsgAttribute.MSG_TYPE_JOIN)) {
+				msgType = EMsgType.JOIN;
+			} else {
+				if (sMsgType.equals(MsgAttribute.MSG_TYPE_LEAVE))
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

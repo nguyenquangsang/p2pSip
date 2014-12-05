@@ -1,0 +1,13 @@
+package me.p2p;
+
+import java.io.DataOutputStream;
+import java.net.Socket;
+
+public class Request {
+	DataOutputStream dtos;
+	Socket socket;
+	public Request(Socket socket
+			) {
+		
+	}
+}

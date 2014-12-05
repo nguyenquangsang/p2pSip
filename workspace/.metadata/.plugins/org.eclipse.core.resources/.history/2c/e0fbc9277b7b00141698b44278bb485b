@@ -1,0 +1,14 @@
+package me.p2p.spec;
+
+public interface IBootstrap {
+	/**
+	 * Khi nhận msg join thì việc boostrap cần làm là:
+	 * - Lấy thông tin về peer được gửi từ client.
+	 * - Lưu thông tin vào danh sách peer.
+	 * - Truyền thông tin danh sách lại đến peer theo phương thức giao
+	 * tiếp TextProtocol.
+	 */
+	public void handleJoinMsg();
+	public void handleLeaveMsg();
+	public void handleUpdateMsg();
+}

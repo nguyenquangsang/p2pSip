@@ -1,0 +1,9 @@
+package me.p2p.spec;
+
+import org.json.JSONObject;
+
+public interface IPeer {
+	public void join(JSONObject joinData);
+	public void leave(JSONObject leaveData);
+	public void update(JSONObject updateData);
+}

@@ -1,0 +1,22 @@
+package me.p2p;
+
+import java.net.InetAddress;
+
+import org.json.JSONObject;
+
+public class Peer implements MessageCallback {
+	// msg handler to handle message;
+	MessageHandler msgHandler;
+	InetAddress inetAddress;
+	
+	
+	public void onMessage(JSONObject data) {
+		// TODO Auto-generated method stub
+		MessageParser parser = new MessageParser(data);
+		System.out.println();
+	}
+	
+	public InetAddress getAddress() {
+		return inetAddress;
+	}
+}

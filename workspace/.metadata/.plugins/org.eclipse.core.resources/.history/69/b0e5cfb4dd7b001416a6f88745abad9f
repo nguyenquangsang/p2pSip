@@ -1,0 +1,12 @@
+package me.p2p;
+
+
+public class PeerInfo {
+	public String address;
+	
+	@Override
+	public boolean equals(PeerInfo obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
+}
