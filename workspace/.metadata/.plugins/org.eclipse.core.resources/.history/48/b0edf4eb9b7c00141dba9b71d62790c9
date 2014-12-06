@@ -1,0 +1,10 @@
+package me.p2p;
+
+
+public class PeerFullDemo {
+	final static String TAG = "PeerMain";
+	final String filePath = "E:/PeerData";
+	public static void main(String[] args) {
+		
+	}
+}

@@ -1,0 +1,8 @@
+package me.p2p.message;
+
+public enum EMsgType {
+	JOIN, // peer node send this request to join p2p network
+	LEAVE,
+	UPDATE,
+	TRANSFER_LIST // bootstrap send this request to transfer data list
+}

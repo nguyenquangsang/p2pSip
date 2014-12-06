@@ -9,12 +9,12 @@ import java.net.UnknownHostException;
 import me.p2p.Log;
 import me.p2p.PeerInfoParser;
 import me.p2p.constant.PeerPort;
+import me.p2p.data.DataManager;
 import me.p2p.message.EMsgType;
 import me.p2p.message.Message;
 import me.p2p.message.MessageParser;
 import me.p2p.request.Request;
 import me.p2p.request.RequestHandler;
-import me.p2p.resource.DataManager;
 import me.p2p.spec.IBootstrap;
 import me.p2p.spec.MessageCallback;
 
@@ -38,6 +38,11 @@ public class BootstrapNode extends Thread implements MessageCallback,
 	 * Đối tượng quản lý danh sách peer;
 	 */
 	DataManager dataManager;
+
+	/**
+	 * Bootstrap node shuwdown?
+	 */
+	boolean shutdown = false;
 
 	// create bootstrap node with default port
 	public BootstrapNode() {
@@ -63,7 +68,7 @@ public class BootstrapNode extends Thread implements MessageCallback,
 	// run it
 	public void run() {
 		// TODO Auto-generated method stub
-		while (!Thread.interrupted()) {
+		while (!shutdown) {
 			try {
 				Socket socket = serverSocket.accept();
 				RequestHandler requestHandler = new RequestHandler(socket, this);
@@ -91,7 +96,9 @@ public class BootstrapNode extends Thread implements MessageCallback,
 
 		switch (msgType) {
 		case JOIN: {
-			handleJoinMsg(msgData, peerSocket);
+			if (!peerSocket.isClosed()) {
+				handleJoinMsg(msgData, peerSocket);
+			}
 		}
 			break;
 
@@ -103,7 +110,7 @@ public class BootstrapNode extends Thread implements MessageCallback,
 			handleUpdateMsg(msgData);
 		}
 			break;
-			
+
 		case TRANSFER_LIST: {
 			// bootstrap do nothing with this request;
 		}
@@ -164,5 +171,9 @@ public class BootstrapNode extends Thread implements MessageCallback,
 	public synchronized void sendBroadCast(Socket peerSocket, JSONObject data) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void shutdown() {
+		shutdown = true;
 	}
 }

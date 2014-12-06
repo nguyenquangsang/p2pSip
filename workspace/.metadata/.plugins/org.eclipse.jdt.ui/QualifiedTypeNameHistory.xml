@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="me.p2p.MessageCallback"/>
-<fullyQualifiedTypeName name="com.sun.xml.internal.ws.wsdl.writer.document.Port"/>
 <fullyQualifiedTypeName name="me.p2p.constant.Port"/>
 <fullyQualifiedTypeName name="oracle.jrockit.jfr.tools.ConCatRepository"/>
 <fullyQualifiedTypeName name="me.p2p.IPeer"/>
@@ -11,7 +9,6 @@
 <fullyQualifiedTypeName name="me.p2p.EMsgType"/>
 <fullyQualifiedTypeName name="me.p2p.MsgAttribute"/>
 <fullyQualifiedTypeName name="me.p2p.spec.IBootstrap"/>
-<fullyQualifiedTypeName name="me.p2p.Peer"/>
 <fullyQualifiedTypeName name="java.lang.IllegalStateException"/>
 <fullyQualifiedTypeName name="javax.xml.ws.EndpointReference"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
@@ -20,7 +17,6 @@
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="me.p2p.PeerAttribute"/>
 <fullyQualifiedTypeName name="org.apache.commons.io.IOUtils"/>
-<fullyQualifiedTypeName name="me.p2p.resource.DataManager"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
 <fullyQualifiedTypeName name="me.p2p.PeerInfoParser"/>
@@ -42,22 +38,26 @@
 <fullyQualifiedTypeName name="me.p2p.spec.IPeer"/>
 <fullyQualifiedTypeName name="me.p2p.PeerMain"/>
 <fullyQualifiedTypeName name="me.p2p.spec.IData"/>
-<fullyQualifiedTypeName name="me.p2p.Log"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="android.text.format.Formatter"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
 <fullyQualifiedTypeName name="android.app.AlertDialog"/>
 <fullyQualifiedTypeName name="java.lang.Thread"/>
-<fullyQualifiedTypeName name="java.net.Socket"/>
 <fullyQualifiedTypeName name="me.p2p.MessageHandler"/>
 <fullyQualifiedTypeName name="me.p2p.spec.MessageCallback"/>
-<fullyQualifiedTypeName name="java.net.InetAddress"/>
 <fullyQualifiedTypeName name="me.p2p.PeerInfo"/>
 <fullyQualifiedTypeName name="me.p2p.message.MsgProtocol"/>
-<fullyQualifiedTypeName name="me.p2p.message.MessageParser"/>
 <fullyQualifiedTypeName name="me.p2p.message.MsgAttribute"/>
 <fullyQualifiedTypeName name="me.p2p.message.Message"/>
 <fullyQualifiedTypeName name="me.p2p.message.EMsgType"/>
 <fullyQualifiedTypeName name="org.json.JSONObject"/>
+<fullyQualifiedTypeName name="me.p2p.request.RequestHandler"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="me.p2p.message.MessageParser"/>
+<fullyQualifiedTypeName name="me.p2p.resource.DataManager"/>
+<fullyQualifiedTypeName name="me.p2p.Peer"/>
+<fullyQualifiedTypeName name="java.net.InetAddress"/>
+<fullyQualifiedTypeName name="me.p2p.Log"/>
+<fullyQualifiedTypeName name="java.net.Socket"/>
 </qualifiedTypeNameHistroy>

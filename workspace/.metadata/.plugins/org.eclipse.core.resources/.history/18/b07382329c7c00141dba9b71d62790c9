@@ -1,0 +1,22 @@
+package me.p2p;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+
+public class PeerFullDemo {
+	static final String TAG = "PeerMain";
+	static final String filePath = "E:/PeerData";
+	
+	public static void main(String[] args) {
+		InetAddress bootstrapAdress;
+		try {
+			bootstrapAdress = InetAddress.getByName("192.168.1.51");
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Peer peer = new Peer(filePath, "tobeNguyen", bootstrapAdress);
+	}
+}

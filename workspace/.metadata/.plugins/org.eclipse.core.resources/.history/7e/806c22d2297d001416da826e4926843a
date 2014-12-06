@@ -1,0 +1,27 @@
+package me.p2p.message;
+
+import me.p2p.data.DataJSONAttribute;
+import me.p2p.spec.IData;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class MessageDataParser {
+	JSONObject msgData;
+	
+	public MessageDataParser(JSONObject msgData) {
+		// TODO Auto-generated constructor stub
+		this.msgData = msgData;
+	}
+	
+	private void parse() {
+		// get list peer in json form;
+		try {
+			JSONArray jsListPeer = msgData.getJSONArray(DataJSONAttribute.JS_LIST_PEER);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

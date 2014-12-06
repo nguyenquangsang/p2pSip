@@ -1,0 +1,8 @@
+package me.p2p.message;
+
+import org.json.JSONObject;
+
+public class MessageDataParser {
+	JSONObject msgData;
+	
+}

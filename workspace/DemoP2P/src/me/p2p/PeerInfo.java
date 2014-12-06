@@ -1,11 +1,27 @@
 package me.p2p;
 
+import me.p2p.data.DataJSONAttribute;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PeerInfo {
+	/**
+	 * Thông tin về tên người sử dụng của node peer này,<br>
+	 * được sử dụng bởi sip để định danh người dùng
+	 */
 	public String userName;
+	
+	/**
+	 * Thông tin về địa chỉ ip của peer node
+	 */
 	public String address;
+	
+	public PeerInfo(JSONObject jsPeerInfo) {
+		PeerInfoParser peerInfoParser = new PeerInfoParser(jsPeerInfo);
+		this.address = peerInfoParser.getPeerInfo().address;
+		this.userName = peerInfoParser.getPeerInfo().userName;
+	}
 
 	public PeerInfo() {
 		address = null;
@@ -21,14 +37,14 @@ public class PeerInfo {
 		JSONObject jsObject = new JSONObject();
 		
 		try {
-			jsObject.accumulate(PeerInfoAttribute.PEER_ADDRESS, address);
+			jsObject.accumulate(DataJSONAttribute.JS_PEER_ADDRESS, address);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		try {
-			jsObject.accumulate(PeerInfoAttribute.PEER_USER_NAME, userName);
+			jsObject.accumulate(DataJSONAttribute.JS_PEER_USER_NAME, userName);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,11 +1,13 @@
 package me.p2p;
 
+import me.p2p.data.DataJSONAttribute;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PeerInfoParser {
-	PeerInfo peerInfo;
-	JSONObject jsPeerInfo;
+	private PeerInfo peerInfo;
+	private JSONObject jsPeerInfo;
 
 	/**
 	 * Hàm tạo này được sử dụng khi muốn sử dụng đối tượng này nhiều lần<br>
@@ -32,7 +34,7 @@ public class PeerInfoParser {
 		peerInfo = new PeerInfo();
 		try {
 			peerInfo.address = jsPeerInfo
-					.getString(PeerInfoAttribute.PEER_ADDRESS);
+					.getString(DataJSONAttribute.JS_PEER_ADDRESS);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,7 +42,7 @@ public class PeerInfoParser {
 
 		try {
 			peerInfo.userName = jsPeerInfo
-					.getString(PeerInfoAttribute.PEER_USER_NAME);
+					.getString(DataJSONAttribute.JS_PEER_USER_NAME);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

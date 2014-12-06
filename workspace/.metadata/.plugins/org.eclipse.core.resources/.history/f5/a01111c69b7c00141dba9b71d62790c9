@@ -1,0 +1,25 @@
+package me.p2p;
+
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+import me.p2p.constant.PeerPort;
+import me.p2p.message.EMsgType;
+import me.p2p.message.Message;
+import me.p2p.request.Request;
+import me.p2p.request.RequestHandler;
+import me.p2p.request.RequestType;
+import me.p2p.spec.MessageCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class PeerFullDemo {
+	final static String TAG = "PeerMain";
+	Peer peer;
+
+	public static void main(String[] args) {
+		
+	}
+}

@@ -53,3 +53,10 @@
 1417795701380	Rename local variable 'msgHandler'
 1417795787433	Rename local variable 'msgHandler'
 1417795801110	Rename field 'msgHandler'
+1417796348977	Rename field 'requestHandler'
+1417796353585	Rename field 'bootstrapReequestHandler'
+1417796493926	Rename field 'socket'
+1417796507206	Rename field 'request'
+1417857529159	Rename local variable 'bootstrapData'
+1417857851414	Rename package 'me.p2p.resource'
+1417858102932	Delete element

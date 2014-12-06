@@ -75,54 +75,6 @@ public class PeerMain {
 
 			// end session;
 			request.endSession();
-
-//			/* Chờ đọc lại dữ liệu từ Server */
-//			BufferedReader sReader = new BufferedReader(new InputStreamReader(
-//					socket.getInputStream()));
-//			/* Block and Read */
-//			CommandHandler commandHandler = new CommandHandler(sReader);
-//			commandHandler.setStartSession(new ICommand() {
-//
-//				@Override
-//				public void onCommand(String command) {
-//					// TODO Auto-generated method stub
-//					Log.logToConsole(TAG, command);
-//				}
-//			});
-//			commandHandler.setStartMsg(new ICommand() {
-//
-//				@Override
-//				public void onCommand(String command) {
-//					// TODO Auto-generated method stub
-//					Log.logToConsole(TAG, command);
-//				}
-//			});
-//			commandHandler.setInMsg(new ICommand() {
-//
-//				@Override
-//				public void onCommand(String command) {
-//					// TODO Auto-generated method stub
-//					Log.logToConsole(TAG, command);
-//				}
-//			});
-//			commandHandler.setEndMsg(new ICommand() {
-//
-//				@Override
-//				public void onCommand(String command) {
-//					// TODO Auto-generated method stub
-//					Log.logToConsole(TAG, command);
-//				}
-//			});
-//			commandHandler.setEndSession(new ICommand() {
-//
-//				@Override
-//				public void onCommand(String command) {
-//					// TODO Auto-generated method stub
-//					Log.logToConsole(TAG, command);
-//				}
-//			});
-//			
-//			commandHandler.processCommand();
 			
 			RequestHandler requestHandler = new RequestHandler(socket, new MessageCallback() {
 				
