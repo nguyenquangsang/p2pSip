@@ -1,0 +1,5 @@
+package me.p2p.spec;
+
+public interface IP2PProtocol {
+
+}

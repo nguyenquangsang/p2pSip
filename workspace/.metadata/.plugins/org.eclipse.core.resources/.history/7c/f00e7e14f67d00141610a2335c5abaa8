@@ -1,0 +1,19 @@
+package me.p2p;
+
+import me.p2p.Peer;
+
+
+
+public class PeerDesktopMain {
+	static final String TAG = "PeerMain";
+	static final String filePath = "E:/PeerData";
+	
+	public static void main(String[] args) {
+		String bootstrapAdress = "192.168.1.51";
+		
+		Peer peer = new Peer(filePath, "tobeNguyen", bootstrapAdress);
+		peer.listenRequest();
+		
+		peer.joinRequest();
+	}
+}

@@ -1,0 +1,22 @@
+package me.p2p.spec;
+
+import java.util.ArrayList;
+
+import me.p2p.PeerInfo;
+
+public interface IData {
+	/**
+	 * Lấy danh sách thông tin peer
+	 * @return
+	 */
+	public ArrayList<PeerInfo> getListPeerInfo();
+	
+	/**
+	 * 
+	 * @param peerInfo
+	 */
+	public void add(PeerInfo peerInfo);
+	public void remove(PeerInfo peerInfo);
+	public void update(PeerInfo peerInfo);
+	public boolean isExist(PeerInfo peerInfo);
+}

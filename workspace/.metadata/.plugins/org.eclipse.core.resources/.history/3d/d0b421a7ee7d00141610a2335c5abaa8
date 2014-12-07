@@ -1,0 +1,13 @@
+package me.p2p;
+
+import java.io.File;
+
+public class Log {
+	File logFile;
+	
+	public Log(File logFile) Ơ
+	
+	public static void logToConsole(String tag, String message) {
+		System.out.println(tag + ": " + message);
+	}
+}

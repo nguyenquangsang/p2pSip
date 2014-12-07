@@ -1,0 +1,18 @@
+1417937845381	Rename field 'FILE_NAME'
+1417938262028	Rename field 'filePath'
+1417938727509	Rename method 'readFile'
+1417938992421	Rename method 'writeToFile'
+1417943528811	Rename local variable 'data'
+1417943566096	Rename local variable 'data'
+1417943600931	Rename local variable 'data'
+1417945580793	Copy packages
+1417945593150	Copy folder
+1417945623985	Move compilation unit
+1417945757965	Move compilation units
+1417945762483	Delete element
+1417945803847	Copy packages
+1417945806637	Move folder
+1417945865159	Delete element
+1417945871092	Delete elements
+1417945909974	Delete element
+1417967440744	Delete element

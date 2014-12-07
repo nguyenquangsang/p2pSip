@@ -1,0 +1,20 @@
+package me.p2p.spec;
+
+import org.json.JSONObject;
+
+public interface IPeer {
+	/**
+	 * - Gửi thông điệp yêu cầu tham gia mạng đến Bootstrap
+	 */
+	public void joinRequest();
+	/**
+	 * - Gửi thông điệp yêu cầu rời mạng
+	 */
+	public void leaveRequest();
+	/**
+	 * - Gửi thông điệp yêu cầu cập nhật thông tin
+	 */
+	public void updateRequest();
+	public void handleTransferRequest(JSONObject bstrListPeerInfo);
+	public void listenRequest();
+}

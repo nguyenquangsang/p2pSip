@@ -1,0 +1,67 @@
+1417652906093	Move compilation unit
+1417652907904	Move compilation unit
+1417652915886	Move compilation unit
+1417653251009	Rename resource 'lib'
+1417653513793	Rename type 'WorkerThread'
+1417653563235	Rename field 'listener'
+1417653726731	Rename package 'p2p.bootstrap'
+1417653755675	Copy compilation units
+1417653764474	Delete element
+1417653777473	Move compilation units
+1417653782855	Move compilation unit
+1417653815448	Move compilation units
+1417654091790	Rename type 'Port'
+1417654108307	Rename type 'ConstantPort'
+1417654742356	Rename type 'SendTextProtocol'
+1417654751374	Rename type 'MeProtocol'
+1417654774976	Rename type 'MeP2PProtocol'
+1417658073471	Rename local variable 'msgType'
+1417658287611	Rename field 'data'
+1417658795959	Move compilation unit
+1417658801240	Move compilation unit
+1417666793578	Delete element
+1417715767322	Delete element
+1417716147954	Rename method 'parseDirect'
+1417716339852	Rename method 'parseDirectResult'
+1417751892532	Delete element
+1417755699492	Rename local variable 'jsonObject'
+1417764572139	Copy file
+1417770230439	Rename method 'join'
+1417770249900	Rename method 'leave'
+1417770257156	Rename method 'update'
+1417770597447	Rename field 'shutdown'
+1417770605229	Rename field 'stopHandle'
+1417770612727	Rename field 'stopHandling'
+1417771001052	Rename field 'inetAddress'
+1417771008186	Rename field 'bootstrapAddress'
+1417792892058	Move compilation units
+1417793981018	Rename type 'MsgAttribute'
+1417794000320	Rename type 'MsgProtocol'
+1417794013633	Rename type 'MsgCommunicationProtocol'
+1417794024219	Rename type 'MsgJSONAttribute'
+1417794045399	Rename type 'MessageProtocol'
+1417794501689	Rename type 'MessageBuilder'
+1417794514927	Move compilation unit
+1417794517547	Move compilation unit
+1417794544268	Move compilation unit
+1417794556176	Rename type 'ProtocolMessage'
+1417794598261	Rename field 'clientCommand'
+1417794752447	Rename method 'send'
+1417795350377	Rename type 'MessageHandler'
+1417795396456	Move compilation unit
+1417795487052	Rename method 'handleMessage'
+1417795701380	Rename local variable 'msgHandler'
+1417795787433	Rename local variable 'msgHandler'
+1417795801110	Rename field 'msgHandler'
+1417796348977	Rename field 'requestHandler'
+1417796353585	Rename field 'bootstrapReequestHandler'
+1417796493926	Rename field 'socket'
+1417796507206	Rename field 'request'
+1417857529159	Rename local variable 'bootstrapData'
+1417857851414	Rename package 'me.p2p.resource'
+1417858102932	Delete element
+1417861863134	Rename field 'serverSocket'
+1417862880030	Delete element
+1417863201885	Rename method 'getListPeer'
+1417864369591	Rename type 'PeerFullDemo'
+1417864375701	Delete element
