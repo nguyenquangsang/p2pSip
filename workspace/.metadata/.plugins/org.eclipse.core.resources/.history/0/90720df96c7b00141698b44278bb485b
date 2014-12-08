@@ -1,7 +1,0 @@
-package me.p2p;
-
-public class Request {
-	public Request() {
-		
-	}
-}

@@ -1,0 +1,102 @@
+package me.p2p.request;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
+
+import me.p2p.message.Message;
+
+
+/**
+ * Request là những mẩu thông điệp nhỏ được dùng để gửi giữa<br>
+ * các node dùng để thông báo các tác vụ được chỉ định. Ví dụ:<br>
+ * - Mở phiên giao dịch: start_session<br>
+ * - Kết thúc phiên giao dịch: end_session<br>
+ * - Bắt đầu gửi thông điệp: start_msg<br>
+ * - Kết thúc gửi thông điệp: end_msg
+ * @author Sang
+ *
+ */
+public class Request implements Respone.IRespone {
+	DataOutputStream dtos;
+	
+	Socket socket;
+	boolean block = false;
+
+	public Request(Socket socket) {
+		this.socket = socket;
+		try {
+			this.dtos = new DataOutputStream(this.socket.getOutputStream());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void sendMessage(Message message) {
+		/*
+		 * Gửi một tin nhắn và chờ cho đến khi server phát sinh tín hiệu đã
+		 * xử lý xong tin nhắn.
+		 */
+		try {
+			this.dtos.writeBytes(RequestBuilder.build(message.toJsonObject().toString()));
+			this.dtos.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*
+		 * Khóa cho đến khi nhận được respone accept;
+		 */
+		block();
+	}
+	
+	public void startMsg() {
+		try {
+			this.dtos.writeBytes(RequestBuilder.build(RequestType.START_MSG));
+			this.dtos.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		block();
+	}
+	
+	public void endMsg() {
+		try {
+			this.dtos.writeBytes(RequestBuilder.build(RequestType.END_MSG));
+			this.dtos.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		block();
+	}
+	
+	public void block() {
+		/**
+		 * Khóa request cho đến khi server gửi đến một respone chấp nhận
+		 */
+		block = true;
+		
+		while(block) {
+			// block
+			try {
+				this.br = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void onServerOk() {
+		// TODO Auto-generated method stub
+		block = false;
+	}
+}

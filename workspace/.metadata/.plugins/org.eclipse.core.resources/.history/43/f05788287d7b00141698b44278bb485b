@@ -1,8 +1,0 @@
-package me.p2p.bootstrap;
-
-import me.p2p.spec.IBootstrap;
-import me.p2p.spec.MessageCallback;
-
-public class BootstrapMsgHandler implements MessageCallback, IBootstrap {
-	
-}

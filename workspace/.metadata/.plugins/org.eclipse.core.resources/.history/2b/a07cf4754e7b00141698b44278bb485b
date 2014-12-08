@@ -1,7 +1,0 @@
-package me.p2p.bootstrap;
-
-import org.json.JSONObject;
-
-public interface MessageCallback {
-	public void onMessage(JSONObject data);
-}

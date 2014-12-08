@@ -1,7 +1,0 @@
-package me.p2p.spec;
-
-public interface IPeer {
-	public void joinRequest();
-	public void leave();
-	public void update();
-}

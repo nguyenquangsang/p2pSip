@@ -1,5 +1,0 @@
-package me.p2p.spec;
-
-public interface IData {
-	
-}

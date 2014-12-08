@@ -1,7 +1,0 @@
-package me.p2p;
-
-public class MessageBuilder {
-	public static final String build(String message) {
-		
-	}
-}

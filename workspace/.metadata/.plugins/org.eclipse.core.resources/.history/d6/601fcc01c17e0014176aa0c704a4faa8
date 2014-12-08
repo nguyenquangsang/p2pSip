@@ -1,0 +1,22 @@
+package me.p2p.request;
+
+import java.io.DataOutputStream;
+import java.net.Socket;
+
+public class Respone {
+	DataOutputStream dtos;
+	Socket socket;
+	
+	public Respone(Socket socket) {
+		this.socket = socket;
+		this.dtos = new DataOutputStream(this.socket);
+	}
+	
+	public void sendRespone() {
+		
+	}
+	
+	public interface IRespone {
+		public void onServerOk();
+	}
+}
