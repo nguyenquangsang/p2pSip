@@ -17,4 +17,5 @@ public class MessageJSONAttribute {
 	 * peer node xử lý;
 	 */
 	public static final String MSG_TYPE_TRANSFERLIST = "transfer_list";
+	public static final String MSG_TYPE_ADD_NODE = "add_node";
 }

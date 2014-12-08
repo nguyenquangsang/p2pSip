@@ -46,7 +46,8 @@ public class Message {
 		JSONObject jsMsg = new JSONObject();
 
 		try {
-			jsMsg.accumulate(MessageJSONAttribute.MSG_TYPE, convertMsgTypeToString());
+			jsMsg.accumulate(MessageJSONAttribute.MSG_TYPE,
+					convertMsgTypeToString());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -75,6 +76,10 @@ public class Message {
 			break;
 		case TRANSFER_LIST:
 			result = MessageJSONAttribute.MSG_TYPE_TRANSFERLIST;
+			break;
+		case ADD_NODE:
+			result = MessageJSONAttribute.MSG_TYPE_ADD_NODE;
+			break;
 		}
 
 		return result;

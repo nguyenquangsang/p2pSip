@@ -1,10 +1,10 @@
 package me.p2p;
 public class PeerDesktopMain {
 	static final String TAG = "PeerMain";
-	static final String filePath = "E:/PeerData";
+	static final String filePath = "D:/PeerData";
 	
 	public static void main(String[] args) {
-		String bootstrapAdress = "192.168.3.120";
+		String bootstrapAdress = "192.168.0.106";
 		
 		Peer peer = new Peer(filePath, "tobeNguyen", bootstrapAdress);
 		// listen for request;

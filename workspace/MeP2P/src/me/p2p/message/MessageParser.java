@@ -35,6 +35,10 @@ public class MessageParser {
 					} else {
 						if (sMsgType.equals(MessageJSONAttribute.MSG_TYPE_TRANSFERLIST)) {
 							msgType = EMsgType.TRANSFER_LIST;
+						} else {
+							if (sMsgType.equals(MessageJSONAttribute.MSG_TYPE_ADD_NODE)) {
+								msgType = EMsgType.ADD_NODE;
+							}
 						}
 					}
 				}

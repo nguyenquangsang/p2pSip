@@ -12,8 +12,8 @@ import android.view.MenuItem;
 
 public class MainActivity extends ActionBarActivity {
 	final String TAG = "MainActivity";
-	final String bootstrapIpAddress = "192.168.3.120";
-	final String userName = "tobeNguyen";
+	final String bootstrapIpAddress = "192.168.0.106";
+	final String userName = "SangNguyen";
 	Peer peer;
 
 	@SuppressLint("NewApi")

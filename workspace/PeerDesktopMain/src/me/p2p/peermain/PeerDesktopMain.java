@@ -6,7 +6,7 @@ import me.p2p.Peer;
 
 public class PeerDesktopMain {
 	static final String TAG = "PeerMain";
-	static final String filePath = "E:/PeerData";
+	static final String filePath = "D:/PeerData";
 	
 	public static void main(String[] args) {
 		String bootstrapAdress = "192.168.3.120";

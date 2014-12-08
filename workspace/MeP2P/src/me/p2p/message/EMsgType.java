@@ -16,5 +16,9 @@ public enum EMsgType {
 	/**
 	 * Bootstrap send this request to transfer data list
 	 */
-	TRANSFER_LIST
+	TRANSFER_LIST,
+	/**
+	 * Add peer node
+	 */
+	ADD_NODE
 }

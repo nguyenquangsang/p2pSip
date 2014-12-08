@@ -1,7 +1,5 @@
 package me.p2p.spec;
 
-import java.net.Socket;
-
 import org.json.JSONObject;
 
 public interface IP2PProtocol {
@@ -16,29 +14,6 @@ public interface IP2PProtocol {
 	public static final int BACK_LOG = 10;
 	
 	/**
-	 * Khi nhận được msg leave thì việc bootstrap cần làm là:<br>
-	 * - Lấy thông tin về peer được gửi từ client.<br>
-	 * - Xóa thông tin của node trong danh sách peer.<br>
-	 * - (?) Truyền msg ok đã xóa ok đến peer.<br>
-	 * => Các tham số cần là:<br>
-	 * - Message Data.<br>
-	 * - Socket của client đang đợi để lấy dữ liệu.<br>
-	 */
-	public void handleLeaveMsg(JSONObject data, Socket peerSocket);
-	
-	/**
-	 * Khi nhận được msg update thì việc bootstrap cần làm là:<br>
-	 * - Lấy thông tin về peer được gửi từ client.<br>
-	 * - Cập nhật thông tin của node trong danh sách.<br>
-	 * - Tung broadcast đến tất cả những peer trong list peer.
-	 * => Các tham số cần là:<br>
-	 * - Message Data.<br>
-	 * - Trong trường hợp này bootstrap node đóng vai trò là client gửi<br>
-	 * yêu cầu đến tất cả server là tất cả các peer node trong list peer.
-	 */
-	public void handleUpdateMsg(JSONObject data);
-	
-	/**
 	 * - Khởi động lắng nghe request từ những client khác.<br>
 	 * Lúc này peer đóng vai trò là server để xử lý các yêu<br>
 	 * như chuyển dữ liệu từ bootstrap (transfer peer list),<br>
@@ -50,4 +25,15 @@ public interface IP2PProtocol {
 	 * Bất kỳ node nào đều cũng cần phải shutdown khi kết thúc hoạt động
 	 */
 	public void shutdown();
+
+	/**
+	 * - Xử lý yêu cầu rời mạng từ nút khác gửi đến.
+	 * @param requestPeerInfo
+	 */
+	public void handleLeaveRequest(JSONObject requestPeerInfo);
+
+	/**
+	 * - Xử lý yêu cầu cập nhật nút từ nút khác gửi đến.
+	 */
+	public void handleUpdateRequest(JSONObject requestPeerInfo);
 }

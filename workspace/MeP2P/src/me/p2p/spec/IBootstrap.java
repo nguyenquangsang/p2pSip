@@ -1,7 +1,5 @@
 package me.p2p.spec;
 
-import java.net.Socket;
-
 import org.json.JSONObject;
 
 public interface IBootstrap extends IP2PProtocol {
@@ -17,11 +15,4 @@ public interface IBootstrap extends IP2PProtocol {
 	 * - Socket của client đang đợi để lấy dữ liệu.<br>
 	 */
 	public void handleJoinMsg(JSONObject data);
-	
-	/**
-	 * Gửi thông điệp đến một socket peer.
-	 * @param peerSocket
-	 * @param data
-	 */
-	public void sendBroadCast(Socket peerSocket, JSONObject data);
 }

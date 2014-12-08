@@ -6,8 +6,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import org.json.JSONObject;
-
 import me.p2p.PeerInfoParser;
 import me.p2p.constant.PeerPort;
 import me.p2p.data.DataManager;
@@ -20,6 +18,8 @@ import me.p2p.request.RequestHandler;
 import me.p2p.spec.IBootstrap;
 import me.p2p.spec.IP2PProtocol;
 import me.p2p.spec.MessageCallback;
+
+import org.json.JSONObject;
 
 public class BootstrapNode extends Thread implements MessageCallback,
 		IBootstrap {
@@ -97,20 +97,20 @@ public class BootstrapNode extends Thread implements MessageCallback,
 			break;
 
 		case LEAVE: {
-			/**
-			 * Bootstrap node không cần phải làm gì với message leave;
-			 */
+			handleLeaveRequest(msgParser.getMessageData());
 		}
 			break;
 		case UPDATE: {
-			/**
-			 * Bootstrap node không cần phải làm gì với message update;
-			 */
+			handleUpdateRequest(msgParser.getMessageData());
 		}
 			break;
 
 		case TRANSFER_LIST: {
-			// bootstrap do nothing with this request;
+			// bootstrap does not handle this message;
+		}
+		
+		case ADD_NODE: {
+			// bootstrap does not handle this message;
 		}
 			break;
 		}
@@ -176,25 +176,8 @@ public class BootstrapNode extends Thread implements MessageCallback,
 	}
 
 	@Override
-	public void sendBroadCast(Socket peerSocket, JSONObject data) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	public void shutdown() {
 		shutdown = true;
-	}
-
-	@Override
-	public void handleLeaveMsg(JSONObject data, Socket peerSocket) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void handleUpdateMsg(JSONObject data) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -203,5 +186,17 @@ public class BootstrapNode extends Thread implements MessageCallback,
 		Log.logToConsole(TAG, "IP Adress: " + inetAddress.getHostAddress());
 		Log.logToConsole(TAG, "Bootstrap Listening...");
 		start();
+	}
+
+	@Override
+	public void handleLeaveRequest(JSONObject requestPeerInfo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void handleUpdateRequest(JSONObject requestPeerInfo) {
+		// TODO Auto-generated method stub
+		
 	}
 }

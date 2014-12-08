@@ -32,7 +32,7 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 	 * Đối tượng xử lý request từ boostrap sau khi thông điệp msg_join<br>
 	 * được gửi đi.
 	 */
-	//RequestHandler bootstrapRequestHandler;
+	// RequestHandler bootstrapRequestHandler;
 
 	// socket to request to bootstrap;
 	Socket bootstrapSocket;
@@ -134,7 +134,7 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 		// start msg;
 		requestBootstrap.startMsg();
 		// block to wait server respone;
-		
+
 		// send message join with peer info;
 		Message message = new Message(EMsgType.JOIN, peerInfo.toJSONObject());
 		requestBootstrap.sendMessage(message);
@@ -174,7 +174,8 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 			// listen;
 			try {
 				Socket localSocket = peerServerSocket.accept();
-				RequestHandler bootstrapRequestHandler = new RequestHandler(localSocket, this);
+				RequestHandler bootstrapRequestHandler = new RequestHandler(
+						localSocket, this);
 				bootstrapRequestHandler.handleRequest();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -182,7 +183,7 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 			}
 		}
 
-		//bootstrapRequestHandler.stopHandle();
+		// bootstrapRequestHandler.stopHandle();
 		Log.logToConsole(TAG, "Stop handle request from bootstrap");
 	}
 
@@ -205,6 +206,18 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 			handleTransferRequest(msgParser.getMessageData());
 		}
 			break;
+		case ADD_NODE: {
+			handleAddNodeRequest(msgParser.getMessageData());
+		}
+			break;
+		case LEAVE: {
+			handleLeaveRequest(msgParser.getMessageData());
+		}
+			break;
+		case UPDATE: {
+			handleUpdateRequest(msgParser.getMessageData());
+			break;
+		}
 		}
 	}
 
@@ -223,6 +236,38 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 
 		// thay đổi status của peer;
 		dataManager.joined();
+		
+		/* 
+		 * - Sau khi nhận được danh sách từ bootstrap, peer này sẽ thông báo
+		 * đến tất cả những nút còn lại về việc thêm nút này vào.
+		 */
+		for (PeerInfo peerInfo : dataManager.getListPeerInfo()) {
+			if (!peerInfo.isEqual(this.peerInfo)) {
+				// nếu không phải là nút hiện tại
+				try {
+					// mở socket đến nút
+					Socket socket = new Socket(peerInfo.address, PeerPort.PORT_PEER);
+					// khởi tạo request để chuyển thông điệp
+					Request request = new Request(socket);
+					// gửi tin bắt đầu một message;
+					request.startMsg();
+					// khởi tạo message add node;
+					Message message = new Message(EMsgType.ADD_NODE, 
+							this.peerInfo.toJSONObject());
+					// send message;
+					request.sendMessage(message);
+					// kết thúc message;
+					request.endMsg();
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
 	}
 
 	@Override
@@ -231,18 +276,6 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 		Log.logToConsole(TAG, "listenRequest()");
 		setName(TAG);
 		start();
-	}
-
-	@Override
-	public void handleLeaveMsg(JSONObject data, Socket peerSocket) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void handleUpdateMsg(JSONObject data) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -259,6 +292,43 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 		 * Nhận được lệnh kết thúc phiên từ bootstrap node, dừng xử lý request
 		 * từ server và bắt đầu tự vận động
 		 */
-		//bootstrapRequestHandler.stopHandle();
+	}
+
+	@Override
+	public void handleLeaveRequest(JSONObject requestPeerInfo) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void handleUpdateRequest(JSONObject requestPeerInfo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void handleAddNodeRequest(JSONObject requestPeerInfo) {
+		// TODO Auto-generated method stub
+		PeerInfo peerInfo = new PeerInfo(requestPeerInfo);
+		dataManager.add(peerInfo);
+	}
+	
+	///////////////////////////////////////////////////////////
+	////////////// GET
+	///////////////////////////////////////////////////////////
+	public DataManager getDataManager() {
+		return this.dataManager;
+	}
+	
+	public PeerInfo getLocalPeerInfo() {
+		return this.peerInfo;
+	}
+	
+	public String getBootstrapAddress() {
+		return this.bstrAddress;
+	}
+	
+	public boolean isShutdown() {
+		return this.shutdown;
 	}
 }

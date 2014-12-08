@@ -21,6 +21,9 @@ public class Respone {
 		}
 	}
 	
+	/**
+	 * Gửi respone cho biết server đã chấp nhận
+	 */
 	public void sendServerOk() {
 		try {
 			this.dtos.writeBytes(RequestBuilder.build(ResponeType.SERVER_OK));
