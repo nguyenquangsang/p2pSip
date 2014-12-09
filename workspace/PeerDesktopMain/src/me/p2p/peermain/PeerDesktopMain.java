@@ -2,14 +2,12 @@ package me.p2p.peermain;
 
 import me.p2p.Peer;
 
-
-
 public class PeerDesktopMain {
 	static final String TAG = "PeerMain";
 	static final String filePath = "D:/PeerData";
 	
 	public static void main(String[] args) {
-		String bootstrapAdress = "192.168.3.120";
+		String bootstrapAdress = "192.168.0.106";
 		
 		Peer peer = new Peer(filePath, "tobeNguyen", bootstrapAdress);
 		// listen for request;
