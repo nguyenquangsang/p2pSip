@@ -1,0 +1,7 @@
+package com.example.peerdemo;
+
+import android.app.Application;
+
+public class MeApplication extends Application {
+
+}

@@ -1,0 +1,51 @@
+package me.sip;
+
+import org.zoolu.sip.provider.SipProvider;
+import org.zoolu.sip.provider.SipStack;
+
+import local.ua.UserAgent;
+import local.ua.UserAgentListener;
+import local.ua.UserAgentProfile;
+import me.p2p.Peer;
+
+public class SipNode {
+	final int TAG = "SipNode";
+	
+	static final int DEBUG_LEVEL = -1;
+	static final int SIP_PORT = 5060;
+	
+	UserAgent userAgent;
+	UserAgentProfile userAgentProfile;
+	UserAgentListener userAgentListener;
+	SipProvider sipProvider;
+	
+	Peer peer;
+	
+	public SipNode(Peer peer, UserAgentListener userAgentListener) {
+		this.peer = peer;
+		this.userAgentListener = userAgentListener;
+		
+		// init sip stack;
+		if (!SipStack.isInit()) {
+			SipStack.init();
+			SipStack.debug_level = DEBUG_LEVEL;
+		}
+	
+		// create user agent profile
+		createUserAgentProfile();
+		
+		// create SipProvider;
+		createSipProvider();
+		
+		// create useragent;
+		this.userAgent = new UserAgent(sipProvider, userAgentProfile, userAgentListener);
+	}
+	
+	private void createUserAgentProfile() {
+		
+	}
+	
+	private void createSipProvider() {
+		sipProvider = new SipProvider(peer.getAddress().toString(), SIP_PORT);
+	}
+}

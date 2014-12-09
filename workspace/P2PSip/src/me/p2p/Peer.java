@@ -19,6 +19,7 @@ import me.p2p.request.RequestHandler;
 import me.p2p.spec.IP2PProtocol;
 import me.p2p.spec.IPeer;
 import me.p2p.spec.MessageCallback;
+import me.p2p.spec.PeerCallback;
 
 import org.json.JSONObject;
 
@@ -63,6 +64,11 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 	 * Boolean để kiểm tra thử peer có init hay chưa?
 	 */
 	boolean hasInit = false;
+	
+	/**
+	 * Hàm được gọi khi có những sự kiện diễn ra
+	 */
+	PeerCallback peerCallback;
 
 	public Peer(String fileListPeerPath, String userName, String localAdress,
 			String bootstrapAddress) {
@@ -269,6 +275,12 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 			}
 		}
 		
+		/**
+		 * Triệu gọi sự kiện onJoined thông báo là đã tham gia mạng
+		 */
+		if (peerCallback != null) {
+			peerCallback.onJoined(this);
+		}
 	}
 
 	@Override
@@ -298,13 +310,23 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 	@Override
 	public void handleLeaveRequest(JSONObject requestPeerInfo) {
 		// TODO Auto-generated method stub
-
+		/**
+		 * Triệu gọi sự kiện onJoined thông báo là đã tham gia mạng
+		 */
+		if (peerCallback != null) {
+			peerCallback.onLeaved(null);
+		}
 	}
 
 	@Override
 	public void handleUpdateRequest(JSONObject requestPeerInfo) {
 		// TODO Auto-generated method stub
-		
+		/**
+		 * Triệu gọi sự kiện onJoined thông báo là đã tham gia mạng
+		 */
+		if (peerCallback != null) {
+			peerCallback.onUpdated(null);
+		}
 	}
 
 	@Override
@@ -312,6 +334,11 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 		// TODO Auto-generated method stub
 		PeerInfo peerInfo = new PeerInfo(requestPeerInfo);
 		dataManager.add(peerInfo);
+		
+		
+		if (peerCallback != null) {
+			peerCallback.onAddedNode(peerInfo);
+		}
 	}
 	
 	///////////////////////////////////////////////////////////
@@ -335,5 +362,12 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 	
 	public boolean isJoined() {
 		return this.dataManager.isJoined();
+	}
+	
+	////////////////////////////////////////////////////////////
+	////////// SET
+	////////////////////////////////////////////////////////////
+	public void setPeerCallbak(PeerCallback peerCallback) {
+		this.peerCallback = peerCallback;
 	}
 }

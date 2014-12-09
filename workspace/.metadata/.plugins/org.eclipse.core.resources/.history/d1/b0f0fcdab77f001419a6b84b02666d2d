@@ -1,0 +1,8 @@
+package com.example.peerdemo;
+
+import me.p2p.PeerInfo;
+import android.widget.ArrayAdapter;
+
+public class AListPeer extends ArrayAdapter<PeerInfo> {
+
+}

@@ -1,11 +1,18 @@
 package me.p2p;
 
+import java.io.Serializable;
+
 import me.p2p.data.DataJSONAttribute;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class PeerInfo {
+public class PeerInfo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Thông tin về tên người sử dụng của node peer này,<br>
 	 * được sử dụng bởi sip để định danh người dùng

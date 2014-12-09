@@ -1,0 +1,12 @@
+package me.p2p.spec;
+
+
+public interface PeerCallback {
+	/**
+	 * Hàm này được gọi khi Peer đã nhận data list từ server<br>
+	 * và đã trở thành một peer node trong mạng lưới
+	 */
+	public void onJoined();
+	public void onAddedNode();
+	public void onUpdated();
+}

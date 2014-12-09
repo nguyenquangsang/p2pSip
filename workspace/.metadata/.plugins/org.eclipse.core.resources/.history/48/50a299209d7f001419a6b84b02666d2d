@@ -1,0 +1,14 @@
+package me.sip;
+
+import org.zoolu.sip.provider.SipProvider;
+
+import local.ua.UserAgent;
+import local.ua.UserAgentListener;
+import me.p2p.Peer;
+
+public class SipNode {
+	Peer peer;
+	UserAgent userAgent;
+	UserAgentListener userAgentListener;
+	SipProvider sipProvider;
+}

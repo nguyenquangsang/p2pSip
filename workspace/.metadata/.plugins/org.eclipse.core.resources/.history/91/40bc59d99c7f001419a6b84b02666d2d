@@ -1,0 +1,17 @@
+package me.sip;
+
+import org.zoolu.sip.provider.SipProvider;
+
+import local.ua.UserAgent;
+import local.ua.UserAgentListener;
+import local.ua.UserAgentProfile;
+
+public class SipNode extends UserAgent {
+
+	public SipNode(SipProvider sip_provider, UserAgentProfile user_profile,
+			UserAgentListener listener) {
+		super(sip_provider, user_profile, listener);
+		// TODO Auto-generated constructor stub
+	}
+
+}
