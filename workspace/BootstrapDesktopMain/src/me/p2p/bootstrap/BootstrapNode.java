@@ -63,7 +63,7 @@ public class BootstrapNode extends Thread implements MessageCallback,
 		
 		this.filePath = filePath;
 
-		DataManager.prepare(this.filePath);
+		DataManager.prepare(this.filePath, false, true);
 		dataManager = DataManager.getInstance();
 	}
 
@@ -97,6 +97,7 @@ public class BootstrapNode extends Thread implements MessageCallback,
 			break;
 
 		case LEAVE: {
+			Log.logToConsole(TAG, "");
 			handleLeaveRequest(msgParser.getMessageData());
 		}
 			break;
@@ -120,14 +121,14 @@ public class BootstrapNode extends Thread implements MessageCallback,
 	public void onMessageStart() {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG,
-				"onSessionStart(): some peer node send session start request");
+				"onMessageStart(): peer node send session start request");
 	}
 
 	@Override
 	public void onMessageEnd() {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG,
-				"onSessionStart(): some peer node send session end request");
+				"onMessageEnd(): peer node send session end request");
 	}
 
 	@Override
@@ -145,6 +146,8 @@ public class BootstrapNode extends Thread implements MessageCallback,
 		 * này và thực hiện giao tiếp theo chiều ngược lại từ bootstrap node đến<br>
 		 * Peer node
 		 */
+		Log.logToConsole(TAG, "Connect to: "
+				+ piParser.getPeerInfo().address + " to transfer list peer");
 		Socket socketToPeer = null;
 		try {
 			socketToPeer = new Socket(piParser.getPeerInfo().address,
@@ -177,6 +180,7 @@ public class BootstrapNode extends Thread implements MessageCallback,
 
 	@Override
 	public void shutdown() {
+		Log.logToConsole(TAG, "Shutdown");
 		shutdown = true;
 	}
 
@@ -185,6 +189,7 @@ public class BootstrapNode extends Thread implements MessageCallback,
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "IP Adress: " + inetAddress.getHostAddress());
 		Log.logToConsole(TAG, "Bootstrap Listening...");
+		setName(TAG);
 		start();
 	}
 

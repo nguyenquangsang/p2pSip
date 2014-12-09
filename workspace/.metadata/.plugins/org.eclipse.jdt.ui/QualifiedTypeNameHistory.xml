@@ -5,14 +5,23 @@
 <fullyQualifiedTypeName name="java.lang.Thread"/>
 <fullyQualifiedTypeName name="android.os.AsyncTask"/>
 <fullyQualifiedTypeName name="me.p2p.respone.Respone"/>
-<fullyQualifiedTypeName name="java.net.Socket"/>
 <fullyQualifiedTypeName name="me.p2p.constant.PeerPort"/>
 <fullyQualifiedTypeName name="me.p2p.request.Request"/>
 <fullyQualifiedTypeName name="me.p2p.message.Message"/>
 <fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="me.p2p.message.MessageJSONAttribute"/>
 <fullyQualifiedTypeName name="me.p2p.message.EMsgType"/>
-<fullyQualifiedTypeName name="me.p2p.Peer"/>
-<fullyQualifiedTypeName name="me.p2p.data.DataManager"/>
 <fullyQualifiedTypeName name="me.p2p.PeerInfo"/>
+<fullyQualifiedTypeName name="me.p2p.Peer"/>
+<fullyQualifiedTypeName name="java.lang.IllegalAccessError"/>
+<fullyQualifiedTypeName name="org.apache.commons.io.FileUtils"/>
+<fullyQualifiedTypeName name="java.io.OutputStream"/>
+<fullyQualifiedTypeName name="com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.IO"/>
+<fullyQualifiedTypeName name="sun.nio.ch.IOUtil"/>
+<fullyQualifiedTypeName name="org.apache.commons.io.IOUtils"/>
+<fullyQualifiedTypeName name="me.p2p.data.DataManager"/>
+<fullyQualifiedTypeName name="java.io.Writer"/>
+<fullyQualifiedTypeName name="java.io.FileWriter"/>
+<fullyQualifiedTypeName name="java.net.Socket"/>
+<fullyQualifiedTypeName name="me.p2p.log.Log"/>
 </qualifiedTypeNameHistroy>

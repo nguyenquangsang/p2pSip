@@ -3,7 +3,7 @@ package me.p2p.bootstrap;
 
 
 public class BootstrapNodeMain {
-	static final String filePath = "D:/";
+	static final String filePath = "E:/";
 	/**
 	 * @param args
 	 */
