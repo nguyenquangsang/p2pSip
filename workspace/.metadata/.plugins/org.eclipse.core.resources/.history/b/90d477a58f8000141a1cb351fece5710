@@ -1,0 +1,16 @@
+package me.sip;
+
+import me.p2p.PeerInfo;
+
+public class SipUrlBuilder {
+	PeerInfo peerInfo;
+	String sipUrl;
+	public SipUrlBuilder(PeerInfo peerInfo) {
+		// TODO Auto-generated constructor stub
+		this.peerInfo = peerInfo;
+	}
+	
+	public String build() {
+		
+	}
+}

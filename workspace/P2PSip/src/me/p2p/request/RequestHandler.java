@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import me.p2p.log.Log;
 import me.p2p.respone.Respone;
-import me.p2p.spec.MessageCallback;
+import me.p2p.specify.MessageCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;

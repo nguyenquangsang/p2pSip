@@ -1,7 +1,0 @@
-package me.sip;
-
-import me.p2p.Peer;
-
-public class SipNode {
-	Peer peer;
-}

@@ -164,9 +164,18 @@ public class SipNode implements UserAgentListener {
 	}
 	
 	public void callTo(PeerInfo peerInfo) {
-		SipURL sipURL = new SipURL(peerInfo.userName, peerInfo.address, SIP_PORT);
+		SipURL sipURL = new SipURL(peerInfo.userName, peerInfo.address);
 		Log.logToConsole(TAG, "Call to: " + sipURL.toString());
-		
 		userAgent.call(sipURL.toString());	
+	}
+	
+	public void callTo(String sipUrl) {
+		Log.logToConsole(TAG, "Call to: " + sipUrl);
+		userAgent.call(sipUrl);
+	}
+	
+	public void listen() {
+		Log.logToConsole(TAG, "This node listen for incoming call...");
+		userAgent.listen();
 	}
 }

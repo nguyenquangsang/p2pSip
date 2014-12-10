@@ -1,7 +1,0 @@
-package me.sip;
-
-import local.ua.UserAgent;
-
-public class SipNode extends UserAgent {
-
-}

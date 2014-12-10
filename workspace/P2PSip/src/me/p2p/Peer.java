@@ -16,10 +16,10 @@ import me.p2p.message.MessageDataParser;
 import me.p2p.message.MessageParser;
 import me.p2p.request.Request;
 import me.p2p.request.RequestHandler;
-import me.p2p.spec.IP2PProtocol;
-import me.p2p.spec.IPeer;
-import me.p2p.spec.MessageCallback;
-import me.p2p.spec.PeerCallback;
+import me.p2p.specify.IP2PProtocol;
+import me.p2p.specify.IPeer;
+import me.p2p.specify.MessageCallback;
+import me.p2p.specify.PeerCallback;
 
 import org.json.JSONObject;
 
@@ -64,7 +64,7 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 	 * Boolean để kiểm tra thử peer có init hay chưa?
 	 */
 	boolean hasInit = false;
-	
+
 	/**
 	 * Hàm được gọi khi có những sự kiện diễn ra
 	 */
@@ -103,25 +103,26 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 		try {
 			peerServerSocket = new ServerSocket(PeerPort.PORT_PEER,
 					IP2PProtocol.BACK_LOG, localAddress);
+			peerServerSocket.setReuseAddress(true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		// khởi tạo socket bootstrap và request cho để message cho nó;
-		try {
-			this.bstrAddress = bootstrapAddress;
-			bootstrapSocket = new Socket(this.bstrAddress.toString(),
-					PeerPort.PORT_BOOTSTRAP);
-			requestBootstrap = new Request(bootstrapSocket);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		/*
+		 * Cài đặt địa chỉ bootstrap cho peer, nếu peer chưa join thì sẽ yêu gửi
+		 * yêu cầu join, nếu join rồi thì không cần khởi tạo socket để liên kết
+		 * với bootstrap node nữa
+		 */
+		this.bstrAddress = bootstrapAddress;
 
 		// khởi tạo đối tượng quản lý dữ liệu;
 		DataManager.prepare(fileListPeerPath, true, true);
 		dataManager = DataManager.getInstance();
+
+		// Vì đối tượng log sử dụng đối tượng DataManager nên phải init sau;
+		Log.logStartPartLog();
+		Log.logToConsole(TAG, "Init PeerNode");
 	}
 
 	public Peer(String fileListPeerPath, String userName,
@@ -136,24 +137,52 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 
 	@Override
 	public void joinRequest() {
-		Log.logToConsole(TAG, "Send joinRequest()");
-		// TODO Auto-generated method stub
-		// start msg;
-		requestBootstrap.startMsg();
-		// block to wait server respone;
-
-		// send message join with peer info;
-		Message message = new Message(EMsgType.JOIN, peerInfo.toJSONObject());
-		requestBootstrap.sendMessage(message);
-
-		// send end msg;
-		requestBootstrap.endMsg();
-
 		/**
-		 * Sau khi send msg join thì peer chờ boostrap node xử lý join msg sau
-		 * đó đợi nhận list peer ở port 8686 đã được peer mở ra và lắng nghe từ
-		 * đầu;
+		 * - Kiểm tra thử nếu chưa tham gia vào mạng thì gửi tin nhắn tham gia
+		 * vào mạng. Nếu tham gia rồi thì gọi hàm onJoined() trong hàm CallBack.
+		 * - Để kiểm tra peer node có tham gia vào mạng hay chưa? Nếu ko tồn tại
+		 * file list_peer.json thì status sẽ change thành joined.
 		 */
+		if (!dataManager.isJoined()) {
+			// khởi tạo socket bootstrap và request cho để message cho nó;
+			try {
+				bootstrapSocket = new Socket(this.bstrAddress.toString(),
+						PeerPort.PORT_BOOTSTRAP);
+				requestBootstrap = new Request(bootstrapSocket);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			Log.logToConsole(TAG,
+					"Send joinRequest() because list_peer not exist");
+			// TODO Auto-generated method stub
+			// start msg;
+			requestBootstrap.startMsg();
+			// block to wait server respone;
+
+			// send message join with peer info;
+			Message message = new Message(EMsgType.JOIN,
+					peerInfo.toJSONObject());
+			requestBootstrap.sendMessage(message);
+
+			// send end msg;
+			requestBootstrap.endMsg();
+
+			/**
+			 * Sau khi send msg join thì peer chờ boostrap node xử lý join msg
+			 * sau đó đợi nhận list peer ở port 8686 đã được peer mở ra và lắng
+			 * nghe từ đầu;
+			 */
+		} else {
+			Log.logToConsole(TAG, "PeerNode has joined to peer network");
+			/**
+			 * Gọi hàm callback nếu node đã tham gia vào mạng rồi
+			 */
+			if (peerCallback != null) {
+				peerCallback.onJoined(this);
+			}
+		}
 	}
 
 	@Override
@@ -190,12 +219,24 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 			}
 		}
 
-		// bootstrapRequestHandler.stopHandle();
 		Log.logToConsole(TAG, "Stop handle request from bootstrap");
+
 	}
 
 	@Override
 	public void shutdown() {
+		// ngắt vòng lặp handle message
+		// release server socket;
+		try {
+			Log.logToConsole(TAG, "Close peerServerSocket listener");
+			peerServerSocket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			Log.logToConsole(TAG, e.toString());
+			e.printStackTrace();
+		}
+		
+		// shutdown;
 		shutdown = true;
 	}
 
@@ -207,7 +248,10 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 		 * Hàm này được gọi khi bootstrap node gửi dữ liệu list data;
 		 */
 		MessageParser msgParser = new MessageParser(message);
-		Log.logToConsole(TAG, "onMessage(): " + this.localAddress.getHostAddress() + " send message: " + msgParser.getMessageType().toString());
+		Log.logToConsole(TAG,
+				"onMessage(): " + this.localAddress.getHostAddress()
+						+ " send message: "
+						+ msgParser.getMessageType().toString());
 		switch (msgParser.getMessageType()) {
 		case TRANSFER_LIST: {
 			handleTransferRequest(msgParser.getMessageData());
@@ -242,24 +286,26 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 		}
 
 		// thay đổi status của peer;
-		dataManager.joined();
-		
-		/* 
-		 * - Sau khi nhận được danh sách từ bootstrap, peer này sẽ thông báo
-		 * đến tất cả những nút còn lại về việc thêm nút này vào.
+		dataManager.joined(peerInfo);
+
+		/*
+		 * - Sau khi nhận được danh sách từ bootstrap, peer này sẽ thông
+		 * báo đến tất cả những nút còn lại về việc thêm nút này
+		 * vào.
 		 */
 		for (PeerInfo peerInfo : dataManager.getListPeerInfo()) {
 			if (!peerInfo.isEqual(this.peerInfo)) {
 				// nếu không phải là nút hiện tại
 				try {
 					// mở socket đến nút
-					Socket socket = new Socket(peerInfo.address, PeerPort.PORT_PEER);
+					Socket socket = new Socket(peerInfo.address,
+							PeerPort.PORT_PEER);
 					// khởi tạo request để chuyển thông điệp
 					Request request = new Request(socket);
 					// gửi tin bắt đầu một message;
 					request.startMsg();
 					// khởi tạo message add node;
-					Message message = new Message(EMsgType.ADD_NODE, 
+					Message message = new Message(EMsgType.ADD_NODE,
 							this.peerInfo.toJSONObject());
 					// send message;
 					request.sendMessage(message);
@@ -274,7 +320,7 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 				}
 			}
 		}
-		
+
 		/**
 		 * Triệu gọi sự kiện onJoined thông báo là đã tham gia mạng
 		 */
@@ -332,41 +378,45 @@ public class Peer extends Thread implements IPeer, MessageCallback {
 	@Override
 	public void handleAddNodeRequest(JSONObject requestPeerInfo) {
 		// TODO Auto-generated method stub
+		Log.logToConsole(TAG, "handleAddNodeRequest(): " + requestPeerInfo.toString());
 		PeerInfo peerInfo = new PeerInfo(requestPeerInfo);
 		dataManager.add(peerInfo);
-		
-		
+
 		if (peerCallback != null) {
 			peerCallback.onAddedNode(peerInfo);
 		}
 	}
-	
-	///////////////////////////////////////////////////////////
-	////////////// GET
-	///////////////////////////////////////////////////////////
+
+	// /////////////////////////////////////////////////////////
+	// //////////// GET
+	// /////////////////////////////////////////////////////////
 	public DataManager getDataManager() {
 		return this.dataManager;
 	}
-	
+
 	public PeerInfo getLocalPeerInfo() {
 		return this.peerInfo;
 	}
-	
+
 	public String getBootstrapAddress() {
 		return this.bstrAddress;
 	}
-	
+
 	public boolean isShutdown() {
 		return this.shutdown;
 	}
-	
-	public boolean isJoined() {
-		return this.dataManager.isJoined();
-	}
-	
-	////////////////////////////////////////////////////////////
-	////////// SET
-	////////////////////////////////////////////////////////////
+
+	/*
+	 * Peer node tự xử lý vấn đề join hay chưa join, khi sử dụng peer node thì
+	 * chỉ cần peer node đã tham gia vào mạng là được rồi
+	 */
+	// public boolean isJoined() {
+	// return this.dataManager.isJoined();
+	// }
+
+	// //////////////////////////////////////////////////////////
+	// //////// SET
+	// //////////////////////////////////////////////////////////
 	public void setPeerCallbak(PeerCallback peerCallback) {
 		this.peerCallback = peerCallback;
 	}

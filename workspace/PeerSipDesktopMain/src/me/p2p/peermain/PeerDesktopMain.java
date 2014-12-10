@@ -7,15 +7,13 @@ public class PeerDesktopMain {
 	static final String filePath = "E:/PeerData";
 
 	public static void main(String[] args) {
-		String bootstrapAdress = "192.168.1.51";
+		String bootstrapAdress = "192.168.0.106";
 
 		Peer peer = new Peer(filePath, "tobeNguyen", bootstrapAdress);
 		// listen for request;
 		peer.listenRequest();
-
-		if (!peer.isJoined()) {
-			// send join request
-			peer.joinRequest();
-		}
+		
+		// send join request;
+		peer.joinRequest();
 	}
 }

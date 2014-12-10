@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 import me.p2p.PeerInfo;
 import me.p2p.PeerInfoParser;
-import me.p2p.spec.IData;
+import me.p2p.log.Log;
+import me.p2p.specify.IData;
 
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
@@ -15,6 +16,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DataManager implements IData {
+	static final String TAG = "DataManager";
+
 	static final String ERROR = "Must call prepare() first";
 	static final String FILE_NAME_LIST_PEER = "list_peer.json";
 	static final String FILE_NAME_STATUS = "status.json";
@@ -48,6 +51,8 @@ public class DataManager implements IData {
 	 */
 	boolean isLog = true;
 
+	PeerInfo currentLocalPeerInfo;
+
 	public static void prepare(String filePath, boolean status, boolean log) {
 		INSTANCE = new DataManager(filePath, status, log);
 	}
@@ -74,7 +79,7 @@ public class DataManager implements IData {
 				try {
 					fileStatus.createNewFile();
 					join = false;
-					writeToStatusFile();
+					writeToStatusFile(null);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -143,37 +148,72 @@ public class DataManager implements IData {
 		if (!this.isStatus) {
 			throw new IllegalAccessError("Status is not enable");
 		}
-		
+
 		String data = readFile(fileStatus);
 
 		try {
 			JSONObject jsObject = new JSONObject(data);
 			join = jsObject.getBoolean(DataJSONAttribute.STATUS_JOIN);
+			
+			Object jsLocalPeerInfo = jsObject.get(DataJSONAttribute.STATUS_LOCAL_PEER);
+			if (jsLocalPeerInfo.equals(JSONObject.NULL)) {
+				currentLocalPeerInfo = null;
+			} else {
+				currentLocalPeerInfo = new PeerInfo((JSONObject) jsLocalPeerInfo);
+			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private void writeToStatusFile() {
+	private void writeToStatusFile(PeerInfo localPeerInfo) {
 		if (!this.isStatus) {
+			Log.logToConsole(TAG, "Status is not enable");
 			throw new IllegalAccessError("Status is not enable");
 		}
-		
+
+		/*
+		 * Thiết đặt giá trị cho local peer info;
+		 */
+		currentLocalPeerInfo = localPeerInfo;
+
+		/*
+		 * Khởi tạo json object;
+		 */
 		JSONObject jsObject = new JSONObject();
 
 		try {
 			jsObject.accumulate(DataJSONAttribute.STATUS_JOIN, join);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
+			Log.logToConsole(TAG, e.toString());
 			e.printStackTrace();
+		}
+
+		if (currentLocalPeerInfo != null) {
+			try {
+				jsObject.accumulate(DataJSONAttribute.STATUS_LOCAL_PEER,
+						currentLocalPeerInfo.toJSONObject());
+			} catch (JSONException e) {
+				Log.logToConsole(TAG, e.toString());
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				jsObject.accumulate(DataJSONAttribute.STATUS_LOCAL_PEER, JSONObject.NULL);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				Log.logToConsole(TAG, e.toString());
+				e.printStackTrace();
+			}
 		}
 
 		writeFile(fileStatus, jsObject.toString());
 	}
 
 	private void readListPeerFile() {
-		ArrayList<PeerInfo> result = new ArrayList<>();
+		listPeerInfo = new ArrayList<>();
 		PeerInfoParser peerInfoParser = new PeerInfoParser();
 		String data = readFile(fileListPeer);
 
@@ -190,7 +230,9 @@ public class DataManager implements IData {
 		for (int i = 0; i < jsPeerList.length(); i++) {
 			try {
 				JSONObject jsonObject = jsPeerList.getJSONObject(i);
-				result.add(peerInfoParser.parseToDirectResult(jsonObject));
+				PeerInfo peerInfo = peerInfoParser
+						.parseToDirectResult(jsonObject);
+				listPeerInfo.add(peerInfo);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -298,13 +340,19 @@ public class DataManager implements IData {
 	}
 
 	/**
-	 * Ghi dữ liệu xác định rằng nút peer đã tham gia vào mạng;
+	 * Ghi dữ liệu xác định rằng nút peer đã tham gia vào mạng, đồng thời ghi
+	 * luôn dữ liệu thông tin trạng thái hiện tại của nút để sử dụng cho những
+	 * lần sau;
 	 */
-	public void joined() {
+	public void joined(PeerInfo localPeerInfo) {
 		join = true;
-		writeToStatusFile();
+		writeToStatusFile(localPeerInfo);
 	}
-	
+
+	public void updateLocalPeerInfo(PeerInfo localPeerInfo) {
+		writeToStatusFile(localPeerInfo);
+	}
+
 	/**
 	 * Ghi log file;
 	 */
@@ -327,5 +375,12 @@ public class DataManager implements IData {
 	 */
 	public boolean isJoined() {
 		return this.join;
+	}
+	
+	/**
+	 * Trả về thông tin local peer info hiện tại
+	 */
+	public PeerInfo getCurrentLocalPeerInfo() {
+		return this.currentLocalPeerInfo;
 	}
 }

@@ -2,12 +2,18 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="onSessionStart" key="selection"/>
+		<item value="aListPeer" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="aListPeer"/>
+			<item value="peerServerSocket"/>
+			<item value="peerInfo"/>
+			<item value="readListPeerFile"/>
+			<item value="result"/>
+			<item value="listPeerInfo"/>
 			<item value="onSessionStart"/>
 		</list>
 		<list key="replacehistory">

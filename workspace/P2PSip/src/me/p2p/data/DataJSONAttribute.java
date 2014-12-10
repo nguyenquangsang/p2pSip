@@ -6,4 +6,5 @@ public class DataJSONAttribute {
 	public static final String JS_PEER_USER_NAME = "username";
 	
 	public static final String STATUS_JOIN = "join";
+	public static final String STATUS_LOCAL_PEER = "local";
 }

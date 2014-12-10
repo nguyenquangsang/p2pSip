@@ -15,9 +15,9 @@ import me.p2p.message.Message;
 import me.p2p.message.MessageParser;
 import me.p2p.request.Request;
 import me.p2p.request.RequestHandler;
-import me.p2p.spec.IBootstrap;
-import me.p2p.spec.IP2PProtocol;
-import me.p2p.spec.MessageCallback;
+import me.p2p.specify.IBootstrap;
+import me.p2p.specify.IP2PProtocol;
+import me.p2p.specify.MessageCallback;
 
 import org.json.JSONObject;
 
