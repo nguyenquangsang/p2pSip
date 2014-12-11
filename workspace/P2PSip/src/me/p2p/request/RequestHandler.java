@@ -40,8 +40,8 @@ public class RequestHandler extends Thread {
 		while (!stopHandle) {
 
 			try {
-				this.requestBufferedReader = new BufferedReader(new InputStreamReader(
-						this.socket.getInputStream()));
+				this.requestBufferedReader = new BufferedReader(
+						new InputStreamReader(this.socket.getInputStream()));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -64,7 +64,9 @@ public class RequestHandler extends Thread {
 							// create msg data;
 							msgData = new StringBuilder();
 							// log
-							Log.logToConsole(TAG, "Peer: " + socket.getInetAddress().toString() + " send start_msg request");
+							Log.logToConsole(TAG, "Peer: "
+									+ socket.getInetAddress().toString()
+									+ " send start_msg request");
 							// call listener;
 							if (msgListener != null) {
 								msgListener.onMessageStart();
@@ -75,13 +77,21 @@ public class RequestHandler extends Thread {
 								if (msgListener != null) {
 									JSONObject data = null;
 									try {
-										data = new JSONObject(msgData.toString());
+										data = new JSONObject(
+												msgData.toString());
 									} catch (JSONException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
 									}
 
+									// Gọi xử lý message;
 									msgListener.onMessage(data);
+
+									/*
+									 * Sau khi xử lý xong thì gọi hàm onEndMsg
+									 * để báo hiệu là xử lý thông điệp đã xong.
+									 */
+									msgListener.onMessageEnd();
 								}
 								// stop handle msg
 								stopHandle();
@@ -94,7 +104,7 @@ public class RequestHandler extends Thread {
 					// add tất cả những mesage còn lại;
 					requestQueue.add(clientRequest);
 				}
-				
+
 				// đọc xong một message, gửi request ok lại cho client;
 				Respone respone = new Respone(socket);
 				respone.sendServerOk();
@@ -104,12 +114,14 @@ public class RequestHandler extends Thread {
 		}
 
 		Log.logToConsole(TAG, "Stop handle request");
-		Log.logToConsole(TAG, "//////////////////////////////////////////////////");
+		Log.logToConsole(TAG,
+				"//////////////////////////////////////////////////");
 	}
 
 	public void handleRequest() {
 		Log.logToConsole("", "");
-		Log.logToConsole(TAG, "//////////////////////////////////////////////////");
+		Log.logToConsole(TAG,
+				"//////////////////////////////////////////////////");
 		Log.logToConsole(TAG, "Handle message...");
 		setName(TAG);
 		start();

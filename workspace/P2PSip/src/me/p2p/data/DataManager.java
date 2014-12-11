@@ -154,12 +154,14 @@ public class DataManager implements IData {
 		try {
 			JSONObject jsObject = new JSONObject(data);
 			join = jsObject.getBoolean(DataJSONAttribute.STATUS_JOIN);
-			
-			Object jsLocalPeerInfo = jsObject.get(DataJSONAttribute.STATUS_LOCAL_PEER);
+
+			Object jsLocalPeerInfo = jsObject
+					.get(DataJSONAttribute.STATUS_LOCAL_PEER);
 			if (jsLocalPeerInfo.equals(JSONObject.NULL)) {
 				currentLocalPeerInfo = null;
 			} else {
-				currentLocalPeerInfo = new PeerInfo((JSONObject) jsLocalPeerInfo);
+				currentLocalPeerInfo = new PeerInfo(
+						(JSONObject) jsLocalPeerInfo);
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -201,7 +203,8 @@ public class DataManager implements IData {
 			}
 		} else {
 			try {
-				jsObject.accumulate(DataJSONAttribute.STATUS_LOCAL_PEER, JSONObject.NULL);
+				jsObject.accumulate(DataJSONAttribute.STATUS_LOCAL_PEER,
+						JSONObject.NULL);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				Log.logToConsole(TAG, e.toString());
@@ -232,6 +235,13 @@ public class DataManager implements IData {
 				JSONObject jsonObject = jsPeerList.getJSONObject(i);
 				PeerInfo peerInfo = peerInfoParser
 						.parseToDirectResult(jsonObject);
+
+				/*
+				 * Vì danh sách chứa luôn cả thông tin node hiện tại nên khi lấy
+				 * thông tin list thì không lấy node này. Thông tin node này
+				 * được lưu trong file status file.? Không cần thiết, cứ để cũng
+				 * không sao cả.
+				 */
 				listPeerInfo.add(peerInfo);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -376,7 +386,7 @@ public class DataManager implements IData {
 	public boolean isJoined() {
 		return this.join;
 	}
-	
+
 	/**
 	 * Trả về thông tin local peer info hiện tại
 	 */

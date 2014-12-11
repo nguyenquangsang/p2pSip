@@ -7,7 +7,7 @@ public class PeerDesktopMain {
 	static final String filePath = "E:/PeerData";
 
 	public static void main(String[] args) {
-		String bootstrapAdress = "192.168.0.106";
+		String bootstrapAdress = "192.168.3.120";
 
 		Peer peer = new Peer(filePath, "tobeNguyen", bootstrapAdress);
 		// listen for request;

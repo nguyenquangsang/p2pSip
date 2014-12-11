@@ -26,11 +26,11 @@
 <fullyQualifiedTypeName name="me.p2p.Peer"/>
 <fullyQualifiedTypeName name="org.zoolu.sip.address.SipURL"/>
 <fullyQualifiedTypeName name="org.json.JSONException"/>
-<fullyQualifiedTypeName name="me.p2p.log.Log"/>
 <fullyQualifiedTypeName name="me.p2p.PeerInfo"/>
 <fullyQualifiedTypeName name="me.p2p.data.DataJSONAttribute"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="java.lang.Thread"/>
 <fullyQualifiedTypeName name="android.widget.ListView"/>
+<fullyQualifiedTypeName name="me.p2p.log.Log"/>
 </qualifiedTypeNameHistroy>

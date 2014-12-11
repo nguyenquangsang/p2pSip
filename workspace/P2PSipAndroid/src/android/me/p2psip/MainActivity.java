@@ -2,6 +2,7 @@ package android.me.p2psip;
 
 import me.p2p.Peer;
 import me.p2p.PeerInfo;
+import me.p2p.log.Log;
 import me.p2p.specify.PeerCallback;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -19,7 +20,7 @@ import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity implements PeerCallback {
 	final String TAG = "MainActivity";
-	final String bootstrapIpAddress = "192.168.0.106";
+	final String bootstrapIpAddress = "192.168.3.120";
 	final String userName = "SangNguyen";
 
 	MeApplication mApplication;
@@ -122,10 +123,8 @@ public class MainActivity extends ActionBarActivity implements PeerCallback {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				aListPeer.add(peerInfo);
+				Log.logToConsole(TAG, "onAddedNode(): " + peerInfo.toJSONObject().toString());
 				aListPeer.notifyDataSetChanged();
-				
-				listPeerView.invalidateViews();
 			}
 		});
 	}
