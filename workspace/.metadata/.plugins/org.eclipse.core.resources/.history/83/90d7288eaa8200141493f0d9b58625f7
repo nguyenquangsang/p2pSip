@@ -1,0 +1,14 @@
+package me.p2p.peermain;
+
+import me.p2p.Peer;
+
+public class PeerNode {
+	String bootstrapAddress;
+	String userName;
+	String filePath;
+	Peer peer;
+	
+	public PeerNode() {
+		// TODO Auto-generated constructor stub
+	}
+}

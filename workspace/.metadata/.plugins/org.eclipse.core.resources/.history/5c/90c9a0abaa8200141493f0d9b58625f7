@@ -1,0 +1,16 @@
+package me.p2p.peermain;
+
+import local.ua.UserAgentListener;
+import me.p2p.Peer;
+import me.p2p.specify.PeerCallback;
+
+public class PeerNode implements PeerCallback, UserAgentListener {
+	String bootstrapAddress;
+	String userName;
+	String filePath;
+	Peer peer;
+	
+	public PeerNode(String filePath, String userName, String bootstrapAddress) {
+		// TODO Auto-generated constructor stub
+	}
+}

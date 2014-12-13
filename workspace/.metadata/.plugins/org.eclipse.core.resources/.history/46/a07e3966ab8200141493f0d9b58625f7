@@ -1,0 +1,19 @@
+package me.p2p.peermain;
+
+import me.p2p.log.Log;
+
+
+public class PeerDesktopMain {
+	static final String TAG = "PeerMain";
+	static final String USER_NAME = "tobeNguyen";
+	static final String filePath = "E:/PeerData";
+	
+
+	public static void main(String[] args) {
+		String bootstrapAdress = "192.168.0.106";
+		
+		PeerNode peerNode = new PeerNode(filePath, USER_NAME, bootstrapAdress);
+		Log.logToConsole(TAG, "Run PeerNode");
+		peerNode.run();
+	}
+}

@@ -1,0 +1,32 @@
+package me.p2p.peermain;
+
+import org.zoolu.sip.address.NameAddress;
+
+import local.ua.UserAgent;
+import local.ua.UserAgentListener;
+import me.p2p.Peer;
+import me.p2p.PeerInfo;
+import me.p2p.log.Log;
+import me.p2p.specify.PeerCallback;
+import me.sip.SipNode;
+
+public class PeerDesktopMain {
+	static final String TAG = "PeerMain";
+	static final String filePath = "E:/PeerData";
+	SipNode sipNode;
+
+	public static void main(String[] args) {
+		String bootstrapAdress = "192.168.0.106";
+
+		Peer peer = new Peer(filePath, "tobeNguyen", bootstrapAdress);
+		
+		// set peer call back;
+		peer.setPeerCallbak(PeerDesktopMain);
+		
+		// listen for request;
+		peer.listenRequest();
+		
+		// send join request;
+		peer.joinRequest();
+	}
+}
