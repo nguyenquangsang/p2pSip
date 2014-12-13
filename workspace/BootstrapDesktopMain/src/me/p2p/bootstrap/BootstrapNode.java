@@ -63,8 +63,7 @@ public class BootstrapNode extends Thread implements MessageCallback,
 		
 		this.filePath = filePath;
 
-		DataManager.prepare(this.filePath, false, true);
-		dataManager = DataManager.getInstance();
+		dataManager = new DataManager(this.filePath, false);
 	}
 
 	// run it

@@ -17,7 +17,6 @@ INDEX VERSION 1.126+E:\Study\tobeNguyen\p2pSip\workspace\.metadata\.plugins\org.
 1603530722.index
 3293953858.index
 2910746574.index
-487212245.index
 1061609049.index
 256945780.index
 1348710767.index

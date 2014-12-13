@@ -1,0 +1,17 @@
+package me.p2p.log;
+
+
+
+public class Log {
+	public static String filePathLog;
+	public static boolean log = true;
+	public static void logToConsole(String tag, String message) {
+		String aLogLine = tag + ": " + message;
+		
+		System.out.println(aLogLine);
+	}
+	
+	public static void logStartPartLog() {
+		logToConsole("", "");
+	}
+} 

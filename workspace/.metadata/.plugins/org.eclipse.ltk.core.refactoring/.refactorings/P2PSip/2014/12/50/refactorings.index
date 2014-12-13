@@ -6,3 +6,7 @@
 1418231577028	Rename field 'sipUrl'
 1418231579820	Rename field 'stringSsipUrl'
 1418232427522	Rename local variable 'peerInfo'
+1418491909841	Rename method 'setPeerCallbak'
+1418491916257	Rename method 'setPeerCallback'
+1418491918385	Rename method 'setPeerCallbak'
+1418491921095	Rename method 'setPeerCallbcak'
