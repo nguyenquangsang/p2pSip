@@ -70,6 +70,7 @@ public class PeerNode implements PeerCallback, UserAgentListener {
 			NameAddress callee) {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "onUaCallIncoming(): " + caller.getAddress() + " calling...");
+		ua.accept();
 	}
 
 	@Override
@@ -88,6 +89,7 @@ public class PeerNode implements PeerCallback, UserAgentListener {
 	public void onUaCallAccepted(UserAgent ua) {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "onUaCallAccepted()");
+		
 	}
 
 	@Override

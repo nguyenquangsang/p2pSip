@@ -6,19 +6,19 @@ tiên là phải làm cho nó tồn tại.
 
 * Công việc cho ngày 14/12/2014:
 - Tìm và tiếp tục fix những lỗi còn phát hiện trong khi phát triển những phần tiếp theo của thư viện
-mạng P2P.
+mạng P2P. <tiếp tục phát triển cho đến khi hoàn thiện>
 - Tiếp tục phát triển module SIP:
-	+ Tìm hiểu sâu hơn về phương thức SIP: cách vận hành, các message.
-	+ Thực thi cho được quá trình gọi giữa thiết bị Android và chương trình trên Desktop.
+	+ Tìm hiểu sâu hơn về phương thức SIP: cách vận hành, các message.<đã làm được>
+	+ Thực thi cho được quá trình gọi giữa thiết bị Android và chương trình trên Desktop.<đã làm được>
 	+ Khi thực thi được quá trình gọi hoàn chỉnh, cần phải tìm hiểu thêm trong quá trình
 	truyền thông điệp SIP thì cần những thông tin cần thiết gì, theo cách nào ở caller, và
-	nhận nó, sử dụng nó như thế nào ở callee.
+	nhận nó, sử dụng nó như thế nào ở callee.<chưa làm được>
 	+ Sử dụng những chương trình đã có sẵn và chạy được thực tế như thực hiện cuộc gọi audio
 	được xem thử những thông tin truyền là gì? Sử dụng như thế nào để áp dụng vào chương trình
-	của mình.
+	của mình.<chưa làm được>
 	+ Tìm hiểu SDP, cách thức đưa SDP vào trong một thông điệp SIP và cách thức lấy ra SDP từ
-	một thông điệp SIP như thế nào? Những thông tin gì là cần thiết và cách thiết lập nó ra sao?
+	một thông điệp SIP như thế nào? Những thông tin gì là cần thiết và cách thiết lập nó ra sao?<đã làm được>
 	=> Tóm lại ngày mai phải thực hiện được cuộc gọi tương tác giữa thiết bị Android và Client trên
 	Desktop. Thiết lập và lấy được những thông tin cần thiết để có thể truyền được Audio giữa hai
-	tác nhân trên.
-- Bắt đầu viết document cho thư viện P2P.
+	tác nhân trên.<công việc hôm nay hoàn thành khoảng 55%>
+- Bắt đầu viết document cho thư viện P2P.<chưa thực hiện - cần sớm thực hiện>

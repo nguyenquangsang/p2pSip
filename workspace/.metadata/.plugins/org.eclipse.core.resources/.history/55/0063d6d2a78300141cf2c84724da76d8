@@ -1,0 +1,131 @@
+package android.me.p2psip;
+
+import local.ua.UserAgent;
+import local.ua.UserAgentListener;
+import me.p2p.PeerInfo;
+
+import org.zoolu.sip.address.NameAddress;
+
+import android.annotation.SuppressLint;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.me.p2psip.SipService.SipServiceBinder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+
+public class CallActivity extends ActionBarActivity implements
+		UserAgentListener {
+	final String TAG = "CallActivity";
+	SipService mSipService;
+	boolean mBound = false; 
+	ServiceConnection mServiceConnection = new ServiceConnection() {
+		
+		@Override
+		public void onServiceDisconnected(ComponentName name) {
+			// TODO Auto-generated method stub
+			mBound = false;
+			mSipService = null;
+		}
+		
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			// TODO Auto-generated method stub
+			mBound = true;
+			mSipService = ((SipServiceBinder) service).getService();
+		}
+	};
+	
+	@SuppressLint("NewApi")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_call);
+		
+		/*
+		 * Nối vào SipService đã được cài đặt từ trước;
+		 */
+		Intent intent = new Intent(this, SipService.class);
+		bindService(intent, mServiceConnection, Context.BIND_IMPORTANT);
+
+		/*
+		 * Cài đặt những thành phần View của Activity này;
+		 */
+		textView = (TextView) findViewById(R.id.txtSipNodeAddress);
+
+		/*
+		 * Lấy thông tin về peer được chỉ định gọi;
+		 */
+		PeerInfo peerInfo = (PeerInfo) getIntent().getSerializableExtra(
+				"peer_info");
+		
+		textView.setText(peerInfo.toJSONObject().toString());
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.call, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onUaCallIncoming(UserAgent ua, NameAddress caller,
+			NameAddress callee) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onUaCallCancelled(UserAgent ua) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onUaCallRinging(UserAgent ua) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onUaCallAccepted(UserAgent ua) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onUaCallTrasferred(UserAgent ua) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onUaCallFailed(UserAgent ua) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onUaCallClosed(UserAgent ua) {
+		// TODO Auto-generated method stub
+
+	}
+}

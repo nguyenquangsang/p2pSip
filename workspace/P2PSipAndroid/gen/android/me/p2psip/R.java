@@ -1202,7 +1202,8 @@ containing a value of this type.
     }
     public static final class menu {
         public static final int call=0x7f0c0000;
-        public static final int main=0x7f0c0001;
+        public static final int callee=0x7f0c0001;
+        public static final int main=0x7f0c0002;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1249,6 +1250,7 @@ containing a value of this type.
         public static final int app_name=0x7f0a000d;
         public static final int hello_world=0x7f0a000e;
         public static final int title_activity_call=0x7f0a0010;
+        public static final int title_activity_callee=0x7f0a0011;
     }
     public static final class style {
         /** 

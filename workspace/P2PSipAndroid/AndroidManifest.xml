@@ -13,13 +13,13 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".data.MeApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:name="android.me.p2psip.MeApplication" >
+        android:theme="@style/AppTheme" >
         <activity
-            android:name="android.me.p2psip.MainActivity"
+            android:name="android.me.p2psip.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,8 +28,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="android.me.p2psip.CallActivity"
+            android:name="android.me.p2psip.activity.CallerActivity"
             android:label="@string/title_activity_call" >
+        </activity>
+
+        <service android:name="android.me.p2psip.service.SipService" />
+
+        <activity
+            android:name="android.me.p2psip.activity.CalleeActivity"
+            android:label="@string/title_activity_callee" >
         </activity>
     </application>
 
