@@ -1,0 +1,13 @@
+package me.p2p.peermain;
+
+
+public class PeerDesktopMain {
+	static final String TAG = "PeerMain";
+	static final String filePath = "E:/PeerData";
+
+	public static void main(String[] args) {
+		String bootstrapAdress = "192.168.0.106";
+		
+		
+	}
+}

@@ -1,7 +1,6 @@
 package me.p2p.data;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -19,20 +18,15 @@ public class DataManager implements IData {
 	static final String TAG = "DataManager";
 
 	static final String ERROR = "Must call prepare() first";
-	static final String FILE_NAME_LIST_PEER = "list_peer.json";
-	static final String FILE_NAME_STATUS = "status.json";
-	static final String FILE_NAME_LOG = "log.log";
+	public static final String FILE_NAME_LIST_PEER = "list_peer.json";
+	public static final String FILE_NAME_STATUS = "status.json";
 	static final String INIT_DATA = "{\"" + DataJSONAttribute.JS_LIST_PEER
 			+ "\":[]}"; // dữ liệu khởi đầu là mảng rỗng;
-
-	static DataManager INSTANCE = null;
 	String fileListPeerPath;
 	String fileStatusPath;
-	String fileLogPath;
 
 	File fileListPeer;
 	File fileStatus;
-	File fileLog;
 
 	ArrayList<PeerInfo> listPeerInfo;
 
@@ -46,6 +40,7 @@ public class DataManager implements IData {
 	 * Có ghi ra status file hay không?
 	 */
 	boolean isStatus = true;
+	
 	/**
 	 * Có ghi ra log file hay không?
 	 */
@@ -53,22 +48,9 @@ public class DataManager implements IData {
 
 	PeerInfo currentLocalPeerInfo;
 
-	public static void prepare(String filePath, boolean status, boolean log) {
-		INSTANCE = new DataManager(filePath, status, log);
-	}
-
-	public static DataManager getInstance() {
-		if (INSTANCE == null) {
-			throw new IllegalStateException(ERROR);
-		}
-
-		return INSTANCE;
-	}
-
-	private DataManager(String filePath, boolean status, boolean log) {
+	public DataManager(String filePath, boolean status) {
 		// TODO Auto-generated constructor stub
 		this.isStatus = status;
-		this.isLog = log;
 
 		// create status file if allow;
 		if (this.isStatus) {
@@ -89,14 +71,9 @@ public class DataManager implements IData {
 			}
 		}
 
-		// create file log if allow
-		if (this.isLog) {
-			this.fileLogPath = filePath + "/" + FILE_NAME_LOG;
-			this.fileLog = new File(this.fileLogPath);
-		}
-
 		this.fileListPeerPath = filePath + "/" + FILE_NAME_LIST_PEER;
 		this.fileListPeer = new File(this.fileListPeerPath);
+		
 		/*
 		 * Nếu file list peer không tồn tại thì khởi tạo nó và init data;
 		 */
@@ -361,21 +338,6 @@ public class DataManager implements IData {
 
 	public void updateLocalPeerInfo(PeerInfo localPeerInfo) {
 		writeToStatusFile(localPeerInfo);
-	}
-
-	/**
-	 * Ghi log file;
-	 */
-	public void writeToLogFile(String aLogLine) {
-		try {
-			FileWriter fileWriter = new FileWriter(fileLog, true);
-			fileWriter.write(aLogLine + "\n");
-			fileWriter.flush();
-			fileWriter.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**

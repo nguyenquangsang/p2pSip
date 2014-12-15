@@ -1,0 +1,30 @@
+package me.p2p.log;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Log {
+	public static String filePathLog;
+	public static boolean log = true;
+
+	public static void logToConsole(String tag, String message) {
+		if (log) {
+			String aLogLine = tag + ": " + message;
+			try {
+				FileWriter fileWriter = new FileWriter(filePathLog, true);
+				fileWriter.write(aLogLine + "\n");
+				fileWriter.flush();
+				fileWriter.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			System.out.println(aLogLine);
+		}
+	}
+
+	public static void logStartPartLog() {
+		logToConsole("", "");
+	}
+}

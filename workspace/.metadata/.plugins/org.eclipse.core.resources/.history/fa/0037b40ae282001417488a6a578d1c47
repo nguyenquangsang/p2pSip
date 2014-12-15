@@ -1,0 +1,21 @@
+package me.p2p.log;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Log {
+	/**
+	 * Cài đặt đường dẫn file log;
+	 */
+	public static String filePathLog;
+	public static boolean log = false;
+
+	public static void logToConsole(String tag, String message) {
+			String aLogLine = tag + ": " + message;
+			System.out.println(aLogLine);
+	}
+
+	public static void logStartPartLog() {
+		logToConsole("", "");
+	}
+}
