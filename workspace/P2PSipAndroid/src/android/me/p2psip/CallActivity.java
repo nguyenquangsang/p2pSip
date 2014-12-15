@@ -27,15 +27,16 @@ public class CallActivity extends ActionBarActivity implements UserAgentListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_call);
 		
+		textView = (TextView) findViewById(R.id.txtSipNodeAddress);
+		
+		PeerInfo peerInfo = (PeerInfo) getIntent().getSerializableExtra("peer_info");
+		textView.setText(peerInfo.toJSONObject().toString());
+		
 		mApplication = (MeApplication) getApplication();
 		mPeer = mApplication.getPeer();
 		
 		mSipNode = new SipNode(mPeer, this);
-		
-		textView = (TextView) findViewById(R.id.txtSipNodeAddress);
-		
-		PeerInfo peerInfo = (PeerInfo) getIntent().getSerializableExtra("peer_info");
-		textView.setText(peerInfo.toString());
+		mSipNode.listen();
 		
 		mSipNode.callTo(peerInfo);
 	}
