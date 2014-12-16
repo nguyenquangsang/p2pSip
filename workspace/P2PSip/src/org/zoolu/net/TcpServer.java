@@ -113,7 +113,7 @@ public class TcpServer extends Thread {
 	/** Runs the server */
 	public void run() {
 		setName(TAG);
-		
+
 		Exception error = null;
 		try {
 			server_socket.setSoTimeout(socket_timeout);
@@ -153,8 +153,12 @@ public class TcpServer extends Thread {
 
 	/** Gets a String representation of the Object */
 	public String toString() {
-		return "tcp:" + server_socket.getInetAddress() + ":"
-				+ server_socket.getLocalPort();
+		if (server_socket != null) {
+			return "tcp:" + server_socket.getInetAddress() + ":"
+					+ server_socket.getLocalPort();
+		} else {
+			return "TcpServer stopped";
+		}
 	}
 
 }

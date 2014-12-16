@@ -1,0 +1,5 @@
+package me.sip.ua.specify;
+
+public interface UAInterface {
+	public void on
+}

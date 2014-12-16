@@ -43,16 +43,20 @@
 <fullyQualifiedTypeName name="local.ua.UserAgentListener"/>
 <fullyQualifiedTypeName name="me.p2p.Peer"/>
 <fullyQualifiedTypeName name="android.content.ServiceConnection"/>
-<fullyQualifiedTypeName name="me.p2p.PeerInfo"/>
 <fullyQualifiedTypeName name="me.p2p.log.Log"/>
 <fullyQualifiedTypeName name="android.me.p2psip.SipService"/>
 <fullyQualifiedTypeName name="android.content.Context"/>
-<fullyQualifiedTypeName name="org.zoolu.sip.address.SipURL"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
 <fullyQualifiedTypeName name="android.me.p2psip.LogAndroid"/>
 <fullyQualifiedTypeName name="java.lang.Thread"/>
 <fullyQualifiedTypeName name="android.me.p2psip.SipService.SipServiceBinder"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="android.me.p2psip.service.SipService"/>
+<fullyQualifiedTypeName name="android.widget.ImageButton"/>
+<fullyQualifiedTypeName name="android.me.p2psip.R.id"/>
+<fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="me.p2p.PeerInfo"/>
+<fullyQualifiedTypeName name="org.zoolu.sip.address.SipURL"/>
+<fullyQualifiedTypeName name="android.widget.Button"/>
+<fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 </qualifiedTypeNameHistroy>

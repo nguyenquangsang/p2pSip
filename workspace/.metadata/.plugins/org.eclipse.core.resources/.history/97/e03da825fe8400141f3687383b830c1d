@@ -1,0 +1,13 @@
+package me.sip.ua.specify;
+
+import local.ua.UserAgent;
+
+public interface UACInterface extends UAInterface {
+	/**
+	 * Hàm này được gọi khi UAC đang trong quá trình rung chuông mà UAS chấm dứt
+	 * cuộc gọi
+	 * 
+	 * @param ua
+	 */
+	public void onUaCallCancelled(UserAgent ua);
+}

@@ -1,16 +1,16 @@
 package me.p2p.peermain;
 
-import org.zoolu.sip.address.NameAddress;
-
 import local.ua.UserAgent;
-import local.ua.UserAgentListener;
 import me.p2p.Peer;
 import me.p2p.PeerInfo;
 import me.p2p.log.Log;
 import me.p2p.specify.PeerCallback;
 import me.sip.SipNode;
+import me.sip.ua.specify.UACListener;
 
-public class PeerNode implements PeerCallback, UserAgentListener {
+import org.zoolu.sip.address.NameAddress;
+
+public class PeerNode implements PeerCallback, UACListener {
 	final String TAG = "PeerNode";
 	String bootstrapAddress;
 	String userName;
@@ -41,7 +41,9 @@ public class PeerNode implements PeerCallback, UserAgentListener {
 		Log.logToConsole(TAG, "onJoined(): Peer has joined network");
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "Init SipNode");
-		sipNode = new SipNode(peer, this);
+		sipNode = new SipNode(peer);
+		sipNode.setUACListener(this);
+		
 		// listen for incomming call;
 		Log.logToConsole(TAG, "Listen for incomming call");
 		sipNode.listen();
@@ -66,46 +68,20 @@ public class PeerNode implements PeerCallback, UserAgentListener {
 	}
 
 	@Override
-	public void onUaCallIncoming(UserAgent ua, NameAddress caller,
+	public void onUACCallIncoming(UserAgent ua, NameAddress caller,
 			NameAddress callee) {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "onUaCallIncoming(): " + caller.getAddress() + " calling...");
-		ua.accept();
 	}
 
 	@Override
-	public void onUaCallCancelled(UserAgent ua) {
+	public void onCallUASCancelled(UserAgent ua) {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "onUaCallCancelled()");
 	}
 
 	@Override
-	public void onUaCallRinging(UserAgent ua) {
-		// TODO Auto-generated method stub
-		Log.logToConsole(TAG, "onUaCallRinging()");
-	}
-
-	@Override
-	public void onUaCallAccepted(UserAgent ua) {
-		// TODO Auto-generated method stub
-		Log.logToConsole(TAG, "onUaCallAccepted()");
-		
-	}
-
-	@Override
-	public void onUaCallTrasferred(UserAgent ua) {
-		// TODO Auto-generated method stub
-		Log.logToConsole(TAG, "onUaCallFailed()");
-	}
-
-	@Override
-	public void onUaCallFailed(UserAgent ua) {
-		// TODO Auto-generated method stub
-		Log.logToConsole(TAG, "onUaCallFailed()");
-	}
-
-	@Override
-	public void onUaCallClosed(UserAgent ua) {
+	public void onUACCallClosed(UserAgent ua) {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "onUaCallClosed()");
 	}

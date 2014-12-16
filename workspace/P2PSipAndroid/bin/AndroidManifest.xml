@@ -28,15 +28,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="android.me.p2psip.activity.CallerActivity"
+            android:name="android.me.p2psip.activity.CallActivity"
             android:label="@string/title_activity_call" >
+            <intent-filter>
+                <action android:name="android.me.p2psip.action.HAS_CALL" />
+                <action android:name="android.me.p2psip.action.MAKE_CALL" />
+            </intent-filter>
         </activity>
 
-        <service android:name="android.me.p2psip.service.SipService" />
+        <service android:name=".service.SipService" />
 
         <activity
-            android:name="android.me.p2psip.activity.CalleeActivity"
+            android:name=".activity.CalleeActivity"
             android:label="@string/title_activity_callee" >
+        </activity>
+        <activity
+            android:name="android.me.p2psip.activity.OnCallActivity"
+            android:label="@string/title_activity_on_call" >
         </activity>
     </application>
 

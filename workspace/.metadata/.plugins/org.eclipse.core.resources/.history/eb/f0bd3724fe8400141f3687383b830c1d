@@ -1,0 +1,7 @@
+package me.sip.ua.specify;
+
+import local.ua.UserAgent;
+
+public interface UACInterface extends UAInterface {
+	public void onUaCallCancelled(UserAgent ua);
+}

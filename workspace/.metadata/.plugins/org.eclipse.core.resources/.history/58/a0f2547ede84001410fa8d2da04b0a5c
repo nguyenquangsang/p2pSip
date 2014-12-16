@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/background_light"
+    android:orientation="vertical" >
+
+    <!-- Layout thông tin người gọi -->
+
+    <LinearLayout
+        android:id="@+id/layout_info"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/call_txtCaller"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="@dimen/txt_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/txt_status_calling"
+                android:textSize="@dimen/txt_size" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Layout chứa hình ảnh người gọi -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_info"
+        android:gravity="center" >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/call_image"
+            android:layout_gravity="center" />
+    </LinearLayout>
+    <!-- Layout các nút chức năng -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/darker_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/call_btCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/bt_padding_horizontal"
+            android:layout_marginRight="@dimen/bt_padding_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/bt_call"
+            android:paddingBottom="@dimen/bt_padding_vertical"
+            android:paddingTop="@dimen/bt_padding_vertical"
+            android:src="@drawable/call" />
+
+        <ImageButton
+            android:id="@+id/call_btUnCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/bt_padding_horizontal"
+            android:layout_marginRight="@dimen/bt_padding_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/bt_uncall"
+            android:paddingBottom="@dimen/bt_padding_vertical"
+            android:paddingTop="@dimen/bt_padding_vertical"
+            android:src="@drawable/uncall" />
+    </LinearLayout>
+
+</RelativeLayout>

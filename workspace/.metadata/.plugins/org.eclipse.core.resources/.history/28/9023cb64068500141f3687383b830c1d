@@ -1,0 +1,10 @@
+package me.sip.ua.specify;
+
+import local.ua.UserAgent;
+
+import org.zoolu.sip.address.NameAddress;
+
+public interface UAInterface {
+	public void onUaCallIncoming(UserAgent ua, NameAddress caller,
+			NameAddress callee);
+}

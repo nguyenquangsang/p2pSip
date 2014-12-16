@@ -1,0 +1,11 @@
+package me.sip.ua.specify;
+
+import local.ua.UserAgent;
+
+public interface UASInterface extends UAInterface {
+	@Override
+	public void onUaCallRinging(UserAgent ua) {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -1,0 +1,5 @@
+package me.sip.ua;
+
+public class UserAgentClient {
+
+}

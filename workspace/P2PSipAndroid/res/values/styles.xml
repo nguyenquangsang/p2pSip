@@ -17,4 +17,9 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <color name="call_normal">#7CFC00</color>
+    <color name="call_pressed">#458B00</color>
+    
+    <color name="uncall_normal">#ffb2b2</color>
+    <color name="uncall_pressed">#ff7f7f</color>
 </resources>

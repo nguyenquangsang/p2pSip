@@ -1,0 +1,33 @@
+package me.sip.ua.specify;
+
+import local.ua.UserAgent;
+
+public interface UASInterface extends UAInterface {
+	/**
+	 * Hàm này được gọi khi nhận được phản hồi 180 Ringging từ UAC và UAS rung<br>
+	 * chuông trở lại
+	 * 
+	 * @param ua
+	 */
+	public void onUaCallRinging(UserAgent ua);
+
+	/**
+	 * Hàm này được gọi khi cuộc gọi do UAS được chấp nhận bởi UAC
+	 * 
+	 * @param ua
+	 */
+	public void onUaCallAccepted(UserAgent ua);
+
+	/**
+	 * Hàm này được gọi khi đang trong quá trình rung chuông mà UAC từ chối cuộc<br>
+	 * gọi hoặc chưa được UAC chấp nhận mà UAS gọi hangup()
+	 */
+	public void onUaCallFailed(UserAgent ua);
+
+	/**
+	 * Hàm này được gọi khi kết thúc cuộc gọi và UAC hangup()
+	 * 
+	 * @param ua
+	 */
+	public void onUaCallClosed(UserAgent ua);
+}

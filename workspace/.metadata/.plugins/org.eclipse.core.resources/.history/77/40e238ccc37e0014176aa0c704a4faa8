@@ -1,7 +1,0 @@
-package me.p2p.respone;
-
-import java.io.DataOutputStream;
-
-public class Respone {
-	DataOutputStream dtos;
-}

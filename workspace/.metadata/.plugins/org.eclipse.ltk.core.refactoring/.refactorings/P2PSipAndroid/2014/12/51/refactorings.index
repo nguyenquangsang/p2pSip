@@ -11,3 +11,26 @@
 1418575948300	Delete element
 1418575956067	Rename package 'android.me.p2psip.screen'
 1418575972582	Move compilation unit
+1418699265321	Move compilation unit
+1418699274689	Rename type 'CallerActivity'
+1418700623965	Delete element
+1418701275846	Move files
+1418701278852	Delete element
+1418706040459	Delete element
+1418706050049	Rename resource 'bt_uncall.xml'
+1418706659910	Rename field 'txt_status_calling'
+1418706742446	Rename field 'txt_statuc_call_to'
+1418706758750	Rename field 'call_txtCaller'
+1418706794044	Rename field 'call_btUnCall'
+1418706814738	Rename field 'call_btCall'
+1418706821932	Rename field 'call_btEnCall'
+1418706957997	Rename field 'mTextView'
+1418708526365	Rename method 'setCallTo'
+1418708533820	Rename method 'setCallTo'
+1418708582659	Rename method 'callTo'
+1418708673435	Rename method 'setSipUrlCallTo'
+1418708678713	Rename method 'setSipUrlCallTo'
+1418708748231	Rename method 'getCallToSipUrl'
+1418708756115	Rename field 'mSipUrlCallTo'
+1418723293131	Delete elements
+1418723929446	Delete elements

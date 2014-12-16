@@ -1,0 +1,13 @@
+1418698025715	Rename field 'callToSipUrl'
+1418708590316	Rename method 'callTo'
+1418708654261	Rename method 'callTo'
+1418722323536	Delete element
+1418722446017	Delete element
+1418722465828	Rename type 'UACInterface'
+1418722511229	Rename type 'UASInterface'
+1418723444737	Rename method 'onUACCallCancelled'
+1418723483374	Rename method 'onUASCallAccepted'
+1418723496257	Rename method 'onUASCallFailed'
+1418723512949	Rename method 'onUACCallFailed'
+1418723525280	Rename method 'onUACCallAccepted'
+1418723544319	Rename method 'onUASCallCancelled'

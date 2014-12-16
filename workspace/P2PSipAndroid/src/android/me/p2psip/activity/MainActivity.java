@@ -66,7 +66,7 @@ public class MainActivity extends ActionBarActivity implements PeerCallback {
 				// TODO Auto-generated method stub
 				PeerInfo peerInfo = (PeerInfo) arg0.getAdapter().getItem(arg2);
 				Intent intent = new Intent(MainActivity.this,
-						CallerActivity.class);
+						CallActivity.class);
 				intent.putExtra("peer_info", peerInfo);
 
 				startActivity(intent);

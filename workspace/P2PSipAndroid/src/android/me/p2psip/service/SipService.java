@@ -1,22 +1,24 @@
 package android.me.p2psip.service;
 
 import local.ua.UserAgent;
-import local.ua.UserAgentListener;
 import me.p2p.Peer;
 import me.p2p.PeerInfo;
 import me.sip.SipNode;
+import me.sip.ua.specify.UACListener;
+import me.sip.ua.specify.UASListener;
 
 import org.zoolu.sip.address.NameAddress;
 import org.zoolu.sip.address.SipURL;
 
 import android.app.Service;
 import android.content.Intent;
+import android.me.p2psip.activity.OnCallActivity;
 import android.me.p2psip.data.MeApplication;
 import android.me.p2psip.log.LogAndroid;
 import android.os.Binder;
 import android.os.IBinder;
 
-public class SipService extends Service implements UserAgentListener {
+public class SipService extends Service implements UASListener, UACListener {
 	static final String TAG = "SipService";
 
 	public class SipServiceBinder extends Binder {
@@ -30,11 +32,12 @@ public class SipService extends Service implements UserAgentListener {
 	SipNode mSipNode;
 	MeApplication mApplication;
 	Peer mPeer;
-
-	UserAgentListener mCallback;
+	
+	UASListener mUASListener;
+	UACListener mUACListener;
 
 	SipURL mLocalSipUrl;
-	SipURL mSipUrlCallTo;
+	SipURL mCallSipUrl;
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -54,7 +57,9 @@ public class SipService extends Service implements UserAgentListener {
 		mPeer = mApplication.getPeer();
 
 		// Khởi tạo SipNode;
-		mSipNode = new SipNode(mPeer, this);
+		mSipNode = new SipNode(mPeer);
+		mSipNode.setUASListener(this);
+		mSipNode.setUACListener(this);
 
 		new Thread("SipNodeStartUp") {
 			public void run() {
@@ -70,106 +75,13 @@ public class SipService extends Service implements UserAgentListener {
 
 		return START_STICKY;
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		
+
 		mSipNode.shutdown();
-	}
-
-	@Override
-	public void onUaCallIncoming(UserAgent ua, NameAddress caller,
-			NameAddress callee) {
-		// TODO Auto-generated method stub
-
-		/**
-		 * Được gọi để truyền sự kiện cho những thành phần khác khi sự kiện đã
-		 * được xử lý trong Service.
-		 */
-		if (mCallback != null) {
-			mCallback.onUaCallIncoming(ua, caller, callee);
-		}
-	}
-
-	@Override
-	public void onUaCallCancelled(UserAgent ua) {
-		// TODO Auto-generated method stub
-
-		/**
-		 * Được gọi để truyền sự kiện cho những thành phần khác khi sự kiện đã
-		 * được xử lý trong Service.
-		 */
-		if (mCallback != null) {
-			mCallback.onUaCallCancelled(ua);
-		}
-	}
-
-	@Override
-	public void onUaCallRinging(UserAgent ua) {
-		// TODO Auto-generated method stub
-
-		/**
-		 * Được gọi để truyền sự kiện cho những thành phần khác khi sự kiện đã
-		 * được xử lý trong Service.
-		 */
-		if (mCallback != null) {
-			mCallback.onUaCallRinging(ua);
-		}
-	}
-
-	@Override
-	public void onUaCallAccepted(UserAgent ua) {
-		// TODO Auto-generated method stub
-
-		/**
-		 * Được gọi để truyền sự kiện cho những thành phần khác khi sự kiện đã
-		 * được xử lý trong Service.
-		 */
-		if (mCallback != null) {
-			mCallback.onUaCallAccepted(ua);
-		}
-	}
-
-	@Override
-	public void onUaCallTrasferred(UserAgent ua) {
-		// TODO Auto-generated method stub
-
-		/**
-		 * Được gọi để truyền sự kiện cho những thành phần khác khi sự kiện đã
-		 * được xử lý trong Service.
-		 */
-		if (mCallback != null) {
-			mCallback.onUaCallTrasferred(ua);
-		}
-	}
-
-	@Override
-	public void onUaCallFailed(UserAgent ua) {
-		// TODO Auto-generated method stub
-
-		/**
-		 * Được gọi để truyền sự kiện cho những thành phần khác khi sự kiện đã
-		 * được xử lý trong Service.
-		 */
-		if (mCallback != null) {
-			mCallback.onUaCallFailed(ua);
-		}
-	}
-
-	@Override
-	public void onUaCallClosed(UserAgent ua) {
-		// TODO Auto-generated method stub
-
-		/**
-		 * Được gọi để truyền sự kiện cho những thành phần khác khi sự kiện đã
-		 * được xử lý trong Service.
-		 */
-		if (mCallback != null) {
-			mCallback.onUaCallClosed(ua);
-		}
-
 	}
 
 	// ///////////////////////////////////////
@@ -179,30 +91,145 @@ public class SipService extends Service implements UserAgentListener {
 		return this.mLocalSipUrl;
 	}
 
-	public SipURL getCallToSipUrl() {
-		return this.mSipUrlCallTo;
+	public SipURL getCallSipUrl() {
+		return this.mCallSipUrl;
 	}
 
 	// ///////////////////////////////////////
 	// // SET
 	// //////////////////////////////////////
-	public void setUserAgentListener(UserAgentListener listener) {
-		this.mCallback = listener;
+	public void setUASListener(UASListener listener) {
+		mUASListener = listener;
+	}
+	
+	public void setUACListener(UACListener listener) {
+		mUACListener = listener;
+	}
+	
+	public void setSipUrlCall(PeerInfo peerInfo) {
+		SipURL sipURL = new SipURL(peerInfo.userName, peerInfo.address);
+		this.mCallSipUrl = sipURL;
+	}
+
+	public void setSipUrlCall(String stringSipUrl) {
+		SipURL sipUrl = new SipURL(stringSipUrl);
+		this.mCallSipUrl = sipUrl;
 	}
 
 	// ///////////////////////////////////////
 	// // FUNCTION
 	// //////////////////////////////////////
-	public void callTo(String sipUrl) {
-		mSipNode.callTo(sipUrl);
-	}
-
-	public void callTo(PeerInfo peerInfo) {
-		mSipNode.callTo(peerInfo);
+	public void call() {
+		mSipNode.call(mCallSipUrl.toString());
 	}
 
 	public void hangup() {
 		// TODO Auto-generated method stub
 		mSipNode.hangup();
+	}
+
+	// /////////////////////////////////////
+	// /// UAC Listener
+	// /////////////////////////////////////
+	@Override
+	public void onUACCallIncoming(UserAgent ua, NameAddress caller,
+			NameAddress callee) {
+		// TODO Auto-generated method stub
+		LogAndroid.log(TAG, "onUaCallIncoming(): " + caller.getAddress()
+				+ " calling...");
+		
+		/*
+		 * Gọi Activity onCall;
+		 */
+		Intent intent = new Intent(this, OnCallActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		
+		startActivity(intent);
+		
+		/*
+		 * Truyền sự kiện ra bên ngoài;
+		 */
+		if (mUACListener != null) {
+			mUACListener.onUACCallIncoming(ua, caller, callee);
+		}
+	}
+
+	@Override
+	public void onCallUASCancelled(UserAgent ua) {
+		// TODO Auto-generated method stub
+		LogAndroid.log(TAG, "onCallUASCancelled(): UAS call cancelled");
+		
+		/*
+		 * Truyền sự kiện ra bên ngoài;
+		 */
+		if (mUACListener != null) {
+			mUACListener.onCallUASCancelled(ua);
+		}
+	}
+
+	@Override
+	public void onUACCallClosed(UserAgent ua) {
+		// TODO Auto-generated method stub
+		LogAndroid.log(TAG, "onUACCallClosed(): Call ended");
+		
+		/*
+		 * Truyền sự kiện ra bên ngoài;
+		 */
+		if (mUACListener != null) {
+			mUACListener.onUACCallClosed(ua);
+		}
+	}
+
+	// ///////////////////////////////////////////
+	// //// UAS Listener
+	// ///////////////////////////////////////////
+	@Override
+	public void onUASCallRinging(UserAgent ua) {
+		// TODO Auto-generated method stub
+		LogAndroid.log(TAG, "onUASCallRinging(): 180 Ringing from UAC");
+		
+		
+		/*
+		 * Truyền sự kiện ra bên ngoài;
+		 */
+		if (mUASListener != null) {
+			mUASListener.onUASCallRinging(ua);
+		}
+	}
+
+	@Override
+	public void onCallUACAccepted(UserAgent ua) {
+		// TODO Auto-generated method stub
+		LogAndroid.log(TAG, "onCallUACAccepted(): 200 OK from UAC");
+		
+		/*
+		 * Truyền sự kiện ra bên ngoài;
+		 */
+		if (mUASListener != null) {
+			mUASListener.onCallUACAccepted(ua);
+		}
+	}
+
+	@Override
+	public void onCallUACFailed(UserAgent ua) {
+		// TODO Auto-generated method stub
+		LogAndroid.log(TAG, "onCallUACFailed(): call to UAC failed");
+		
+		/*
+		 * Truyền sự kiện ra bên ngoài;
+		 */
+		if (mUASListener != null) {
+			mUASListener.onCallUACFailed(ua);
+		}
+	}
+
+	@Override
+	public void onUASCallClosed(UserAgent ua) {
+		// TODO Auto-generated method stub
+		LogAndroid.log(TAG, "onUASCallClosed(): call ended");
+		
+		if (mUASListener != null) {
+			mUASListener.onUASCallClosed(ua);
+		}
 	}
 }

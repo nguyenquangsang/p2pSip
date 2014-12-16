@@ -1,0 +1,2565 @@
+17:24:17.624 Tue 16 Dec 2014, 192.168.0.103:5060/udp (492 bytes): received
+INVITE sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 INVITE
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.103
+t=0 0
+-----End-of-message-----
+
+17:24:17.640 Tue 16 Dec 2014, 192.168.0.103:5060/udp (295 bytes): sent
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:17.644 Tue 16 Dec 2014, 192.168.0.103:5060/udp (296 bytes): sent
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:21.944 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:21.950 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:21.956 Tue 16 Dec 2014, 192.168.0.103:5060/udp (298 bytes): sent
+SIP/2.0 487 Cancelled
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:22.462 Tue 16 Dec 2014, 192.168.0.103:5060/udp (298 bytes): sent
+SIP/2.0 487 Cancelled
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:23.461 Tue 16 Dec 2014, 192.168.0.103:5060/udp (298 bytes): sent
+SIP/2.0 487 Cancelled
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:24.344 Tue 16 Dec 2014, 192.168.0.103:5060/udp (308 bytes): received
+ACK sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:24.460 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:24.463 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:24.560 Tue 16 Dec 2014, 192.168.0.103:5060/udp (308 bytes): received
+ACK sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:24.702 Tue 16 Dec 2014, 192.168.0.103:5060/udp (308 bytes): received
+ACK sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:25.409 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:24:25.622 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:25.624 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:25.908 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:24:26.478 Tue 16 Dec 2014, 192.168.0.103:5060/udp (270 bytes): received
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK764b0;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:27.535 Tue 16 Dec 2014, 192.168.0.103:5060/udp (271 bytes): received
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK764b0;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:27.868 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:27.869 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:28.110 Tue 16 Dec 2014, 192.168.0.103:5060/udp (271 bytes): received
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK764b0;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:31.999 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:32.001 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:36.143 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:36.147 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:40.284 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:40.285 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:44.433 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:44.436 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:48.577 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:48.579 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:52.713 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK3ba2f
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:24:52.714 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK3ba2f;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=2990998e
+Call-ID: 23eb33adc8fb@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:27:33.808 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:27:34.312 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:27:34.814 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK7563d
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=491e1938
+Call-ID: 124d48e3e9bc@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:27:34.875 Tue 16 Dec 2014, 192.168.0.103:5060/udp (270 bytes): received
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK7563d;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=491e1938
+Call-ID: 124d48e3e9bc@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:27:34.896 Tue 16 Dec 2014, 192.168.0.103:5060/udp (271 bytes): received
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK7563d;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=491e1938
+Call-ID: 124d48e3e9bc@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:27:35.313 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:27:37.314 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:27:41.318 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:27:45.319 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:27:49.320 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:27:53.332 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:27:57.334 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:28:01.335 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:28:05.336 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK764b0
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=48d7f5ea
+Call-ID: 18ec8119e2be@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:28:18.949 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK7563d
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=491e1938
+Call-ID: 124d48e3e9bc@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:28:18.968 Tue 16 Dec 2014, 192.168.0.103:5060/udp (266 bytes): received
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK7563d;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=491e1938
+Call-ID: 124d48e3e9bc@192.168.0.106
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:28:18.980 Tue 16 Dec 2014, 192.168.0.103:5060/udp (273 bytes): received
+SIP/2.0 487 Cancelled
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK7563d;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=491e1938
+Call-ID: 124d48e3e9bc@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:28:18.983 Tue 16 Dec 2014, 192.168.0.103:5060/udp (306 bytes): sent
+ACK sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK7563d
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=491e1938
+Call-ID: 124d48e3e9bc@192.168.0.106
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:28:31.438 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK4c199
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=38d6dc2f
+Call-ID: 6a8f2b4302e8@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:28:31.507 Tue 16 Dec 2014, 192.168.0.103:5060/udp (270 bytes): received
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK4c199;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=38d6dc2f
+Call-ID: 6a8f2b4302e8@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:28:31.529 Tue 16 Dec 2014, 192.168.0.103:5060/udp (271 bytes): received
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK4c199;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=38d6dc2f
+Call-ID: 6a8f2b4302e8@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:34.530 Tue 16 Dec 2014, 192.168.0.103:5060/udp (273 bytes): received
+SIP/2.0 403 Forbidden
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK4c199;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=38d6dc2f
+Call-ID: 6a8f2b4302e8@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:34.534 Tue 16 Dec 2014, 192.168.0.103:5060/udp (306 bytes): sent
+ACK sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK4c199
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=38d6dc2f
+Call-ID: 6a8f2b4302e8@192.168.0.106
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:34.560 Tue 16 Dec 2014, 192.168.0.103:5060/udp (492 bytes): received
+INVITE sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 INVITE
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.103
+t=0 0
+-----End-of-message-----
+
+17:29:34.562 Tue 16 Dec 2014, 192.168.0.103:5060/udp (295 bytes): sent
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:34.563 Tue 16 Dec 2014, 192.168.0.103:5060/udp (296 bytes): sent
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:39.202 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:39.203 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:39.205 Tue 16 Dec 2014, 192.168.0.103:5060/udp (298 bytes): sent
+SIP/2.0 487 Cancelled
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:39.276 Tue 16 Dec 2014, 192.168.0.103:5060/udp (308 bytes): received
+ACK sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:39.374 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:39.375 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:40.383 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:40.384 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:42.092 Tue 16 Dec 2014, 192.168.0.103:5060/udp (492 bytes): received
+INVITE sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 INVITE
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.103
+t=0 0
+-----End-of-message-----
+
+17:29:42.093 Tue 16 Dec 2014, 192.168.0.103:5060/udp (295 bytes): sent
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:42.094 Tue 16 Dec 2014, 192.168.0.103:5060/udp (296 bytes): sent
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:42.398 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:42.399 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:45.351 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:45.353 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:45.354 Tue 16 Dec 2014, 192.168.0.103:5060/udp (298 bytes): sent
+SIP/2.0 487 Cancelled
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:45.419 Tue 16 Dec 2014, 192.168.0.103:5060/udp (308 bytes): received
+ACK sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:45.542 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:45.543 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:46.415 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:46.415 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:46.548 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:46.549 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:48.568 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:48.568 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:50.433 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:50.434 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:52.349 Tue 16 Dec 2014, 192.168.0.103:5060/udp (492 bytes): received
+INVITE sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK1fbfe
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=fb2f9db0
+Call-ID: a37db07338e4@/192.168.0.103
+CSeq: 1 INVITE
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.103
+t=0 0
+-----End-of-message-----
+
+17:29:52.351 Tue 16 Dec 2014, 192.168.0.103:5060/udp (295 bytes): sent
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK1fbfe;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=fb2f9db0
+Call-ID: a37db07338e4@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:52.352 Tue 16 Dec 2014, 192.168.0.103:5060/udp (296 bytes): sent
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK1fbfe;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=fb2f9db0
+Call-ID: a37db07338e4@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:52.586 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:52.587 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:54.453 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:54.453 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:54.596 Tue 16 Dec 2014, 192.168.0.103:5060/udp (298 bytes): sent
+SIP/2.0 403 Forbidden
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK1fbfe;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=fb2f9db0
+Call-ID: a37db07338e4@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:54.657 Tue 16 Dec 2014, 192.168.0.103:5060/udp (308 bytes): received
+ACK sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK1fbfe
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=fb2f9db0
+Call-ID: a37db07338e4@/192.168.0.103
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:56.605 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:56.606 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:58.468 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:29:58.468 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:00.626 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:00.626 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:02.491 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:02.492 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:04.639 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:04.640 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:05.341 Tue 16 Dec 2014, 192.168.0.103:5060/udp (492 bytes): received
+INVITE sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 INVITE
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.103
+t=0 0
+-----End-of-message-----
+
+17:30:05.342 Tue 16 Dec 2014, 192.168.0.103:5060/udp (295 bytes): sent
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:05.343 Tue 16 Dec 2014, 192.168.0.103:5060/udp (296 bytes): sent
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:06.098 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:06.099 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:06.100 Tue 16 Dec 2014, 192.168.0.103:5060/udp (298 bytes): sent
+SIP/2.0 487 Cancelled
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:06.166 Tue 16 Dec 2014, 192.168.0.103:5060/udp (308 bytes): received
+ACK sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:06.284 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:06.285 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:06.504 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:06.505 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:07.296 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:07.297 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:07.606 Tue 16 Dec 2014, 192.168.0.103:5060/udp (492 bytes): received
+INVITE sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK6e72d
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=5a996d51
+Call-ID: 97fcc7a6bdb1@/192.168.0.103
+CSeq: 1 INVITE
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.103
+t=0 0
+-----End-of-message-----
+
+17:30:07.607 Tue 16 Dec 2014, 192.168.0.103:5060/udp (295 bytes): sent
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK6e72d;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=5a996d51
+Call-ID: 97fcc7a6bdb1@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:07.608 Tue 16 Dec 2014, 192.168.0.103:5060/udp (296 bytes): sent
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK6e72d;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=5a996d51
+Call-ID: 97fcc7a6bdb1@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:08.676 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:08.678 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:08.797 Tue 16 Dec 2014, 192.168.0.103:5060/udp (298 bytes): sent
+SIP/2.0 403 Forbidden
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK6e72d;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=5a996d51
+Call-ID: 97fcc7a6bdb1@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:08.855 Tue 16 Dec 2014, 192.168.0.103:5060/udp (308 bytes): received
+ACK sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK6e72d
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=5a996d51
+Call-ID: 97fcc7a6bdb1@/192.168.0.103
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:09.304 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:09.305 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:10.507 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK11ef2
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:10.508 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK11ef2;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=22b47be9
+Call-ID: 24cb376de54e@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:12.698 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:12.698 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:13.319 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:13.320 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:16.714 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK30a30
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:16.715 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK30a30;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3209d3c3
+Call-ID: 5eeb5ba6cc65@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:17.338 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:17.339 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:21.356 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:21.357 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:25.374 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:25.375 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:29.438 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:29.439 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:33.458 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:33.458 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:37.477 Tue 16 Dec 2014, 192.168.0.103:5060/udp (355 bytes): received
+CANCEL sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP :-1;rport;branch=z9hG4bK7d647
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:30:37.478 Tue 16 Dec 2014, 192.168.0.103:5060/udp (275 bytes): sent
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP :-1;branch=z9hG4bK7d647;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=3cdc130b
+Call-ID: 6e91d5b60548@/192.168.0.103
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:31:34.439 Tue 16 Dec 2014, 192.168.0.103:5060/udp (492 bytes): received
+INVITE sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK2cf00
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=56c0592a
+Call-ID: 1e60d4c285ae@/192.168.0.103
+CSeq: 1 INVITE
+Contact: <sip:SangNguyen@/192.168.0.103>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.103
+t=0 0
+-----End-of-message-----
+
+17:31:34.440 Tue 16 Dec 2014, 192.168.0.103:5060/udp (295 bytes): sent
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK2cf00;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=56c0592a
+Call-ID: 1e60d4c285ae@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:31:34.441 Tue 16 Dec 2014, 192.168.0.103:5060/udp (296 bytes): sent
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK2cf00;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=56c0592a
+Call-ID: 1e60d4c285ae@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:31:36.588 Tue 16 Dec 2014, 192.168.0.103:5060/udp (298 bytes): sent
+SIP/2.0 403 Forbidden
+Via: SIP/2.0/UDP /192.168.0.103:5060;branch=z9hG4bK2cf00;received=192.168.0.103;rport=5060
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=56c0592a
+Call-ID: 1e60d4c285ae@/192.168.0.103
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:31:36.690 Tue 16 Dec 2014, 192.168.0.103:5060/udp (308 bytes): received
+ACK sip:tobeNguyen@192.168.0.106 SIP/2.0
+Via: SIP/2.0/UDP /192.168.0.103:5060;rport;branch=z9hG4bK2cf00
+Max-Forwards: 70
+To: <sip:tobeNguyen@192.168.0.106>
+From: <sip:SangNguyen@192.168.0.103>;tag=56c0592a
+Call-ID: 1e60d4c285ae@/192.168.0.103
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:31:41.893 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:31:42.392 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:31:43.393 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:31:45.393 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:31:49.393 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:31:57.394 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:32:11.461 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:11.961 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:12.961 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:13.373 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK69779
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=26751f3a
+Call-ID: 6e0111ffcbb7@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:32:13.396 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:32:13.440 Tue 16 Dec 2014, 192.168.0.103:5060/udp (270 bytes): received
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK69779;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=26751f3a
+Call-ID: 6e0111ffcbb7@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:13.460 Tue 16 Dec 2014, 192.168.0.103:5060/udp (271 bytes): received
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK69779;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=26751f3a
+Call-ID: 6e0111ffcbb7@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:14.963 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:18.965 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:22.966 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:26.966 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:30.967 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:34.969 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:38.969 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:32:42.970 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK75474
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=3ca11f1a
+Call-ID: 29ce7512e9e0@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:33:27.733 Tue 16 Dec 2014, 192.168.0.103:5060/udp (368 bytes): sent
+CANCEL sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK69779
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=26751f3a
+Call-ID: 6e0111ffcbb7@192.168.0.106
+CSeq: 1 CANCEL
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:33:27.748 Tue 16 Dec 2014, 192.168.0.103:5060/udp (266 bytes): received
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK69779;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=26751f3a
+Call-ID: 6e0111ffcbb7@192.168.0.106
+CSeq: 1 CANCEL
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:33:27.758 Tue 16 Dec 2014, 192.168.0.103:5060/udp (273 bytes): received
+SIP/2.0 487 Cancelled
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK69779;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=26751f3a
+Call-ID: 6e0111ffcbb7@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:33:27.759 Tue 16 Dec 2014, 192.168.0.103:5060/udp (306 bytes): sent
+ACK sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK69779
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=26751f3a
+Call-ID: 6e0111ffcbb7@192.168.0.106
+CSeq: 1 ACK
+User-Agent: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:33:36.405 Tue 16 Dec 2014, 192.168.0.103:5060/udp (489 bytes): sent
+INVITE sip:SangNguyen@192.168.0.103 SIP/2.0
+Via: SIP/2.0/UDP 192.168.0.106:5060;rport;branch=z9hG4bK1fb13
+Max-Forwards: 70
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=98361eea
+Call-ID: 6cbbc20845ac@192.168.0.106
+CSeq: 1 INVITE
+Contact: <sip:tobeNguyen@192.168.0.106>
+Expires: 3600
+User-Agent: MjSip 1.5.3
+Content-Length: 89
+Content-Type: application/sdp
+
+v=0
+o=SangNguyen 0 0 IN IP4 192.168.0.103
+s=SangNguyen
+c=IN IP4 192.168.0.106
+t=0 0
+-----End-of-message-----
+
+17:33:36.451 Tue 16 Dec 2014, 192.168.0.103:5060/udp (270 bytes): received
+SIP/2.0 100 Trying
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK1fb13;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=98361eea
+Call-ID: 6cbbc20845ac@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
+17:33:36.473 Tue 16 Dec 2014, 192.168.0.103:5060/udp (271 bytes): received
+SIP/2.0 180 Ringing
+Via: SIP/2.0/UDP 192.168.0.106:5060;branch=z9hG4bK1fb13;rport=5060
+To: <sip:SangNguyen@192.168.0.103>
+From: <sip:tobeNguyen@192.168.0.106>;tag=98361eea
+Call-ID: 6cbbc20845ac@192.168.0.106
+CSeq: 1 INVITE
+Server: MjSip 1.5.3
+Content-Length: 0
+
+-----End-of-message-----
+
