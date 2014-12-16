@@ -11,3 +11,5 @@
 1418723512949	Rename method 'onUACCallFailed'
 1418723525280	Rename method 'onUACCallAccepted'
 1418723544319	Rename method 'onUASCallCancelled'
+1418738414915	Rename method 'getCallToSipUrl'
+1418767802422	Rename local variable 'sipUrl'

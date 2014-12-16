@@ -1,0 +1,4 @@
+
+public interface Constant {
+	public static final String KEY_CALLEE = "callee";
+}

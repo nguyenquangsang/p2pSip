@@ -23,7 +23,7 @@
             android:textSize="@dimen/txt_size" />
 
         <TextView
-            android:id="@+id/call_txtCallTo"
+            android:id="@+id/calling_txtCaller"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"

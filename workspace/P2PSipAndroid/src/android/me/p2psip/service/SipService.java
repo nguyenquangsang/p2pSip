@@ -12,7 +12,8 @@ import org.zoolu.sip.address.SipURL;
 
 import android.app.Service;
 import android.content.Intent;
-import android.me.p2psip.activity.OnCallActivity;
+import android.me.p2psip.activity.CallingActivity;
+import android.me.p2psip.constant.Constant;
 import android.me.p2psip.data.MeApplication;
 import android.me.p2psip.log.LogAndroid;
 import android.os.Binder;
@@ -80,7 +81,8 @@ public class SipService extends Service implements UASListener, UACListener {
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-
+		
+		mSipNode.hangup();
 		mSipNode.shutdown();
 	}
 
@@ -88,11 +90,15 @@ public class SipService extends Service implements UASListener, UACListener {
 	// // GET
 	// //////////////////////////////////////
 	public SipURL getLocalSipUrl() {
-		return this.mLocalSipUrl;
+		return mLocalSipUrl;
 	}
 
 	public SipURL getCallSipUrl() {
-		return this.mCallSipUrl;
+		return mCallSipUrl;
+	}
+	
+	public SipURL getCallerSipUrl() {
+		return mSipNode.getCallerSipUrl();
 	}
 
 	// ///////////////////////////////////////
@@ -120,14 +126,36 @@ public class SipService extends Service implements UASListener, UACListener {
 	// // FUNCTION
 	// //////////////////////////////////////
 	public void call() {
+		if (mCallSipUrl == null) {
+			throw new IllegalStateException("Must set CallSipUrl befor use Call function");
+		}
+		
 		mSipNode.call(mCallSipUrl.toString());
 	}
 
+	/**
+	 * Hủy bỏ một cuộc gọi<br>
+	 * Để tiếp tục lắng nghe thì gọi lại hàm listen()
+	 */
 	public void hangup() {
 		// TODO Auto-generated method stub
 		mSipNode.hangup();
 	}
-
+	
+	/**
+	 * Lắng nghe cuộc gọi đến
+	 */
+	public void listen() {
+		mSipNode.listen();
+	}
+	
+	/**
+	 * Chấp nhận một cuộc gọi
+	 */
+	public void accept() {
+		mSipNode.accept();
+	}
+	
 	// /////////////////////////////////////
 	// /// UAC Listener
 	// /////////////////////////////////////
@@ -141,7 +169,8 @@ public class SipService extends Service implements UASListener, UACListener {
 		/*
 		 * Gọi Activity onCall;
 		 */
-		Intent intent = new Intent(this, OnCallActivity.class);
+		Intent intent = new Intent(this, CallingActivity.class);
+		intent.putExtra(Constant.KEY_CALLER, mSipNode.getCallerSipUrl());
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		
 		startActivity(intent);

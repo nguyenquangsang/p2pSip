@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="me.p2p.request.RequestHandler"/>
-<fullyQualifiedTypeName name="com.example.peerdemo.R.layout"/>
-<fullyQualifiedTypeName name="android.os.AsyncTask"/>
-<fullyQualifiedTypeName name="me.p2p.respone.Respone"/>
-<fullyQualifiedTypeName name="me.p2p.constant.PeerPort"/>
 <fullyQualifiedTypeName name="me.p2p.request.Request"/>
 <fullyQualifiedTypeName name="me.p2p.message.Message"/>
 <fullyQualifiedTypeName name="me.p2p.message.MessageJSONAttribute"/>
@@ -52,11 +47,17 @@
 <fullyQualifiedTypeName name="android.me.p2psip.SipService.SipServiceBinder"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="android.me.p2psip.service.SipService"/>
-<fullyQualifiedTypeName name="android.widget.ImageButton"/>
-<fullyQualifiedTypeName name="android.me.p2psip.R.id"/>
 <fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="me.p2p.PeerInfo"/>
-<fullyQualifiedTypeName name="org.zoolu.sip.address.SipURL"/>
 <fullyQualifiedTypeName name="android.widget.Button"/>
+<fullyQualifiedTypeName name="org.zoolu.sip.address.SipURL"/>
+<fullyQualifiedTypeName name="java.lang.IllegalStateException"/>
+<fullyQualifiedTypeName name="android.me.p2psip.activity.SipActivity"/>
+<fullyQualifiedTypeName name="android.me.p2psip.R"/>
+<fullyQualifiedTypeName name="android.me.p2psip.R.layout"/>
+<fullyQualifiedTypeName name="me.sip.ua.specify.UACListener"/>
+<fullyQualifiedTypeName name="android.view.SurfaceView"/>
+<fullyQualifiedTypeName name="android.widget.ImageButton"/>
+<fullyQualifiedTypeName name="android.me.p2psip.R.id"/>
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 </qualifiedTypeNameHistroy>

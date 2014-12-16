@@ -60,18 +60,19 @@ public class SipNode implements UserAgentListener {
 	UserAgentProfile userAgentProfile;
 	SipProvider sipProvider;
 	SessionDescriptor sessionDescriptor;
-	
+
 	/*
 	 * Sip Url;
 	 */
 	SipURL localSipUrl;
-	SipURL calleeSipUrl;
+	SipURL calleeSipUrl = null;
+	SipURL callerSipUrl = null;
 
 	/*
 	 * Instance Peer trong mạng P2P;
 	 */
 	Peer peer;
-	
+
 	/*
 	 * UAS listener, UAC listener;
 	 */
@@ -145,7 +146,15 @@ public class SipNode implements UserAgentListener {
 			NameAddress callee) {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "UA Comming Call");
-		// set up remote ua;
+		/*
+		 * Set up remote ua;
+		 */
+
+		/*
+		 * Lấy thông tin người gọi
+		 */
+		callerSipUrl = caller.getAddress();
+
 		/**
 		 * Gọi listener bên ngoài;
 		 */
@@ -165,7 +174,7 @@ public class SipNode implements UserAgentListener {
 		if (uacListener != null) {
 			uacListener.onCallUASCancelled(ua);
 		}
-		
+
 		/**
 		 * Sau khi hủy bỏ một cuộc gọi thì tiếp tục cài đặt cho UserAgent tiếp
 		 * tục lắng nghe các cuộc gọi đến khác.
@@ -208,6 +217,12 @@ public class SipNode implements UserAgentListener {
 	public void onUaCallTrasferred(UserAgent ua) {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "UA Call Trasferred");
+
+		/**
+		 * Sau khi hủy bỏ một cuộc gọi thì tiếp tục cài đặt cho UserAgent tiếp
+		 * tục lắng nghe các cuộc gọi đến khác.
+		 */
+		ua.listen();
 	}
 
 	@Override
@@ -221,7 +236,7 @@ public class SipNode implements UserAgentListener {
 		if (uasListener != null) {
 			uasListener.onCallUACFailed(ua);
 		}
-		
+
 		/**
 		 * Sau khi hủy bỏ một cuộc gọi thì tiếp tục cài đặt cho UserAgent tiếp
 		 * tục lắng nghe các cuộc gọi đến khác.
@@ -233,7 +248,7 @@ public class SipNode implements UserAgentListener {
 	public void onUaCallClosed(UserAgent ua) {
 		// TODO Auto-generated method stub
 		Log.logToConsole(TAG, "UA Call Closed");
-		
+
 		// remove all rtp service;
 		/**
 		 * Gọi listener bên ngoài;
@@ -241,11 +256,11 @@ public class SipNode implements UserAgentListener {
 		if (uasListener != null) {
 			uasListener.onUASCallClosed(ua);
 		}
-		
+
 		if (uacListener != null) {
 			uacListener.onUACCallClosed(ua);
 		}
-		
+
 		/**
 		 * Sau khi hủy bỏ một cuộc gọi thì tiếp tục cài đặt cho UserAgent tiếp
 		 * tục lắng nghe các cuộc gọi đến khác.
@@ -257,15 +272,20 @@ public class SipNode implements UserAgentListener {
 		SipURL sipURL = new SipURL(peerInfo.userName, peerInfo.address);
 		Log.logToConsole(TAG, "Call to: " + sipURL.toString());
 
-		userAgentProfile.call_to = sipURL.toString();
+		calleeSipUrl = sipURL;
+		userAgentProfile.call_to = calleeSipUrl.toString();
+		
 		userAgent.hangup();
 		userAgent.call(userAgentProfile.call_to);
 	}
 
-	public void call(String sipUrl) {
-		Log.logToConsole(TAG, "Call to: " + sipUrl); 
+	public void call(String stringSipUrl) {
+		Log.logToConsole(TAG, "Call to: " + stringSipUrl);
+
+		SipURL sipURL = new SipURL(stringSipUrl);
+		calleeSipUrl = sipURL;
+		userAgentProfile.call_to = calleeSipUrl.toString();
 		
-		userAgentProfile.call_to = sipUrl;
 		userAgent.hangup();
 		userAgent.call(userAgentProfile.call_to);
 	}
@@ -305,11 +325,11 @@ public class SipNode implements UserAgentListener {
 		SessionDescriptor sessionDescriptor = new SessionDescriptor(sdp);
 		this.sessionDescriptor = sessionDescriptor;
 	}
-	
+
 	public void setUASListener(UASListener listener) {
 		this.uasListener = listener;
 	}
-	
+
 	public void setUACListener(UACListener listener) {
 		this.uacListener = listener;
 	}
@@ -338,18 +358,25 @@ public class SipNode implements UserAgentListener {
 	public void accept() {
 		userAgent.accept();
 	}
-	
+
 	/**
 	 * Lấy địa chỉ Sip Local;
 	 */
 	public SipURL getLocalSipUrl() {
 		return this.localSipUrl;
 	}
-	
+
 	/**
 	 * Lấy địa chỉ Call To Url;
 	 */
-	public SipURL getCallToSipUrl() {
+	public SipURL getCalleeSipUrl() {
 		return this.calleeSipUrl;
+	}
+
+	/**
+	 * Lấy địa chỉ người gọi;
+	 */
+	public SipURL getCallerSipUrl() {
+		return this.callerSipUrl;
 	}
 }

@@ -1,0 +1,16 @@
+package android.me.p2psip.activity;
+
+import android.me.p2psip.R;
+import android.os.Bundle;
+
+public class OnCallActivity extends SipActivity {
+
+	@Override
+	public void onSipServiceConnected(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		/*
+		 * Cài đặt layout cho Activity;
+		 */
+		setContentView(R.layout.activity_on_call);
+	}
+}

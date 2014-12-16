@@ -34,3 +34,12 @@
 1418708756115	Rename field 'mSipUrlCallTo'
 1418723293131	Delete elements
 1418723929446	Delete elements
+1418737630228	Rename method 'onCreateExt'
+1418738240011	Rename field 'call_txtCallTo'
+1418742511284	Move compilation unit
+1418742930234	Rename type 'OnCallActivity'
+1418742940521	Rename resource 'activity_on_call.xml'
+1418742960793	Rename field 'onCall_txtCaller'
+1418742973956	Rename field 'onCall_btCall'
+1418742982241	Rename field 'onCall_btEnCall'
+1418743013454	Move compilation unit

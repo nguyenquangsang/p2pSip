@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="android.me.p2psip.activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="android.me.p2psip.activity.CallActivity"
+            android:name=".activity.CallActivity"
             android:label="@string/title_activity_call" >
             <intent-filter>
                 <action android:name="android.me.p2psip.action.HAS_CALL" />
@@ -41,6 +41,10 @@
         <activity
             android:name=".activity.CalleeActivity"
             android:label="@string/title_activity_callee" >
+        </activity>
+        <activity
+            android:name=".activity.CallingActivity"
+            android:label="@string/title_activity_on_call" >
         </activity>
         <activity
             android:name="android.me.p2psip.activity.OnCallActivity"

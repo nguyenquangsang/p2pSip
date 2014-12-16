@@ -23,7 +23,6 @@
 
 package org.zoolu.sip.call;
 
-
 import org.zoolu.sip.dialog.*;
 import org.zoolu.sip.provider.*;
 import org.zoolu.sip.message.*;
@@ -34,325 +33,492 @@ import org.zoolu.tools.LogLevel;
 import org.zoolu.sdp.*;
 import java.util.Vector;
 
+/**
+ * Class Call implements SIP calls.
+ * <p>
+ * It handles both outgoing or incoming calls.
+ * <p>
+ * Both offer/answer models are supported, that is: <br>
+ * i) offer/answer in invite/2xx, or <br>
+ * ii) offer/answer in 2xx/ack
+ */
+public class Call implements InviteDialogListener {
+	/** Event logger. */
+	Log log = null;
 
-/** Class Call implements SIP calls.
-  * <p>It handles both outgoing or incoming calls.
-  * <p>Both offer/answer models are supported, that is:
-  * <br> i) offer/answer in invite/2xx, or
-  * <br> ii) offer/answer in 2xx/ack
-  */
-public class Call implements InviteDialogListener
-{  
-   /** Event logger. */
-   Log log=null;
+	/** The SipProvider used for the call */
+	protected SipProvider sip_provider;
 
-   /** The SipProvider used for the call */
-   protected SipProvider sip_provider;
-   
-   /** The invite dialog (sip.dialog.InviteDialog) */
-   protected InviteDialog dialog=null;
-   
-   /** The user url */
-   protected String from_url;
+	/** The invite dialog (sip.dialog.InviteDialog) */
+	protected InviteDialog dialog = null;
 
-   /** The user contact url */
-   protected String contact_url;
+	/** The user url */
+	protected String from_url;
 
-   /** The local sdp */
-   protected String local_sdp=null;
+	/** The user contact url */
+	protected String contact_url;
 
-   /** The remote sdp */
-   protected String remote_sdp=null;
-   
-   /** The call listener (sipx.call.CallListener) */
-   CallListener listener;
+	/** The local sdp */
+	protected String local_sdp = null;
 
-   
-   /** Creates a new Call. */
-   public Call(SipProvider sip_provider, String from_url, String contact_url, CallListener call_listener)
-   {  this.sip_provider=sip_provider;
-      this.log=sip_provider.getLog();
-      this.listener=call_listener;
-      this.from_url=from_url;
-      this.contact_url=contact_url;
-   }
+	/** The remote sdp */
+	protected String remote_sdp = null;
 
-   /** Creates a new Call specifing the sdp */
-   /*public Call(SipProvider sip_provider, String from_url, String contact_url, String sdp, CallListener call_listener)
-   {  this.sip_provider=sip_provider;
-      this.log=sip_provider.getLog();
-      this.listener=call_listener;
-      this.from_url=from_url;
-      this.contact_url=contact_url;
-      local_sdp=sdp;
-   }*/
+	/** The call listener (sipx.call.CallListener) */
+	CallListener listener;
 
-   /** Gets the current invite dialog */
-   /*public InviteDialog getInviteDialog()
-   {  return dialog;
-   }*/
+	/** Creates a new Call. */
+	public Call(SipProvider sip_provider, String from_url, String contact_url,
+			CallListener call_listener) {
+		this.sip_provider = sip_provider;
+		this.log = sip_provider.getLog();
+		this.listener = call_listener;
+		this.from_url = from_url;
+		this.contact_url = contact_url;
+	}
 
-   /** Gets the current local session descriptor */
-   public String getLocalSessionDescriptor()
-   {  return local_sdp;
-   }
-   
-   /** Sets a new local session descriptor */
-   public void setLocalSessionDescriptor(String sdp)
-   {  local_sdp=sdp;
-   }
+	/** Creates a new Call specifing the sdp */
+	/*
+	 * public Call(SipProvider sip_provider, String from_url, String
+	 * contact_url, String sdp, CallListener call_listener) {
+	 * this.sip_provider=sip_provider; this.log=sip_provider.getLog();
+	 * this.listener=call_listener; this.from_url=from_url;
+	 * this.contact_url=contact_url; local_sdp=sdp; }
+	 */
 
-   /** Gets the current remote session descriptor */
-   public String getRemoteSessionDescriptor()
-   {  return remote_sdp;
-   } 
-   
-   /** Whether the call is on (active). */
-   public boolean isOnCall()
-   {  return dialog.statusIs(org.zoolu.sip.dialog.InviteDialog.D_CALL);
-   } 
-         
-   /** Waits for an incoming call */
-   public void listen()
-   {  dialog=new InviteDialog(sip_provider,this);
-      dialog.listen();
-   }
+	/** Gets the current invite dialog */
+	/*
+	 * public InviteDialog getInviteDialog() { return dialog; }
+	 */
 
-   /** Starts a new call, inviting a remote user (<i>callee</i>) */
-   public void call(String callee)
-   {  call(callee,null,null,null);
-   } 
+	/** Gets the current local session descriptor */
+	public String getLocalSessionDescriptor() {
+		return local_sdp;
+	}
 
-   /** Starts a new call, inviting a remote user (<i>callee</i>) */
-   public void call(String callee, String sdp)
-   {  call(callee,null,null,sdp);
-   } 
+	/** Sets a new local session descriptor */
+	public void setLocalSessionDescriptor(String sdp) {
+		local_sdp = sdp;
+	}
 
-   /** Starts a new call, inviting a remote user (<i>callee</i>) */
-   public void call(String callee, String from, String contact, String sdp)
-   {  printLog("calling "+callee,LogLevel.HIGH);
-      if (from==null) from=from_url;
-      if (contact==null) contact=contact_url;
-      if (sdp!=null) local_sdp=sdp;
-      dialog=new InviteDialog(sip_provider,this);
-      if (local_sdp!=null)
-         dialog.invite(callee,from,contact,local_sdp);
-      else dialog.inviteWithoutOffer(callee,from,contact);
-   } 
+	/** Gets the current remote session descriptor */
+	public String getRemoteSessionDescriptor() {
+		return remote_sdp;
+	}
 
-   /** Starts a new call with the <i>invite</i> message request */
-   public void call(Message invite)
-   {  dialog=new InviteDialog(sip_provider,this);
-      local_sdp=invite.getBody();
-      if (local_sdp!=null)
-         dialog.invite(invite);
-      else dialog.inviteWithoutOffer(invite);
-   } 
+	/** Whether the call is on (active). */
+	public boolean isOnCall() {
+		return dialog.statusIs(org.zoolu.sip.dialog.InviteDialog.D_CALL);
+	}
 
-   /** Answers at the 2xx/offer (in the ack message) */
-   public void ackWithAnswer(String sdp)
-   {  local_sdp=sdp;
-      dialog.ackWithAnswer(contact_url,sdp);
-   } 
+	/** Waits for an incoming call */
+	public void listen() {
+		dialog = new InviteDialog(sip_provider, this);
+		dialog.listen();
+	}
 
-   /** Rings back for the incoming call */
-   public void ring()
-   {  if (dialog!=null) dialog.ring();
-   }    
+	/** Starts a new call, inviting a remote user (<i>callee</i>) */
+	public void call(String callee) {
+		call(callee, null, null, null);
+	}
 
-   /** Respond to a incoming call (invite) with <i>resp</i> */
-   public void respond(Message resp)
-   {  if (dialog!=null) dialog.respond(resp);
-   }    
+	/** Starts a new call, inviting a remote user (<i>callee</i>) */
+	public void call(String callee, String sdp) {
+		call(callee, null, null, sdp);
+	}
 
-   /** Accepts the incoming call */
-   /*public void accept()
-   {  accept(local_sdp);
-   }*/    
+	/** Starts a new call, inviting a remote user (<i>callee</i>) */
+	public void call(String callee, String from, String contact, String sdp) {
+		printLog("calling " + callee, LogLevel.HIGH);
+		if (from == null)
+			from = from_url;
+		if (contact == null)
+			contact = contact_url;
+		if (sdp != null)
+			local_sdp = sdp;
+		dialog = new InviteDialog(sip_provider, this);
+		if (local_sdp != null)
+			dialog.invite(callee, from, contact, local_sdp);
+		else
+			dialog.inviteWithoutOffer(callee, from, contact);
+	}
 
-   /** Accepts the incoming call */
-   public void accept(String sdp)
-   {  local_sdp=sdp;
-      if (dialog!=null) dialog.accept(contact_url,local_sdp);
-   }    
+	/** Starts a new call with the <i>invite</i> message request */
+	public void call(Message invite) {
+		dialog = new InviteDialog(sip_provider, this);
+		local_sdp = invite.getBody();
+		if (local_sdp != null)
+			dialog.invite(invite);
+		else
+			dialog.inviteWithoutOffer(invite);
+	}
 
-   /** Redirects the incoming call */
-   public void redirect(String redirect_url)
-   {  if (dialog!=null) dialog.redirect(302,"Moved Temporarily",redirect_url);
-   }    
+	/** Answers at the 2xx/offer (in the ack message) */
+	public void ackWithAnswer(String sdp) {
+		local_sdp = sdp;
+		dialog.ackWithAnswer(contact_url, sdp);
+	}
 
-   /** Refuses the incoming call */
-   public void refuse()
-   {  if (dialog!=null) dialog.refuse();
-   }    
+	/** Rings back for the incoming call */
+	public void ring() {
+		if (dialog != null)
+			dialog.ring();
+	}
 
-   /** Cancels the outgoing call */
-   public void cancel()
-   {  if (dialog!=null) dialog.cancel();
-   }    
+	/** Respond to a incoming call (invite) with <i>resp</i> */
+	public void respond(Message resp) {
+		if (dialog != null)
+			dialog.respond(resp);
+	}
 
-   /** Close the ongoing call */
-   public void bye()
-   {  if (dialog!=null) dialog.bye();
-   }    
+	/** Accepts the incoming call */
+	/*
+	 * public void accept() { accept(local_sdp); }
+	 */
 
-   /** Modify the current call */
-   public void modify(String contact, String sdp)
-   {  local_sdp=sdp;
-      if (dialog!=null) dialog.reInvite(contact,local_sdp);
-   }    
+	/** Accepts the incoming call */
+	public void accept(String sdp) {
+		local_sdp = sdp;
+		if (dialog != null)
+			dialog.accept(contact_url, local_sdp);
+	}
 
-   /** Closes an ongoing or incoming/outgoing call
-     * <p> It trys to fires refuse(), cancel(), and bye() methods */
-   public void hangup()
-   {  if (dialog!=null)
-      {  // try dialog.refuse(), cancel(), and bye() methods..
-         dialog.refuse();
-         dialog.cancel();
-         dialog.bye();
-      }
-   }    
-   
+	/** Redirects the incoming call */
+	public void redirect(String redirect_url) {
+		if (dialog != null)
+			dialog.redirect(302, "Moved Temporarily", redirect_url);
+	}
 
-   // ************** Inherited from InviteDialogListener **************
+	/** Refuses the incoming call */
+	public void refuse() {
+		if (dialog != null)
+			dialog.refuse();
+	}
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallIncoming()). */ 
-   public void onDlgInvite(InviteDialog d, NameAddress caller, NameAddress callee, String sdp, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (sdp!=null && sdp.length()!=0) remote_sdp=sdp;
-      if (listener!=null) listener.onCallIncoming(this,caller,callee,sdp,msg);
-   }
+	/** Cancels the outgoing call */
+	public void cancel() {
+		if (dialog != null)
+			dialog.cancel();
+	}
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallModifying()). */ 
-   public void onDlgReInvite(InviteDialog d, String sdp, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (sdp!=null && sdp.length()!=0) remote_sdp=sdp;
-      if (listener!=null) listener.onCallModifying(this,sdp,msg);
-   }
+	/** Close the ongoing call */
+	public void bye() {
+		if (dialog != null)
+			dialog.bye();
+	}
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallRinging()). */ 
-   public void onDlgInviteProvisionalResponse(InviteDialog d, int code, String reason, String sdp, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (sdp!=null && sdp.length()!=0) remote_sdp=sdp;
-      if (code==180) if (listener!=null) listener.onCallRinging(this,msg);
-   }
+	/** Modify the current call */
+	public void modify(String contact, String sdp) {
+		local_sdp = sdp;
+		if (dialog != null)
+			dialog.reInvite(contact, local_sdp);
+	}
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallAccepted()). */ 
-   public void onDlgInviteSuccessResponse(InviteDialog d, int code, String reason, String sdp, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (sdp!=null && sdp.length()!=0) remote_sdp=sdp;
-      if (listener!=null) listener.onCallAccepted(this,sdp,msg);
-   }
-   
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallRedirection()). */ 
-   public void onDlgInviteRedirectResponse(InviteDialog d, int code, String reason, MultipleHeader contacts, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (listener!=null) listener.onCallRedirection(this,reason,contacts.getValues(),msg);
-   }
-   
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallRefused()). */ 
-   public void onDlgInviteFailureResponse(InviteDialog d, int code, String reason, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (listener!=null) listener.onCallRefused(this,reason,msg);
-   }
-   
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallTimeout()). */ 
-   public void onDlgTimeout(InviteDialog d)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (listener!=null) listener.onCallTimeout(this);
-   }
+	/**
+	 * Closes an ongoing or incoming/outgoing call
+	 * <p>
+	 * It trys to fires refuse(), cancel(), and bye() methods
+	 */
+	public void hangup() {
+		if (dialog != null) { // try dialog.refuse(), cancel(), and bye()
+								// methods..
+			dialog.refuse();
+			dialog.cancel();
+			dialog.bye();
+		}
+	}
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. */ 
-   public void onDlgReInviteProvisionalResponse(InviteDialog d, int code, String reason, String sdp, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (sdp!=null && sdp.length()!=0) remote_sdp=sdp;
-   }
+	// ************** Inherited from InviteDialogListener **************
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallReInviteAccepted()). */ 
-   public void onDlgReInviteSuccessResponse(InviteDialog d, int code, String reason, String sdp, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (sdp!=null && sdp.length()!=0) remote_sdp=sdp;
-      if (listener!=null) listener.onCallReInviteAccepted(this,sdp,msg);
-   }
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallIncoming()).
+	 */
+	public void onDlgInvite(InviteDialog d, NameAddress caller,
+			NameAddress callee, String sdp, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (sdp != null && sdp.length() != 0)
+			remote_sdp = sdp;
+		if (listener != null)
+			listener.onCallIncoming(this, caller, callee, sdp, msg);
+	}
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallReInviteRedirection()). */ 
-   //public void onDlgReInviteRedirectResponse(InviteDialog d, int code, String reason, MultipleHeader contacts, Message msg)
-   //{  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-   //   if (listener!=null) listener.onCallReInviteRedirection(this,reason,contacts.getValues(),msg);
-   //}
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallModifying()).
+	 */
+	public void onDlgReInvite(InviteDialog d, String sdp, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (sdp != null && sdp.length() != 0)
+			remote_sdp = sdp;
+		if (listener != null)
+			listener.onCallModifying(this, sdp, msg);
+	}
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallReInviteRefused()). */ 
-   public void onDlgReInviteFailureResponse(InviteDialog d, int code, String reason, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (listener!=null) listener.onCallReInviteRefused(this,reason,msg);
-   }
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallRinging()).
+	 */
+	public void onDlgInviteProvisionalResponse(InviteDialog d, int code,
+			String reason, String sdp, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (sdp != null && sdp.length() != 0)
+			remote_sdp = sdp;
+		if (code == 180)
+			if (listener != null)
+				listener.onCallRinging(this, msg);
+	}
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallReInviteTimeout()). */ 
-   public void onDlgReInviteTimeout(InviteDialog d)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (listener!=null) listener.onCallReInviteTimeout(this);
-   }
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallAccepted()).
+	 */
+	public void onDlgInviteSuccessResponse(InviteDialog d, int code,
+			String reason, String sdp, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (sdp != null && sdp.length() != 0)
+			remote_sdp = sdp;
+		if (listener != null)
+			listener.onCallAccepted(this, sdp, msg);
+	}
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallConfirmed()). */ 
-   public void onDlgAck(InviteDialog d, String sdp, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (sdp!=null && sdp.length()!=0) remote_sdp=sdp;
-      if (listener!=null) listener.onCallConfirmed(this,sdp,msg);
-   }
-   
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onCallClosing()). */ 
-   public void onDlgCancel(InviteDialog d, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (listener!=null) listener.onCallCanceling(this,msg);
-   }
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallRedirection()).
+	 */
+	public void onDlgInviteRedirectResponse(InviteDialog d, int code,
+			String reason, MultipleHeader contacts, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (listener != null)
+			listener.onCallRedirection(this, reason, contacts.getValues(), msg);
+	}
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onClosing()). */ 
-   public void onDlgBye(InviteDialog d, Message msg)      
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (listener!=null) listener.onCallClosing(this,msg);
-   }
-   
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onClosed()). */ 
-   public void onDlgByeFailureResponse(InviteDialog d, int code, String reason, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (listener!=null) listener.onCallClosed(this,msg);
-   }
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallRefused()).
+	 */
+	public void onDlgInviteFailureResponse(InviteDialog d, int code,
+			String reason, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (listener != null)
+			listener.onCallRefused(this, reason, msg);
+	}
 
-   /** Inherited from class InviteDialogListener and called by an InviteDialag. Normally you should not use it. Use specific callback methods instead (e.g. onClosed()). */ 
-   public void onDlgByeSuccessResponse(InviteDialog d, int code, String reason, Message msg)
-   {  if (d!=dialog) {  printLog("NOT the current dialog",LogLevel.HIGH);  return;  }
-      if (listener!=null) listener.onCallClosed(this,msg);
-   }
-   
-   // ----------------------------------------------------- 
-   
-   /** When an incoming INVITE is accepted */ 
-   //public void onDlgAccepted(InviteDialog dialog) {}
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallTimeout()).
+	 */
+	public void onDlgTimeout(InviteDialog d) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (listener != null)
+			listener.onCallTimeout(this);
+	}
 
-   /** When an incoming INVITE is refused */ 
-   //public void onDlgRefused(InviteDialog dialog) {}
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it.
+	 */
+	public void onDlgReInviteProvisionalResponse(InviteDialog d, int code,
+			String reason, String sdp, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (sdp != null && sdp.length() != 0)
+			remote_sdp = sdp;
+	}
 
-   /** When the INVITE handshake is successful terminated */ 
-   public void onDlgCall(InviteDialog dialog) {}
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallReInviteAccepted()).
+	 */
+	public void onDlgReInviteSuccessResponse(InviteDialog d, int code,
+			String reason, String sdp, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (sdp != null && sdp.length() != 0)
+			remote_sdp = sdp;
+		if (listener != null)
+			listener.onCallReInviteAccepted(this, sdp, msg);
+	}
 
-   /** When an incoming Re-INVITE is accepted */ 
-   //public void onDlgReInviteAccepted(InviteDialog dialog) {}
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallReInviteRedirection()).
+	 */
+	// public void onDlgReInviteRedirectResponse(InviteDialog d, int code,
+	// String reason, MultipleHeader contacts, Message msg)
+	// { if (d!=dialog) { printLog("NOT the current dialog",LogLevel.HIGH);
+	// return; }
+	// if (listener!=null)
+	// listener.onCallReInviteRedirection(this,reason,contacts.getValues(),msg);
+	// }
 
-   /** When an incoming Re-INVITE is refused */ 
-   //public void onDlgReInviteRefused(InviteDialog dialog) {}
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallReInviteRefused()).
+	 */
+	public void onDlgReInviteFailureResponse(InviteDialog d, int code,
+			String reason, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (listener != null)
+			listener.onCallReInviteRefused(this, reason, msg);
+	}
 
-   /** When a BYE request traqnsaction has been started */ 
-   //public void onDlgByeing(InviteDialog dialog) {}
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallReInviteTimeout()).
+	 */
+	public void onDlgReInviteTimeout(InviteDialog d) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (listener != null)
+			listener.onCallReInviteTimeout(this);
+	}
 
-   /** When the dialog is finally closed */ 
-   public void onDlgClose(InviteDialog dialog) {}
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallConfirmed()).
+	 */
+	public void onDlgAck(InviteDialog d, String sdp, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (sdp != null && sdp.length() != 0)
+			remote_sdp = sdp;
+		if (listener != null)
+			listener.onCallConfirmed(this, sdp, msg);
+	}
 
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onCallClosing()).
+	 */
+	public void onDlgCancel(InviteDialog d, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (listener != null)
+			listener.onCallCanceling(this, msg);
+	}
 
-   //**************************** Logs ****************************/
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onClosing()).
+	 */
+	public void onDlgBye(InviteDialog d, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (listener != null)
+			listener.onCallClosing(this, msg);
+	}
 
-   /** Adds a new string to the default Log */
-   protected void printLog(String str, int level)
-   {  if (log!=null) log.println("Call: "+str,level+SipStack.LOG_LEVEL_CALL);  
-   }
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onClosed()).
+	 */
+	public void onDlgByeFailureResponse(InviteDialog d, int code,
+			String reason, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (listener != null)
+			listener.onCallClosed(this, msg);
+	}
+
+	/**
+	 * Inherited from class InviteDialogListener and called by an InviteDialag.
+	 * Normally you should not use it. Use specific callback methods instead
+	 * (e.g. onClosed()).
+	 */
+	public void onDlgByeSuccessResponse(InviteDialog d, int code,
+			String reason, Message msg) {
+		if (d != dialog) {
+			printLog("NOT the current dialog", LogLevel.HIGH);
+			return;
+		}
+		if (listener != null)
+			listener.onCallClosed(this, msg);
+	}
+
+	// -----------------------------------------------------
+
+	/** When an incoming INVITE is accepted */
+	// public void onDlgAccepted(InviteDialog dialog) {}
+
+	/** When an incoming INVITE is refused */
+	// public void onDlgRefused(InviteDialog dialog) {}
+
+	/** When the INVITE handshake is successful terminated */
+	public void onDlgCall(InviteDialog dialog) {
+	}
+
+	/** When an incoming Re-INVITE is accepted */
+	// public void onDlgReInviteAccepted(InviteDialog dialog) {}
+
+	/** When an incoming Re-INVITE is refused */
+	// public void onDlgReInviteRefused(InviteDialog dialog) {}
+
+	/** When a BYE request traqnsaction has been started */
+	// public void onDlgByeing(InviteDialog dialog) {}
+
+	/** When the dialog is finally closed */
+	public void onDlgClose(InviteDialog dialog) {
+	}
+
+	// **************************** Logs ****************************/
+
+	/** Adds a new string to the default Log */
+	protected void printLog(String str, int level) {
+		if (log != null)
+			log.println("Call: " + str, level + SipStack.LOG_LEVEL_CALL);
+	}
 }
-

@@ -1,8 +1,0 @@
-package me.p2p.spec;
-
-
-public interface PeerCallback {
-	public void onJoined();
-	public void onAddNode();
-	public void onUpdate();
-}

@@ -23,6 +23,7 @@
 
 package org.zoolu.sip.address;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import org.zoolu.sip.provider.SipParser;
@@ -43,7 +44,12 @@ import org.zoolu.tools.Parser;
  * <P>
  * If <i>port</i> number is ommitted, -1 is returned
  */
-public class SipURL {
+public class SipURL implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	protected String url;
 
 	protected static final String transport_param = "transport";
