@@ -1,7 +1,0 @@
-package me.sip;
-
-public class SipUrlBuilder {
-	public SipUrlBuilder() {
-		// TODO Auto-generated constructor stub
-	}
-}
