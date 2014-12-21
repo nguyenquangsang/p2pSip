@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/onCall_btEnCall" >
+
+        <SurfaceView
+            android:id="@+id/onCall_SurfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/onCall_btEnCall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/bt_endcall"
+        android:paddingBottom="@dimen/bt_padding_vertical"
+        android:paddingTop="@dimen/bt_padding_vertical"
+        android:src="@drawable/endcall" />
+
+</RelativeLayout>

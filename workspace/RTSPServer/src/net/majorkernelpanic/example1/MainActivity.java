@@ -36,11 +36,11 @@ public class MainActivity extends Activity {
 		// android 2
 		mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
-		// Sets the port of the RTSP server to 1234
-		Editor editor = PreferenceManager.getDefaultSharedPreferences(this)
-				.edit();
-		editor.putString(RtspServer.KEY_PORT, String.valueOf(1234));
-		editor.commit();
+//		// Sets the port of the RTSP server to 1234
+//		Editor editor = PreferenceManager.getDefaultSharedPreferences(this)
+//				.edit();
+//		editor.putString(RtspServer.KEY_PORT, String.valueOf(1234));
+//		editor.commit();
 
 		// Configures the SessionBuilder
 		SessionBuilder.getInstance().setSurfaceHolder(mSurfaceHolder)

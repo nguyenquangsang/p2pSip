@@ -1,7 +1,0 @@
-package android.me.p2psip;
-
-public class LogE {
-	public static final log(String tag, String message) {
-		
-	}
-}

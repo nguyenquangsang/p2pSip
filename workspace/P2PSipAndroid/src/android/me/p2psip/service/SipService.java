@@ -33,7 +33,7 @@ public class SipService extends Service implements UASListener, UACListener {
 	SipNode mSipNode;
 	MeApplication mApplication;
 	Peer mPeer;
-	
+
 	UASListener mUASListener;
 	UACListener mUACListener;
 
@@ -81,7 +81,7 @@ public class SipService extends Service implements UASListener, UACListener {
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		
+
 		mSipNode.hangup();
 		mSipNode.shutdown();
 	}
@@ -96,7 +96,7 @@ public class SipService extends Service implements UASListener, UACListener {
 	public SipURL getCallSipUrl() {
 		return mCallSipUrl;
 	}
-	
+
 	public SipURL getCallerSipUrl() {
 		return mSipNode.getCallerSipUrl();
 	}
@@ -107,11 +107,11 @@ public class SipService extends Service implements UASListener, UACListener {
 	public void setUASListener(UASListener listener) {
 		mUASListener = listener;
 	}
-	
+
 	public void setUACListener(UACListener listener) {
 		mUACListener = listener;
 	}
-	
+
 	public void setSipUrlCall(PeerInfo peerInfo) {
 		SipURL sipURL = new SipURL(peerInfo.userName, peerInfo.address);
 		this.mCallSipUrl = sipURL;
@@ -127,9 +127,10 @@ public class SipService extends Service implements UASListener, UACListener {
 	// //////////////////////////////////////
 	public void call() {
 		if (mCallSipUrl == null) {
-			throw new IllegalStateException("Must set CallSipUrl befor use Call function");
+			throw new IllegalStateException(
+					"Must set CallSipUrl befor use Call function");
 		}
-		
+
 		mSipNode.call(mCallSipUrl.toString());
 	}
 
@@ -141,21 +142,21 @@ public class SipService extends Service implements UASListener, UACListener {
 		// TODO Auto-generated method stub
 		mSipNode.hangup();
 	}
-	
+
 	/**
 	 * Lắng nghe cuộc gọi đến
 	 */
 	public void listen() {
 		mSipNode.listen();
 	}
-	
+
 	/**
 	 * Chấp nhận một cuộc gọi
 	 */
 	public void accept() {
 		mSipNode.accept();
 	}
-	
+
 	// /////////////////////////////////////
 	// /// UAC Listener
 	// /////////////////////////////////////
@@ -165,16 +166,16 @@ public class SipService extends Service implements UASListener, UACListener {
 		// TODO Auto-generated method stub
 		LogAndroid.log(TAG, "onUaCallIncoming(): " + caller.getAddress()
 				+ " calling...");
-		
+
 		/*
 		 * Gọi Activity onCall;
 		 */
 		Intent intent = new Intent(this, CallingActivity.class);
 		intent.putExtra(Constant.KEY_CALLER, mSipNode.getCallerSipUrl());
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		
+
 		startActivity(intent);
-		
+
 		/*
 		 * Truyền sự kiện ra bên ngoài;
 		 */
@@ -187,7 +188,7 @@ public class SipService extends Service implements UASListener, UACListener {
 	public void onCallUASCancelled(UserAgent ua) {
 		// TODO Auto-generated method stub
 		LogAndroid.log(TAG, "onCallUASCancelled(): UAS call cancelled");
-		
+
 		/*
 		 * Truyền sự kiện ra bên ngoài;
 		 */
@@ -200,7 +201,7 @@ public class SipService extends Service implements UASListener, UACListener {
 	public void onUACCallClosed(UserAgent ua) {
 		// TODO Auto-generated method stub
 		LogAndroid.log(TAG, "onUACCallClosed(): Call ended");
-		
+
 		/*
 		 * Truyền sự kiện ra bên ngoài;
 		 */
@@ -216,8 +217,7 @@ public class SipService extends Service implements UASListener, UACListener {
 	public void onUASCallRinging(UserAgent ua) {
 		// TODO Auto-generated method stub
 		LogAndroid.log(TAG, "onUASCallRinging(): 180 Ringing from UAC");
-		
-		
+
 		/*
 		 * Truyền sự kiện ra bên ngoài;
 		 */
@@ -230,7 +230,7 @@ public class SipService extends Service implements UASListener, UACListener {
 	public void onCallUACAccepted(UserAgent ua) {
 		// TODO Auto-generated method stub
 		LogAndroid.log(TAG, "onCallUACAccepted(): 200 OK from UAC");
-		
+
 		/*
 		 * Truyền sự kiện ra bên ngoài;
 		 */
@@ -243,7 +243,7 @@ public class SipService extends Service implements UASListener, UACListener {
 	public void onCallUACFailed(UserAgent ua) {
 		// TODO Auto-generated method stub
 		LogAndroid.log(TAG, "onCallUACFailed(): call to UAC failed");
-		
+
 		/*
 		 * Truyền sự kiện ra bên ngoài;
 		 */
@@ -256,7 +256,7 @@ public class SipService extends Service implements UASListener, UACListener {
 	public void onUASCallClosed(UserAgent ua) {
 		// TODO Auto-generated method stub
 		LogAndroid.log(TAG, "onUASCallClosed(): call ended");
-		
+
 		if (mUASListener != null) {
 			mUASListener.onUASCallClosed(ua);
 		}

@@ -21,7 +21,7 @@ import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity implements PeerCallback {
 	final String TAG = "MainActivity";
-	final String bootstrapIpAddress = "192.168.0.106";
+	final String bootstrapIpAddress = "192.168.0.103";
 	final String userName = "SangNguyen";
 
 	MeApplication mApplication;

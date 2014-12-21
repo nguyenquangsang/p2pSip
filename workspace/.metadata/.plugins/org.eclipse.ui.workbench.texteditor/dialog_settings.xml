@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="BYE" key="selection"/>
+		<item value="callerSipUrl" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="callerSipUrl"/>
+			<item value="mSipNode"/>
+			<item value="`"/>
+			<item value="startServerStream"/>
 			<item value="BYE"/>
 			<item value="listen"/>
 			<item value="mTxtInfo"/>
 			<item value="listener"/>
-			<item value="start"/>
-			<item value="aListPeer"/>
-			<item value="peerServerSocket"/>
-			<item value="peerInfo"/>
 		</list>
 		<list key="replacehistory">
 		</list>

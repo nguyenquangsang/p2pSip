@@ -1,0 +1,23 @@
+package android.me.p2psip.activity;
+
+import io.vov.vitamio.LibsChecker;
+import android.me.p2psip.R;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class ConfigActivity extends ActionBarActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_config);
+
+		/*
+		 * Init Media Play lib
+		 */
+		if (!LibsChecker.checkVitamioLibs(this))
+			return;
+	}
+}
