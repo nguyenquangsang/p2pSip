@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="callerSipUrl" key="selection"/>
+		<item value="handleTransferRequest" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="handleTransferRequest"/>
 			<item value="callerSipUrl"/>
 			<item value="mSipNode"/>
 			<item value="`"/>
@@ -15,7 +16,6 @@
 			<item value="BYE"/>
 			<item value="listen"/>
 			<item value="mTxtInfo"/>
-			<item value="listener"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -1,7 +1,0 @@
-package me.sip.ua;
-
-import me.sip.ua.specify.UASInterface;
-
-public class UserAgentServer implements UASInterface {
-
-}

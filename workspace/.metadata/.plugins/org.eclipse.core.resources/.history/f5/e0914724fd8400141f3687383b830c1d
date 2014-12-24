@@ -1,8 +1,0 @@
-package me.sip.ua.specify;
-
-import local.ua.UserAgent;
-
-public interface UACInterface {
-	@Override
-	public void onUaCallCancelled(UserAgent ua);
-}

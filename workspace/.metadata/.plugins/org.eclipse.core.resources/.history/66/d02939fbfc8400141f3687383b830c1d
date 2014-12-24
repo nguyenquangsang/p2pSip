@@ -1,7 +1,0 @@
-package me.sip.ua;
-
-import local.ua.UserAgentListener;
-
-public class UserAgentClient implements UserAgentListener {
-
-}

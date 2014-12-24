@@ -1,9 +1,0 @@
-package me.sip.ua.specify;
-
-import local.ua.UserAgent;
-
-public interface UASInterface extends UAInterface {
-	public void onUaCallRinging(UserAgent ua);
-	public void onUaCallAccepted(UserAgent ua);
-	public void onUaCallClosed(UserAgent ua);
-}

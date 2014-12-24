@@ -1,5 +1,0 @@
-package me.sip.ua.specify;
-
-public interface UACInterface {
-	
-}
