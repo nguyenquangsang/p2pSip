@@ -1,8 +1,0 @@
-package me.p2p.peermain;
-
-import me.p2p.Peer;
-
-public class PeerNode {
-	Peer peer
-	;
-}

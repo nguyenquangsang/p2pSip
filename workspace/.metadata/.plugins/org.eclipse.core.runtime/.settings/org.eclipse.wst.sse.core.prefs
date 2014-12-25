@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-task-tag-projects-already-scanned=BootstrapDesktopMain,appcompat_v7,P2PSip,P2PSipAndroid,PeerSipDesktopMain,libstreaming,MJSipDemo,InitActivity,RTSPServer,SipDemoAndroid,Spydroid,VitamioListActivity
+task-tag-projects-already-scanned=BootstrapDesktopMain,InitActivity,MJSipDemo,P2PSip,P2PSipAndroid,PeerSipDesktopMain,RTSPServer,SipDemoAndroid,SocketDemo,Spydroid,VitamioListActivity,appcompat_v7,libstreaming
