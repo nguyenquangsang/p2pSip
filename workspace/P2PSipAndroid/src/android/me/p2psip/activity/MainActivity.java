@@ -8,7 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.me.p2psip.R;
 import android.me.p2psip.adapter.AListPeer;
-import android.me.p2psip.data.MeApplication;
+import android.me.p2psip.application.MeApplication;
 import android.me.p2psip.service.SipService;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity implements PeerCallback {
 	final String TAG = "MainActivity";
-	final String bootstrapIpAddress = "192.168.0.103";
+	final String bootstrapIpAddress = "192.168.0.105";
 	final String userName = "SangNguyen";
 
 	MeApplication mApplication;

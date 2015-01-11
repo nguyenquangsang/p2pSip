@@ -1,2 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="net.majorkernelpanic.streaming.gl.SurfaceView"/>
+<fullyQualifiedTypeName name="android.service.textservice.SpellCheckerService.Session"/>
+<fullyQualifiedTypeName name="net.majorkernelpanic.streaming.Session"/>
+<fullyQualifiedTypeName name="net.majorkernelpanic.streaming.Session.Callback"/>
+<fullyQualifiedTypeName name="net.majorkernelpanic.streaming.audio.AudioQuality"/>
+<fullyQualifiedTypeName name="net.majorkernelpanic.streaming.video.VideoQuality"/>
+<fullyQualifiedTypeName name="android.view.SurfaceHolder"/>
+<fullyQualifiedTypeName name="android.view.SurfaceHolder.Callback"/>
+<fullyQualifiedTypeName name="android.view.Display"/>
+<fullyQualifiedTypeName name="io.vov.vitamio.demo.MediaPlayerDemo_Video"/>
+<fullyQualifiedTypeName name="android.graphics.PixelFormat"/>
+<fullyQualifiedTypeName name="android.view.SurfaceView"/>
+<fullyQualifiedTypeName name="android.graphics.Camera"/>
+<fullyQualifiedTypeName name="android.hardware.Camera.CameraInfo"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="net.majorkernelpanic.streaming.SessionBuilder"/>
+<fullyQualifiedTypeName name="net.majorkernelpanic.streaming.video.ISurfaceHolderConfiged"/>
+</qualifiedTypeNameHistroy>

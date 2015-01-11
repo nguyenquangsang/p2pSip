@@ -1,6 +1,5 @@
 package android.me.p2psip.activity;
 
-import io.vov.vitamio.LibsChecker;
 import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
@@ -14,6 +13,7 @@ import android.support.v7.app.ActionBarActivity;
 
 @SuppressLint("InlinedApi")
 public abstract class SipActivity extends ActionBarActivity {
+	final String TAG = "SipActivity";
 	private Bundle mSavedInstanceState;
 	private boolean mBound = false;
 

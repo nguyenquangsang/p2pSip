@@ -1,0 +1,254 @@
+package android.me.p2psip.activity;
+
+import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.MediaPlayer.OnPreparedListener;
+import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
+
+import java.io.IOException;
+
+import local.ua.UserAgent;
+import me.sip.ua.specify.UACListener;
+import net.majorkernelpanic.streaming.Session;
+import net.majorkernelpanic.streaming.SessionBuilder;
+
+import org.zoolu.sip.address.NameAddress;
+
+import android.graphics.PixelFormat;
+import android.me.p2psip.R;
+import android.me.p2psip.constant.Constant;
+import android.me.p2psip.log.LogAndroid;
+import android.media.AudioManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.widget.ImageButton;
+import net.majorkernelpanic.streaming.video.ISurfaceHolderConfiged;
+
+public class OnCallActivity extends SipActivity implements UACListener,
+		SurfaceHolder.Callback, OnPreparedListener, OnVideoSizeChangedListener,
+		ISurfaceHolderConfiged {
+	final String TAG = "OnCallActivity";
+	SurfaceView mSurfaceView;
+	SurfaceHolder mSurfaceHolder;
+
+	SurfaceView mSurfaceViewPreview;
+	SurfaceHolder mSurfaceHolderPr;
+
+	MediaPlayer mMediaPlayer;
+
+	ImageButton mBtEndCall;
+
+	Session mSession;
+
+	@Override
+	public void onSipServiceConnected(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		/*
+		 * Cài đặt layout cho Activity;
+		 */
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+		setContentView(R.layout.activity_on_call);
+
+		initComponents();
+		initPreview();
+	}
+
+	@SuppressWarnings("deprecation")
+	private void initPreview() {
+		LogAndroid.log(TAG, "initPreview(): init preview surfaceview");
+
+		mSurfaceViewPreview = (SurfaceView) findViewById(R.id.onCall_SurfaceView_Preview);
+		mSurfaceHolderPr = mSurfaceViewPreview.getHolder();
+		mSurfaceHolderPr.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+
+		// Configures the SessionBuilder
+		SessionBuilder.getInstance().setISurfaceConfiged(this);
+		SessionBuilder.getInstance().setSurfaceHolder(mSurfaceHolderPr);
+		try {
+			mSession = SessionBuilder.getInstance().build();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			Log.d(TAG, "initViews(): mSurfaceHolderPr null");
+			e.printStackTrace();
+		}
+	}
+
+	private void initPlay() {
+		LogAndroid.log(TAG, "initPlay(): init and start play video streaming");
+
+		mSurfaceView = (SurfaceView) findViewById(R.id.onCall_SurfaceView);
+		mSurfaceHolder = mSurfaceView.getHolder();
+		mSurfaceHolder.addCallback(this);
+		mSurfaceHolder.setFormat(PixelFormat.RGBA_8888);
+
+		mBtEndCall = (ImageButton) findViewById(R.id.onCall_btEnCall);
+		mBtEndCall.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				/*
+				 * Kết thúc cuộc gọi
+				 */
+				mSipService.hangup();
+
+				/*
+				 * Tiếp tục lắng nghe cuộc gọi
+				 */
+				mSipService.listen();
+
+				/*
+				 * Kết thúc Activity
+				 */
+				finish();
+			}
+		});
+	}
+
+	private void initComponents() {
+		mSipService.setUACListener(this);
+		mMediaPlayer = new MediaPlayer(this);
+	}
+
+	@Override
+	public void onUACCallIncoming(UserAgent ua, NameAddress caller,
+			NameAddress callee) {
+		// TODO Auto-generated method stub
+		/*
+		 * This Activity doesn't catch this event
+		 */
+	}
+
+	@Override
+	public void onCallUASCancelled(UserAgent ua) {
+		// TODO Auto-generated method stub
+		/*
+		 * This Activity doesn't catch this event
+		 */
+	}
+
+	@Override
+	public void onUACCallClosed(UserAgent ua) {
+		// TODO Auto-generated method stub
+		LogAndroid.log(TAG, "onUACCallClosed()");
+		/*
+		 * Hàm này được gọi khi kết thúc cuộc gọi;
+		 */
+		finish();
+	}
+
+	@Override
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void surfaceCreated(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+		LogAndroid.log(TAG,
+				"Previews Surface Created: startPlayStreaming() function");
+		startPlayStreaming();
+	}
+
+	@Override
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void startPlayStreaming() {
+		/*
+		 * Đóng vai trò là UAC, khi có người gọi gọi tới thì địa chỉ caller sip
+		 * sẽ khác null, nếu ngược lại thì là UAS
+		 */
+		LogAndroid.log(TAG, "");
+		String linkRTSPPath = null;
+		if (mSipService.getCallerSipUrl() != null) {
+			linkRTSPPath = "rtsp://" + mSipService.getCallerSipUrl().getHost()
+					+ ":" + Integer.toString(Constant.RTSP_PORT);
+			LogAndroid.log(TAG, "Device is Callee. Link Caller: "
+					+ linkRTSPPath);
+		} else {
+			linkRTSPPath = "rtsp://" + mSipService.getCallSipUrl().getHost()
+					+ ":" + Integer.toString(Constant.RTSP_PORT);
+			LogAndroid.log(TAG, "Device is Caller. Link Callee: "
+					+ linkRTSPPath);
+		}
+
+		LogAndroid.log(TAG, "startPlayStreaming(): " + linkRTSPPath);
+		try {
+			mMediaPlayer.setDataSource(linkRTSPPath);
+			mMediaPlayer.setDisplay(mSurfaceHolder);
+			mMediaPlayer.prepareAsync();
+			mMediaPlayer.setOnPreparedListener(this);
+			mMediaPlayer.setOnVideoSizeChangedListener(this);
+			setVolumeControlStream(AudioManager.STREAM_MUSIC);
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void onPrepared(MediaPlayer mp) {
+		// TODO Auto-generated method stub
+		LogAndroid.log(TAG, "onPrepared(): Start play stream");
+		mp.start();
+	}
+
+	@Override
+	public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+
+		/*
+		 * Release Vitamio;
+		 */
+		mMediaPlayer.release();
+		mMediaPlayer = null;
+
+		/*
+		 * End Session;
+		 */
+		mSession.stop();
+		mSession.flush();
+	}
+
+	@Override
+	public void onPreviewSurfaceConfiged() {
+		// TODO Auto-generated method stub
+		LogAndroid.log(TAG,
+				"onPreviewSurfaceConfiged(): on preview surface configed");
+		runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				initPlay();
+				startPlayStreaming();
+			}
+		});
+
+	}
+}

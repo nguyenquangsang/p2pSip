@@ -1,0 +1,37 @@
+package android.me.p2psip.application;
+
+import me.p2p.Peer;
+import net.majorkernelpanic.streaming.SessionBuilder;
+import net.majorkernelpanic.streaming.rtsp.RtspServer;
+import android.app.Application;
+import android.content.Intent;
+import android.hardware.Camera.CameraInfo;
+import android.me.p2psip.log.LogAndroid;
+
+public class MeApplication extends Application {
+	final String TAG = "MeApplication";
+	private Peer peer;
+
+	@Override
+	public void onCreate() {
+		// TODO Auto-generated method stub
+		super.onCreate();
+
+		int audioEndCoder = (android.os.Build.VERSION.SDK_INT) < 14 ? SessionBuilder.AUDIO_AMRNB
+				: SessionBuilder.AUDIO_AAC;
+		SessionBuilder.getInstance().setAudioEncoder(audioEndCoder)
+				.setVideoEncoder(SessionBuilder.VIDEO_H264)
+				.setCamera(CameraInfo.CAMERA_FACING_FRONT);
+
+		startService(new Intent(this, RtspServer.class));
+		LogAndroid.log(TAG, "startServerStream(): Start stream server Ok");
+	}
+
+	public Peer getPeer() {
+		return this.peer;
+	}
+
+	public void setPeer(Peer peer) {
+		this.peer = peer;
+	}
+}

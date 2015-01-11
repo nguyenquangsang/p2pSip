@@ -20,7 +20,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name=".data.MeApplication"
+        android:name="android.me.p2psip.application.MeApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -36,12 +36,12 @@
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="sensorPortrait" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.CallActivity"
             android:label="@string/title_activity_call"
-            android:screenOrientation="sensorPortrait" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.me.p2psip.action.HAS_CALL" />
                 <action android:name="android.me.p2psip.action.MAKE_CALL" />
@@ -50,7 +50,7 @@
         <activity
             android:name=".activity.CalleeActivity"
             android:label="@string/title_activity_callee"
-            android:screenOrientation="sensorPortrait" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.CallingActivity"
@@ -59,12 +59,12 @@
         <activity
             android:name=".activity.OnCallActivity"
             android:label="@string/title_activity_on_call"
-            android:screenOrientation="sensorPortrait" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="android.me.p2psip.activity.ConfigActivity"
             android:label="@string/title_activity_config"
-            android:screenOrientation="sensorPortrait" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

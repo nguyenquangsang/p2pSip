@@ -1,0 +1,11 @@
+package android.me.p2psip.application;
+
+import android.app.Application;
+
+public class MeApplication extends Application {
+	@Override
+	public void onCreate() {
+		// TODO Auto-generated method stub
+		super.onCreate();
+	}
+}

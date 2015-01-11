@@ -1,0 +1,18 @@
+package android.me.p2psip.application;
+
+import net.majorkernelpanic.streaming.rtsp.RtspServer;
+import android.app.Application;
+import android.content.Intent;
+import android.me.p2psip.log.LogAndroid;
+
+public class MeApplication extends Application {
+	final String TAG = "MeApplication";
+	@Override
+	public void onCreate() {
+		// TODO Auto-generated method stub
+		super.onCreate();
+		
+		startService(new Intent(this, RtspServer.class));
+		LogAndroid.log(TAG, "startServerStream(): Start stream server Ok");
+	}
+}

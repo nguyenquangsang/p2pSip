@@ -1,14 +1,12 @@
 package net.majorkernelpanic.example1;
 
+import net.majorkernelpanic.streaming.Session;
 import net.majorkernelpanic.streaming.SessionBuilder;
 import net.majorkernelpanic.streaming.rtsp.RtspServer;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences.Editor;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 
@@ -17,11 +15,9 @@ import android.view.WindowManager;
  * libstreaming.
  */
 public class MainActivity extends Activity {
-
-	private final static String TAG = "MainActivity";
-
+	private static final String TAG = "MainActivity";
 	private SurfaceView mSurfaceView;
-	private SurfaceHolder mSurfaceHolder;
+	Session mSession;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +27,12 @@ public class MainActivity extends Activity {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		mSurfaceView = (SurfaceView) findViewById(R.id.surface);
-		mSurfaceHolder = mSurfaceView.getHolder();
-		// We still need this line for backward compatibility reasons with
-		// android 2
-		mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
-//		// Sets the port of the RTSP server to 1234
-//		Editor editor = PreferenceManager.getDefaultSharedPreferences(this)
-//				.edit();
-//		editor.putString(RtspServer.KEY_PORT, String.valueOf(1234));
-//		editor.commit();
 
 		// Configures the SessionBuilder
-		SessionBuilder.getInstance().setSurfaceHolder(mSurfaceHolder)
+		mSession = SessionBuilder.getInstance().setPreviewOrientation(90)
 				.setContext(getApplicationContext())
 				.setAudioEncoder(SessionBuilder.AUDIO_NONE)
-				.setVideoEncoder(SessionBuilder.VIDEO_H264);
+				.setVideoEncoder(SessionBuilder.VIDEO_H263).build();
 
 		// Starts the RTSP server
 		this.startService(new Intent(this, RtspServer.class));
@@ -57,7 +43,6 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 
-		Intent intent = new Intent(this, RtspServer.class);
-		stopService(intent);
+		mSession.release();
 	}
 }
