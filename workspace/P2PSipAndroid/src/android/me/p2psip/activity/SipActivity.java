@@ -39,7 +39,7 @@ public abstract class SipActivity extends ActionBarActivity {
 	protected SipService mSipService;
 
 	@Override
-	protected final void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 

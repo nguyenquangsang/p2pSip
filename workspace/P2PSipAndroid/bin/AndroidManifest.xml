@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="9"
+        android:minSdkVersion="11"
         android:targetSdkVersion="21" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -59,7 +59,8 @@
         <activity
             android:name=".activity.OnCallActivity"
             android:label="@string/title_activity_on_call"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true">
         </activity>
         <activity
             android:name="android.me.p2psip.activity.ConfigActivity"

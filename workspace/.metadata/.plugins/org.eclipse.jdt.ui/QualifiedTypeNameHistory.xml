@@ -15,6 +15,8 @@
 <fullyQualifiedTypeName name="android.graphics.Camera"/>
 <fullyQualifiedTypeName name="android.hardware.Camera.CameraInfo"/>
 <fullyQualifiedTypeName name="android.util.Log"/>
-<fullyQualifiedTypeName name="net.majorkernelpanic.streaming.SessionBuilder"/>
 <fullyQualifiedTypeName name="net.majorkernelpanic.streaming.video.ISurfaceHolderConfiged"/>
+<fullyQualifiedTypeName name="net.majorkernelpanic.streaming.SessionBuilder"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="android.me.p2psip.log.LogAndroid"/>
 </qualifiedTypeNameHistroy>

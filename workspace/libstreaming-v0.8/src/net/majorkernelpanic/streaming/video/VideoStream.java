@@ -45,8 +45,6 @@ public abstract class VideoStream extends MediaStream {
 	protected boolean mFlashState = false, mQualityHasChanged = false;
 	protected int mVideoEncoder, mCameraId = 0;
 	protected Camera mCamera;
-	
-	ISurfaceHolderConfiged mISurfaceHolderConfiged;
 
 	/**
 	 * Don't use this class directly. Uses CAMERA_FACING_BACK by default.
@@ -88,10 +86,6 @@ public abstract class VideoStream extends MediaStream {
 			}
 		}
 	}
-	
-	public void setIConfiged(ISurfaceHolderConfiged listener) {
-		mISurfaceHolderConfiged = listener;
-	}
 
 	/**
 	 * Sets a Surface to show a preview of recorded media (video). You can call
@@ -102,7 +96,7 @@ public abstract class VideoStream extends MediaStream {
 		if (mSurfaceHolderCallback != null && mSurfaceHolder != null) {
 			mSurfaceHolder.removeCallback(mSurfaceHolderCallback);
 		}
-		
+
 		mSurfaceHolderCallback = new Callback() {
 			@Override
 			public void surfaceDestroyed(SurfaceHolder holder) {
@@ -114,9 +108,6 @@ public abstract class VideoStream extends MediaStream {
 
 			@Override
 			public void surfaceCreated(SurfaceHolder holder) {
-				if (mISurfaceHolderConfiged != null) {
-					mISurfaceHolderConfiged.onPreviewSurfaceConfiged();
-				}
 			}
 
 			@Override
@@ -125,6 +116,12 @@ public abstract class VideoStream extends MediaStream {
 
 			}
 		};
+
+		if (surfaceHolder == null) {
+			Log.e(TAG, "setPreviewDisplay(): surfaceHolder is null");
+			throw new NullPointerException("SurfaceHolder is Null");
+		}
+
 		mSurfaceHolder = surfaceHolder;
 		mSurfaceHolder.addCallback(mSurfaceHolderCallback);
 	}
@@ -256,7 +253,7 @@ public abstract class VideoStream extends MediaStream {
 						// In this case the application must release the camera
 						// and instantiate a new one
 						Log.e(TAG, "Media server died !");
-						// We don't know in what thread we are so stop needs to
+						// We don't know in what tFhread we are so stop needs to
 						// be synchronized
 						stop();
 					} else {

@@ -1,0 +1,23 @@
+package android.me.p2psip.application;
+
+import me.p2p.Peer;
+import android.app.Application;
+
+public class MeApplication extends Application {
+	final String TAG = "MeApplication";
+	private Peer peer;
+
+	@Override
+	public void onCreate() {
+		// TODO Auto-generated method stub
+		super.onCreate();
+	}
+
+	public Peer getPeer() {
+		return this.peer;
+	}
+
+	public void setPeer(Peer peer) {
+		this.peer = peer;
+	}
+}

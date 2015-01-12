@@ -1,7 +1,0 @@
-package android.me.p2psip.application;
-
-import android.app.Application;
-
-public class MeApplication extends Application {
-
-}

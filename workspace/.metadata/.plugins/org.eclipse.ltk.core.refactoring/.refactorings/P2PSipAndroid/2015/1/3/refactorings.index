@@ -1,3 +1,8 @@
 1420967762707	Rename method 'initViews'
 1420967789832	Rename method 'initPreviewViews'
 1420967799367	Rename method 'initPlayViews'
+1421035104604	Rename method 'initPreview'
+1421050905347	Delete element
+1421052043782	Rename field 'mRtspServerLink'
+1421052125540	Rename local variable 'linkRtsp'
+1421054530385	Delete element

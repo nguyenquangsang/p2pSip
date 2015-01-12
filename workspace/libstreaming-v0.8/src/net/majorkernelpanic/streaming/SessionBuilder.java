@@ -28,7 +28,6 @@ import net.majorkernelpanic.streaming.audio.AMRNBStream;
 import net.majorkernelpanic.streaming.audio.AudioStream;
 import net.majorkernelpanic.streaming.video.H263Stream;
 import net.majorkernelpanic.streaming.video.H264Stream;
-import net.majorkernelpanic.streaming.video.ISurfaceHolderConfiged;
 import net.majorkernelpanic.streaming.video.VideoQuality;
 import net.majorkernelpanic.streaming.video.VideoStream;
 import android.content.Context;
@@ -80,8 +79,6 @@ public class SessionBuilder {
 
 	// The SessionManager implements the singleton pattern
 	private static volatile SessionBuilder sInstance = null;
-
-	ISurfaceHolderConfiged mISurfaceHolderConfiged;
 
 	/**
 	 * Returns a reference to the {@link SessionBuilder}.
@@ -144,7 +141,6 @@ public class SessionBuilder {
 			VideoStream video = session.getVideoTrack();
 			video.setFlashState(mFlash);
 			video.setVideoQuality(mVideoQuality);
-			video.setIConfiged(mISurfaceHolderConfiged);
 			video.setPreviewDisplay(mSurfaceHolder);
 			video.setDestinationPorts(5006);
 		}
@@ -223,13 +219,7 @@ public class SessionBuilder {
 		mSurfaceHolder = surfaceHolder;
 		return this;
 	}
-
-	public SessionBuilder setISurfaceConfiged(
-			ISurfaceHolderConfiged iSurfaceHolderConfiged) {
-		mISurfaceHolderConfiged = iSurfaceHolderConfiged;
-		return this;
-	}
-
+	
 	/** Returns the context set with {@link #setContext(Context)} */
 	public Context getContext() {
 		return mContext;
