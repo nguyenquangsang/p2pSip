@@ -14,5 +14,10 @@
 			<type>2</type>
 			<location>E:/Android/Tool/adt-bundle-windows-x86_64-20140702/sdk/sources/android-20</location>
 		</link>
+		<link>
+			<name>.link1</name>
+			<type>2</type>
+			<location>E:/Android/Tool/adt-bundle-windows-x86_64-20140702/sdk/sources/android-21</location>
+		</link>
 	</linkedResources>
 </projectDescription>

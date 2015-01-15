@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <io.vov.vitamio.widget.VideoView
+        android:id="@+id/videoview1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+    <io.vov.vitamio.widget.VideoView
+        android:id="@+id/videoview2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+</LinearLayout>

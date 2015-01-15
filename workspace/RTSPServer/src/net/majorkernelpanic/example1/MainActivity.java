@@ -1,5 +1,7 @@
 package net.majorkernelpanic.example1;
 
+import java.io.IOException;
+
 import net.majorkernelpanic.streaming.Session;
 import net.majorkernelpanic.streaming.SessionBuilder;
 import net.majorkernelpanic.streaming.rtsp.RtspServer;
@@ -7,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 
@@ -17,8 +20,10 @@ import android.view.WindowManager;
 public class MainActivity extends Activity {
 	private static final String TAG = "MainActivity";
 	private SurfaceView mSurfaceView;
+	private SurfaceHolder mSurfaceHolder;
 	Session mSession;
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,12 +32,20 @@ public class MainActivity extends Activity {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		mSurfaceView = (SurfaceView) findViewById(R.id.surface);
+		mSurfaceHolder = mSurfaceView.getHolder();
+		mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
 		// Configures the SessionBuilder
-		mSession = SessionBuilder.getInstance().setPreviewOrientation(90)
-				.setContext(getApplicationContext())
-				.setAudioEncoder(SessionBuilder.AUDIO_NONE)
-				.setVideoEncoder(SessionBuilder.VIDEO_H263).build();
+		try {
+			mSession = SessionBuilder.getInstance()
+					.setSurfaceHolder(mSurfaceHolder)
+					.setContext(getApplicationContext())
+					.setAudioEncoder(SessionBuilder.AUDIO_NONE)
+					.setVideoEncoder(SessionBuilder.VIDEO_H263).build();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		// Starts the RTSP server
 		this.startService(new Intent(this, RtspServer.class));
@@ -43,6 +56,7 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 
-		mSession.release();
+		mSession.stop();
+		mSession.flush();
 	}
 }
