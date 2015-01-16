@@ -8,6 +8,7 @@ import net.majorkernelpanic.streaming.rtsp.RtspServer;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.hardware.Camera.CameraInfo;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -40,8 +41,9 @@ public class MainActivity extends Activity {
 			mSession = SessionBuilder.getInstance()
 					.setSurfaceHolder(mSurfaceHolder)
 					.setContext(getApplicationContext())
+					.setCamera(CameraInfo.CAMERA_FACING_FRONT)
 					.setAudioEncoder(SessionBuilder.AUDIO_NONE)
-					.setVideoEncoder(SessionBuilder.VIDEO_H263).build();
+					.setVideoEncoder(SessionBuilder.VIDEO_H264).build();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

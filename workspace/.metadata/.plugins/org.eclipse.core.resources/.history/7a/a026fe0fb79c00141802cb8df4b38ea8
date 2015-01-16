@@ -1,0 +1,7 @@
+package android.me.p2psip.view;
+
+import android.widget.VideoView;
+
+public class StreamingVideoView extends VideoView {
+
+}

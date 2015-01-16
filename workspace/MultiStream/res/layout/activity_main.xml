@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <VideoView
-        android:id="@+id/videoview1"
+    <io.vov.vitamio.widget.VideoView
+        android:id="@+id/container1"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="top"
         />
-    <VideoView
-        android:id="@+id/videoview2"
+    <io.vov.vitamio.widget.VideoView
+        android:id="@+id/container2"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="bottom"/>

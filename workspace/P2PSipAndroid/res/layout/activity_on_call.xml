@@ -8,8 +8,8 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/onCall_btEnCall" >
 
-        <SurfaceView
-            android:id="@+id/onCall_SurfaceView"
+        <VideoView
+            android:id="@+id/onCall_SurfaceView1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
              />

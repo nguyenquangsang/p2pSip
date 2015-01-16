@@ -1,0 +1,170 @@
+package com.example.multistream;
+
+import io.vov.vitamio.LibsChecker;
+import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.MediaPlayer.OnPreparedListener;
+
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.graphics.PixelFormat;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+
+public class MainActivity extends ActionBarActivity implements
+		SurfaceHolder.Callback {
+	final String TAG = "MainActivity";
+	final String LINK = "rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov";
+	final String STREAM_LINK = "rtsp://192.168.0.104:8086";
+	SurfaceView mSurfaceView1;
+	SurfaceHolder mSurfaceHolder1;
+
+	SurfaceView mSurfaceView2;
+	SurfaceHolder mSurfaceHolder2;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		if (!LibsChecker.checkVitamioLibs(this)) {
+			return;
+		}
+
+		setContentView(R.layout.activity_main);
+
+		mSurfaceView1 = (SurfaceView) findViewById(R.id.surfaceView1);
+		mSurfaceView2 = (SurfaceView) findViewById(R.id.surfaceView2);
+
+		mSurfaceHolder1 = mSurfaceView1.getHolder();
+		mSurfaceHolder1.setFormat(PixelFormat.RGBA_8888);
+		mSurfaceHolder1.addCallback(this);
+
+		mSurfaceHolder2 = mSurfaceView2.getHolder();
+		mSurfaceHolder2.setFormat(PixelFormat.RGBA_8888);
+		mSurfaceHolder2.addCallback(this);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void surfaceCreated(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+		if (holder.equals(mSurfaceHolder1)) {
+			Log.e(TAG, "mSurfaceHolder1 has created");
+			new Thread() {
+				MediaPlayer mediaPlayer;
+				public void run() {
+					mediaPlayer = new MediaPlayer(getApplicationContext());
+					mediaPlayer.setOnPreparedListener(new OnPreparedListener() {
+						
+						@Override
+						public void onPrepared(MediaPlayer mp) {
+							// TODO Auto-generated method stub
+							mediaPlayer.start();
+						}
+					});
+					
+					mediaPlayer.setDisplay(mSurfaceHolder1);
+
+					try {
+						mediaPlayer.setDataSource(LINK);
+						mediaPlayer.prepareAsync();
+					} catch (IllegalArgumentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (SecurityException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				};
+			}.start();
+		} else {
+			new Timer().schedule(new TimerTask() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					
+				}
+			}, 2000);
+			if (holder.equals(mSurfaceHolder2)) {
+				Log.e(TAG, "mSurfaceHolder2 has created");
+				new Thread() {
+					MediaPlayer mediaPlayer;
+					public void run() {
+						mediaPlayer = new MediaPlayer(getApplicationContext());
+						mediaPlayer.setOnPreparedListener(new OnPreparedListener() {
+							
+							@Override
+							public void onPrepared(MediaPlayer mp) {
+								// TODO Auto-generated method stub
+								mediaPlayer.start();
+							}
+						});
+						
+						mediaPlayer.setDisplay(mSurfaceHolder2);
+
+						try {
+							mediaPlayer.setDataSource(STREAM_LINK);
+							mediaPlayer.prepareAsync();
+						} catch (IllegalArgumentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (SecurityException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IllegalStateException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					};
+				}.start();
+			}
+		}
+	}
+
+	@Override
+	public void surfaceChanged(SurfaceHolder holder, int format, int width,
+			int height) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		// TODO Auto-generated method stub
+
+	}
+}

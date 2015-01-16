@@ -1,0 +1,65 @@
+package com.example.multistream;
+
+import io.vov.vitamio.LibsChecker;
+import io.vov.vitamio.utils.Log;
+import io.vov.vitamio.widget.VideoView;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class MainActivity extends ActionBarActivity {
+	final String TAG = "MainActivity";
+	public static final String LINK = "rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov";
+	public static final String STREAM_LINK = "rtsp://192.168.0.104:8086";
+	VideoView videoView1;
+	VideoView videoView2;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		if (!LibsChecker.checkVitamioLibs(this)) {
+			return;
+		}
+
+		setContentView(R.layout.activity_main);
+
+		videoView1 = (VideoView) findViewById(R.id.container1);
+		videoView2 = (VideoView) findViewById(R.id.container2);
+
+		videoView1.setVideoPath(LINK);
+		videoView1.setHardwareDecoder(true);
+		new Thread() {
+			public void run() {
+				videoView1.start();
+			};
+		}.start();
+
+		videoView2.setVideoPath(STREAM_LINK);
+		new Thread() {
+			public void run() {
+				videoView2.start();
+			};
+		}.start();
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+}

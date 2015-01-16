@@ -1,54 +1,48 @@
 package com.example.multistream;
 
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.net.Uri;
+import io.vov.vitamio.LibsChecker;
+import io.vov.vitamio.utils.Log;
+import io.vov.vitamio.widget.VideoView;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.VideoView;
 
 public class MainActivity extends ActionBarActivity {
 	final String TAG = "MainActivity";
-	final String LINK = "rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov";
-	final String STREAM_LINK = "rtsp://192.168.0.104:8086";
-	VideoView mVideoView1;
-	VideoView mVideoView2;
+	public static final String LINK = "rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov";
+	public static final String STREAM_LINK = "rtsp://192.168.0.104:8086";
+	VideoView videoView1;
+	VideoView videoView2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if (!LibsChecker.checkVitamioLibs(this)) {
+			return;
+		}
+
 		setContentView(R.layout.activity_main);
 
-		final Uri uri1 = Uri.parse(LINK);
-		final Uri uri2 = Uri.parse(STREAM_LINK);
+		videoView1 = (VideoView) findViewById(R.id.container1);
+		videoView2 = (VideoView) findViewById(R.id.container2);
 
-		mVideoView1 = (VideoView) findViewById(R.id.videoview1);
-		mVideoView2 = (VideoView) findViewById(R.id.videoview2);
+		videoView1.setVideoPath(LINK);
+		videoView1.setHardwareDecoder(true);
+		new Thread() {
+			public void run() {
+				videoView1.start();
+			};
+		}.start();
 
-		mVideoView1.setVideoURI(uri1);
-		mVideoView1.setOnPreparedListener(new OnPreparedListener() {
+		videoView2.setVideoPath(STREAM_LINK);
+		videoView2.setHardwareDecoder(true);
+		new Thread() {
+			public void run() {
+				videoView2.start();
+			};
+		}.start();
 
-			@Override
-			public void onPrepared(MediaPlayer mp) {
-				// TODO Auto-generated method stub
-				Log.e(TAG, "mVideoView1 prepared");
-				mp.start();
-			}
-		});
-
-		mVideoView2.setVideoURI(uri2);
-		mVideoView2.setOnPreparedListener(new OnPreparedListener() {
-
-			@Override
-			public void onPrepared(MediaPlayer mp) {
-				// TODO Auto-generated method stub
-				Log.e(TAG, "mVideoView2 prepared");
-				mp.start();
-			}
-		});
 	}
 
 	@Override

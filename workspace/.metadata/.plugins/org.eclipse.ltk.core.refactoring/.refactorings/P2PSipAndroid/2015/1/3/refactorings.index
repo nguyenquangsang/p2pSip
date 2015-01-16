@@ -6,3 +6,6 @@
 1421052043782	Rename field 'mRtspServerLink'
 1421052125540	Rename local variable 'linkRtsp'
 1421054530385	Delete element
+1421326938930	Rename field 'onCall_SurfaceView'
+1421326974818	Rename field 'mSurfaceView'
+1421327045453	Rename package 'android.me.p2psip.views'

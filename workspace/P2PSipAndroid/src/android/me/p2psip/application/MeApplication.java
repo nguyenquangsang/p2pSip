@@ -2,10 +2,8 @@ package android.me.p2psip.application;
 
 import me.p2p.Peer;
 import net.majorkernelpanic.streaming.SessionBuilder;
-import net.majorkernelpanic.streaming.rtsp.RtspServer;
 import net.majorkernelpanic.streaming.video.VideoQuality;
 import android.app.Application;
-import android.content.Intent;
 import android.hardware.Camera.CameraInfo;
 
 public class MeApplication extends Application {
@@ -16,10 +14,10 @@ public class MeApplication extends Application {
 	VideoQuality videoQuality = new VideoQuality(640, 480, 15, 500000);
 
 	/** By default AMR is the audio encoder. */
-	int audioEncoder = SessionBuilder.AUDIO_AMRNB;
+	int audioEncoder = SessionBuilder.AUDIO_NONE;
 
 	/** By default H.263 is the video encoder. */
-	int videoEncoder = SessionBuilder.VIDEO_H263;
+	int videoEncoder = SessionBuilder.VIDEO_H264;
 
 	@Override
 	public void onCreate() {
@@ -31,7 +29,7 @@ public class MeApplication extends Application {
 				: SessionBuilder.AUDIO_AAC;
 		SessionBuilder.getInstance().setContext(getApplicationContext())
 				.setCamera(CameraInfo.CAMERA_FACING_FRONT)
-				.setAudioEncoder(audioEncoder).setVideoEncoder(videoEncoder)
+				.setAudioEncoder(SessionBuilder.AUDIO_NONE).setVideoEncoder(videoEncoder)
 				.setVideoQuality(videoQuality);
 	}
 

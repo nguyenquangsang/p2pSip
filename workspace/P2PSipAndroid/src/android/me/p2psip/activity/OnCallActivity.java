@@ -1,9 +1,5 @@
 package android.me.p2psip.activity;
 
-import io.vov.vitamio.MediaPlayer;
-import io.vov.vitamio.MediaPlayer.OnPreparedListener;
-import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
-
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -23,11 +19,13 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.graphics.PixelFormat;
 import android.me.p2psip.R;
 import android.me.p2psip.constant.Constant;
 import android.me.p2psip.log.LogAndroid;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -37,19 +35,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.VideoView;
 
 public class OnCallActivity extends SipActivity implements UACListener,
-		SurfaceHolder.Callback, OnPreparedListener, OnVideoSizeChangedListener,
 		CallbackListener {
 	final String TAG = "OnCallActivity";
 	/**
 	 * Surface View được dùng cho hiển thị Video Streaming;
 	 */
-	SurfaceView mSurfaceView;
-	/**
-	 * Surface Holder được dùng cho hiển thị Video Streaming;
-	 */
-	SurfaceHolder mSurfaceHolder;
+	VideoView mVideoView1;
 
 	/**
 	 * Surface View được dùng cho hiển thị hình ảnh Camera;
@@ -57,7 +51,6 @@ public class OnCallActivity extends SipActivity implements UACListener,
 	SurfaceView mSurfaceViewPreview;
 	SurfaceHolder mSurfaceHolderPr;
 
-	MediaPlayer mMediaPlayer;
 	ImageButton mBtEndCall;
 
 	/**
@@ -117,15 +110,15 @@ public class OnCallActivity extends SipActivity implements UACListener,
 
 		// init preview;
 		initStreamingPreview();
-		
+
 		startService(new Intent(getApplicationContext(), RtspServer.class));
 	}
-	
+
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		
+
 		/**
 		 * Kết nối đến Rtsp Service;
 		 */
@@ -157,10 +150,7 @@ public class OnCallActivity extends SipActivity implements UACListener,
 		/**
 		 * Init streaming component;
 		 */
-		mSurfaceView = (SurfaceView) findViewById(R.id.onCall_SurfaceView);
-		mSurfaceHolder = mSurfaceView.getHolder();
-		mSurfaceHolder.addCallback(this);
-		mSurfaceHolder.setFormat(PixelFormat.RGBA_8888);
+		mVideoView1 = (VideoView) findViewById(R.id.onCall_SurfaceView1);
 
 		/**
 		 * Init other component;
@@ -209,10 +199,6 @@ public class OnCallActivity extends SipActivity implements UACListener,
 	 */
 	private void initComponents() {
 		mSipService.setUACListener(this);
-
-		mMediaPlayer = new MediaPlayer(this);
-		mMediaPlayer.setOnPreparedListener(this);
-		mMediaPlayer.setOnVideoSizeChangedListener(this);
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 	}
 
@@ -241,27 +227,6 @@ public class OnCallActivity extends SipActivity implements UACListener,
 		 * Hàm này được gọi khi kết thúc cuộc gọi;
 		 */
 		finish();
-	}
-
-	@Override
-	public void surfaceChanged(SurfaceHolder holder, int format, int width,
-			int height) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void surfaceCreated(SurfaceHolder holder) {
-		// TODO Auto-generated method stub
-		LogAndroid
-				.log(TAG, "SurfacePreview has inited, init streaming playing");
-		mMediaPlayer.setDisplay(holder);
-	}
-
-	@Override
-	public void surfaceDestroyed(SurfaceHolder holder) {
-		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -321,7 +286,14 @@ public class OnCallActivity extends SipActivity implements UACListener,
 					/**
 					 * Streaming video;
 					 */
-					playStreaming(mRtspServerStreamingLink);
+					runOnUiThread(new Runnable() {
+
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							playStreaming(mRtspServerStreamingLink);
+						}
+					});
 
 					/**
 					 * Hủy bỏ timer;
@@ -346,34 +318,17 @@ public class OnCallActivity extends SipActivity implements UACListener,
 	 * @param linkRtspStreaming
 	 */
 	private void playStreaming(String linkRtspStreaming) {
-		try {
-			mMediaPlayer.setDataSource(linkRtspStreaming);
-			mMediaPlayer.prepareAsync();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+		Uri uri = Uri.parse(linkRtspStreaming);
+		mVideoView1.setVideoURI(uri);
+		mVideoView1.setOnPreparedListener(new OnPreparedListener() {
 
-	@Override
-	public void onPrepared(MediaPlayer mp) {
-		// TODO Auto-generated method stub
-		LogAndroid.log(TAG, "onPrepared(): Start play stream");
-		mp.start();
-	}
-
-	@Override
-	public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
-		// TODO Auto-generated method stub
+			@Override
+			public void onPrepared(MediaPlayer mp) {
+				// TODO Auto-generated method stub
+				Log.e(TAG, "mVideoView1 prepared");
+			}
+		});
+		mVideoView1.start();
 	}
 
 	@Override
@@ -389,17 +344,11 @@ public class OnCallActivity extends SipActivity implements UACListener,
 		}
 
 		/*
-		 * Release Vitamio;
-		 */
-		mMediaPlayer.release();
-		mMediaPlayer = null;
-
-		/*
 		 * Stop preview streaming;
 		 */
 		mSession.stop();
 		mSession.flush();
-		
+
 		/*
 		 * Unbind service connection;
 		 */

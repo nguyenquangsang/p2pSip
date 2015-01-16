@@ -1,0 +1,5 @@
+package android.me.p2psip.view;
+
+public class StreamingVideoView {
+
+}
